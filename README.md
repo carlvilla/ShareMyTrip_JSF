@@ -1,6 +1,5 @@
 # ShareMyTrip2
 
 ##Autores
-.Carlos
-**Sergio The Boss**
-
+*Carlos Villa
+*BySergi23
