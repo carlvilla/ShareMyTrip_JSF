@@ -5,11 +5,11 @@ import java.util.Locale;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-import javax.faces.bean.*;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
-
-import com.sdi.model.User;
 
 @ManagedBean(name = "settings")
 @SessionScoped
@@ -30,13 +30,7 @@ public class BeanSettings implements Serializable {
 		this.user = user;
 	}
 
-	// Se inicia correctamente el Managed Bean inyectado si JSF lo hubiera
-	// creado
-	// y en caso contrario se crea.
-	// (hay que tener en cuenta que es un Bean de sesión)
 
-	// Se usa @PostConstruct, ya que en el contructor no se sabe todavía si
-	// el MBean ya estaba construido y en @PostConstruct SI.
 	@PostConstruct
 	public void init() {
 		System.out.println("BeanSettings - PostConstruct");
@@ -54,7 +48,7 @@ public class BeanSettings implements Serializable {
 
 	}
 
-	// Es sólo a modo de traza.
+
 	@PreDestroy
 	public void end() {
 		System.out.println("BeanSettings - PreDestroy");

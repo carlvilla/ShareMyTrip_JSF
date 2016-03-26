@@ -68,18 +68,16 @@
   <h:panelGroup>
 			<p:password placeholder="#{user.confPassword}" value="#{user.confPassword}" required="true"
 				requiredMessage="#{msgs.formAlta_confContraseña_requiredMessage}"
-				validatorMessage="#{msgs.formAlta_confContraseña_validatorMessage}"
-				id="confContraseña">
-				<f:validateLength maximum="40" minimun="5"/>
+				id="confContraseña" validator="#{user.validarContraseñas()}">
 			</p:password>
-			<p:message for="confContraseña" />
+			<p:message for="confContraseña" styleClass="error"/>
 		</h:panelGroup>
 
 	</p:panelGrid>
 
  
 	<p:commandButton id="boton" value="#{msgs.botonRegistro}"
-	action="#{controller.registrar()}" update="Grid" process="@form">
+	action="#{controller.registrar()}">
 	</p:commandButton>
 
 

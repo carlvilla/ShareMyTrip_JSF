@@ -9,7 +9,7 @@ import javax.faces.bean.SessionScoped;
 import com.sdi.business.UsersService;
 import com.sdi.infrastructure.Factories;
 
-@ManagedBean(name = "controller")
+@ManagedBean(name="controller")
 @SessionScoped
 public class BeanUsers implements Serializable {
 	private static final long serialVersionUID = 55556L;
@@ -27,7 +27,6 @@ public class BeanUsers implements Serializable {
 			service.saveUser(user);
 
 			return "principal";
-
 		}
 
 		catch (Exception e) {
