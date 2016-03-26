@@ -2,9 +2,12 @@ package com.sdi.presentation;
 
 import java.io.Serializable;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import com.sdi.business.UsersService;
 import com.sdi.infrastructure.Factories;
@@ -19,10 +22,34 @@ public class BeanUsers implements Serializable {
     public BeanUser getUser() { return user; }
     public void setUser(BeanUser user) {this.user = user;}
 
+  
+    @PostConstruct
+    public void init() {        
+      System.out.println("BeanAlumnos - PostConstruct"); 
+      //Buscamos el alumno en la sesión. Esto es un patrón factoría claramente.
+      user = (BeanUser) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get(new String("alumno"));
+      //si no existe lo creamos e inicializamos
+      if (user == null) { 
+        System.out.println("BeanAlumnos - No existia");
+        user = new BeanUser();
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put( "user", user);
+      }
+    }
+    @PreDestroy
+    public void end()  {
+        System.out.println("BeanAlumnos - PreDestroy");
+    }
+    
 	public String registrar() {
 		UsersService service;
 		try {
 
+			System.out.println(user.getLogin());
+			System.out.println(user.getName());
+			System.out.println(user.getEmail());
+			System.out.println(user.getPassword());
+			
+			
 			service = Factories.services.createUserService();
 			service.saveUser(user);
 
@@ -30,8 +57,7 @@ public class BeanUsers implements Serializable {
 		}
 
 		catch (Exception e) {
-			e.printStackTrace();
-			return "registrar";
+			return null;
 		}
 
 	}

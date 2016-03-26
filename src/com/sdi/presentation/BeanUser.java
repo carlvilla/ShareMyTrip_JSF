@@ -3,12 +3,10 @@ package com.sdi.presentation;
 import java.io.Serializable;
 import java.util.ResourceBundle;
 
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
-import javax.faces.validator.ValidatorException;
 
 import com.sdi.model.User;
 
@@ -22,9 +20,7 @@ public class BeanUser extends User implements Serializable {
 	  public BeanUser() {
 	    iniciaUser(null);
 	  }
-	//Este método es necesario para copiar el alumno a editar cuando
-	//se pincha el enlace Editar en la vista listado.xhtml. Podría sustituirse 
-	//por un método editar en BeanAlumnos.
+
 	  public void setUser(User user) {
 	    setId(user.getId());
 	    setLogin(user.getLogin());
@@ -32,8 +28,7 @@ public class BeanUser extends User implements Serializable {
 	    setSurname(user.getSurname());
 	    setEmail(user.getEmail());
 	  }
-	//Iniciamos los datos del alumno con los valores por defecto 
-	//extraídos del archivo de propiedades correspondiente
+	
 	    public void iniciaUser(ActionEvent event) {
 	      FacesContext facesContext = FacesContext.getCurrentInstance();
 	          ResourceBundle bundle = 
@@ -54,11 +49,11 @@ public class BeanUser extends User implements Serializable {
 		}  
 		
 		public void validarContraseñas(){	
-			if(!getPassword().equals(getConfPassword())){
+			/*if(!getPassword().equals(getConfPassword())){
 				FacesMessage message =
 						new FacesMessage("#{msgs.formAlta_confContraseña_validatorMessage}");
 				throw new ValidatorException(message);
-			}
+			}*/
 			
 			
 		}

@@ -11,6 +11,12 @@
 	</managed-bean>
 	
 	<managed-bean>
+		<managed-bean-name>user</managed-bean-name>
+		<managed-bean-class>com.sdi.presentation.BeanUser</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	
+	<managed-bean>
 		<managed-bean-name>settings</managed-bean-name>
 		<managed-bean-class>com.sdi.presentation.BeanSettings</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
@@ -29,6 +35,14 @@
 		<navigation-case>
 			<from-outcome>error</from-outcome>
 			<to-view-id>/error.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/registrarse.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>exito</from-outcome>
+			<to-view-id>/principal.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 

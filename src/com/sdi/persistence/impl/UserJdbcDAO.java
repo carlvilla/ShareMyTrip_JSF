@@ -123,13 +123,14 @@ public class UserJdbcDAO implements UserDao  {
 			Class.forName(SQL_DRV);
 			con = DriverManager.getConnection(SQL_URL, "sa", "");
 			ps = con.prepareStatement(
-					"insert into user (nombre, apellidos, iduser, email) " +
-					"values (?, ?, ?, ?)");
+					"insert into tusers (login,name, surname,email,password,status) " +
+					"values (?, ?, ?, ?,?,0)");
 			
-			ps.setString(1, u.getName());
-			ps.setString(2, u.getSurname());
-			ps.setString(3, u.getLogin());
+			ps.setString(1, u.getLogin());
+			ps.setString(2, u.getName());
+			ps.setString(3, u.getSurname());
 			ps.setString(4, u.getEmail());
+			ps.setString(5, u.getPassword());
 
 			rows = ps.executeUpdate();
 			if (rows != 1) {
