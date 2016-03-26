@@ -11,7 +11,7 @@ public class UsersBuscar {
 		UserDao dao = Factories.persistence.createUserDao();
 		User u = dao.findById(id);
 		if ( u == null) {
-			throw new EntityNotFoundException("No se ha encontrado el alumno");
+			throw new EntityNotFoundException("No se ha encontrado el usuario");
 		}
 		
 		return u;

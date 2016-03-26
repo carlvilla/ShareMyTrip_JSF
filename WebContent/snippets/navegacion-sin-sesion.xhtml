@@ -17,11 +17,15 @@
 			<p:menuitem value="#{msgs.nosotros}">
 				<f:param name="i" value="3" />
 			</p:menuitem>
-			
-			<f:facet name="options">
-            <p:inputText style="margin-right:10px" placeholder="Search"/>
-            <p:commandButton type="button" value="Logout" />
-        </f:facet>
+
+				<p:submenu style="float:right" label="#{msgs.textoIdioma}"
+					icon="ui-icon-document">
+					<p:menuitem id="linkespa" value="#{msgs.enlaceIdiomaES}"
+						actionListener="#{settings.setSpanish}" update="@all" />
+					<p:menuitem id="linkingles" value="#{msgs.enlaceIdiomaEN}"
+						actionListener="#{settings.setEnglish}" update="@all" />
+				</p:submenu>
+
 		</p:menubar>
 	</h:form>
 
