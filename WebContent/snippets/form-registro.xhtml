@@ -55,23 +55,23 @@
 	
 	 #{msgs.contraseña} 
   <h:panelGroup>
-			<p:inputText value="#{user.password}" required="true"
+			<p:password placeholder="#{user.password}" value="#{user.password}" required="true"
 				requiredMessage="#{msgs.formAlta_contraseña_requiredMessage}"
 				validatorMessage="#{msgs.formAlta_contraseña_validatorMessage}"
 				id="contraseña">
-				<f:validateLength maximum="20" />
-			</p:inputText>
+				<f:validateLength maximum="40" minimun="5" />
+			</p:password>
 			<p:message for="contraseña" />
 		</h:panelGroup>
 		
 		 #{msgs.confirmarContraseña} 
   <h:panelGroup>
-			<p:inputText value="#{user.confPassword}" required="true"
+			<p:password placeholder="#{user.confPassword}" value="#{user.confPassword}" required="true"
 				requiredMessage="#{msgs.formAlta_confContraseña_requiredMessage}"
 				validatorMessage="#{msgs.formAlta_confContraseña_validatorMessage}"
 				id="confContraseña">
-				<f:validateLength maximum="20" />
-			</p:inputText>
+				<f:validateLength maximum="40" minimun="5"/>
+			</p:password>
 			<p:message for="confContraseña" />
 		</h:panelGroup>
 

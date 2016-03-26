@@ -9,6 +9,8 @@ import javax.faces.bean.*;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
+import com.sdi.model.User;
+
 @ManagedBean(name = "settings")
 @SessionScoped
 public class BeanSettings implements Serializable {
@@ -17,6 +19,16 @@ public class BeanSettings implements Serializable {
 	private static final Locale SPANISH = new Locale("es");
 	private Locale locale = new Locale("es");
 
+	@ManagedProperty(value = "#{user}")
+	private BeanUser user;
+
+	public BeanUser getUser() {
+		return user;
+	}
+
+	public void setUser(BeanUser user) {
+		this.user = user;
+	}
 
 	// Se inicia correctamente el Managed Bean inyectado si JSF lo hubiera
 	// creado
@@ -29,7 +41,17 @@ public class BeanSettings implements Serializable {
 	public void init() {
 		System.out.println("BeanSettings - PostConstruct");
 
-		
+		user = (BeanUser) FacesContext.getCurrentInstance()
+				.getExternalContext().getSessionMap().get(new String("user"));
+
+		if (user == null) {
+			System.out.println("BeanSettings - No existia");
+			user = new BeanUser();
+			FacesContext.getCurrentInstance().getExternalContext()
+					.getSessionMap().put("user", user);
+
+		}
+
 	}
 
 	// Es sólo a modo de traza.
@@ -39,10 +61,6 @@ public class BeanSettings implements Serializable {
 	}
 
 	public Locale getLocale() {
-		// Aqui habria que cambiar algo de código para coger locale del
-		// navegador
-		// la primera vez que se accede a getLocale(), de momento dejamos como
-		// idioma de partida “es”
 		return (locale);
 	}
 
@@ -50,7 +68,8 @@ public class BeanSettings implements Serializable {
 		locale = SPANISH;
 		try {
 			FacesContext.getCurrentInstance().getViewRoot().setLocale(locale);
-
+			if (user != null)
+				user.iniciaUser(null);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
@@ -60,7 +79,8 @@ public class BeanSettings implements Serializable {
 		locale = ENGLISH;
 		try {
 			FacesContext.getCurrentInstance().getViewRoot().setLocale(locale);
-		
+			if (user != null)
+				user.iniciaUser(null);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
