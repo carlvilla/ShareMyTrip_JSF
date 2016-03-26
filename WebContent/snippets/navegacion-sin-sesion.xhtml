@@ -4,7 +4,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 	<h:form>
-		<p:tabMenu activeIndex="#{param.i}">
+		<p:menubar activeIndex="#{param.i}">
 			<p:menuitem value="#{msgs.iniciarSesion}" action="/login.xhtml">
 				<f:param name="i" value="0" />
 			</p:menuitem>
@@ -17,7 +17,12 @@
 			<p:menuitem value="#{msgs.nosotros}">
 				<f:param name="i" value="3" />
 			</p:menuitem>
-		</p:tabMenu>
+			
+			<f:facet name="options">
+            <p:inputText style="margin-right:10px" placeholder="Search"/>
+            <p:commandButton type="button" value="Logout" />
+        </f:facet>
+		</p:menubar>
 	</h:form>
 
 </ui:composition>
