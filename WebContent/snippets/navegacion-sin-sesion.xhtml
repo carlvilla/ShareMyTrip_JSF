@@ -1,0 +1,23 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	<h:form>
+		<p:tabMenu activeIndex="#{param.i}">
+			<p:menuitem value="#{msgs.iniciarSesion}" action="/login.xhtml">
+				<f:param name="i" value="0" />
+			</p:menuitem>
+			<p:menuitem value="#{msgs.registrarse}" action="/registrarse.xhtml">
+				<f:param name="i" value="1" />
+			</p:menuitem>
+			<p:menuitem value="#{msgs.listado} ">
+				<f:param name="i" value="2" />
+			</p:menuitem>
+			<p:menuitem value="#{msgs.nosotros}">
+				<f:param name="i" value="3" />
+			</p:menuitem>
+		</p:tabMenu>
+	</h:form>
+
+</ui:composition>
