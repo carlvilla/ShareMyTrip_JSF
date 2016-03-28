@@ -11,16 +11,29 @@ import javax.faces.context.FacesContext;
 
 import com.sdi.business.UsersService;
 import com.sdi.infrastructure.Factories;
+import com.sdi.model.Trip;
+import com.sdi.model.User;
 
 @ManagedBean(name="controller")
 @SessionScoped
-public class BeanUsers implements Serializable {
+public class BeanController implements Serializable {
 	private static final long serialVersionUID = 55556L;
 
 	@ManagedProperty(value="#{user}") 
     private BeanUser user;
     public BeanUser getUser() { return user; }
     public void setUser(BeanUser user) {this.user = user;}
+    
+    //Usado para los viaje seleccionados 
+    private Trip viaje;
+    
+    public void setViaje(Trip viaje){
+    	this.viaje = viaje;
+    }
+    
+    public Trip getViaje(){
+    	return viaje;
+    }
 
   
     @PostConstruct
@@ -53,4 +66,31 @@ public class BeanUsers implements Serializable {
 		}
 
 	}
+	
+	public String mostrarDatosViaje(Trip viaje){
+	      if (userIsNotLoggedIn()) { 
+	    	  return "fallo";
+	      }
+	      
+	      return "exito";
+	      
+	}
+	
+	private boolean userIsNotLoggedIn() {
+		User usuariologueado = (User) getObjectFromSession("LOGGEDIN_USER");
+		if (usuariologueado != null) {
+
+			System.out.println("usuario activo: " + usuariologueado.getName());
+			return false;
+		}
+
+		return true;
+	}
+	
+	private Object getObjectFromSession(String key) {
+		return FacesContext.getCurrentInstance().getExternalContext()
+				.getSessionMap().get(key);
+
+	}
+
 }

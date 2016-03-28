@@ -6,7 +6,7 @@
 
 	<managed-bean>
 		<managed-bean-name>controller</managed-bean-name>
-		<managed-bean-class>com.sdi.presentation.BeanUsers</managed-bean-class>
+		<managed-bean-class>com.sdi.presentation.BeanController</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
 	
@@ -55,6 +55,15 @@
 			<to-view-id>/principal.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/listaViajes.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>exito</from-outcome>
+			<to-view-id>/principal.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
 	
 	<navigation-rule>
 		<from-view-id>/login.xhtml</from-view-id>

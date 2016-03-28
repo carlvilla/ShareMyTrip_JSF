@@ -67,6 +67,7 @@
   <h:panelGroup>
 			<p:password value="#{user.confPassword}" placeholder="#{msgs.confirmarContraseña}" required="true"
 				requiredMessage="#{msgs.formAlta_confContraseña_requiredMessage}"
+				validator="#{user.validarContraseñas()}"
 				id="confContraseña">
 			</p:password>
 			<p:message for="confContraseña" styleClass="error"/>
