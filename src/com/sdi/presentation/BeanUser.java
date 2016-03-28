@@ -12,7 +12,7 @@ import javax.faces.validator.ValidatorException;
 
 import com.sdi.model.User;
 
-@ManagedBean(name = "user")
+@ManagedBean
 @SessionScoped
 public class BeanUser extends User implements Serializable {
 	  private static final long serialVersionUID = 55556L;
@@ -21,15 +21,6 @@ public class BeanUser extends User implements Serializable {
 	 
 	  public BeanUser() {
 	    iniciaUser(null);
-	  }
-
-	  public void setUser(User user) {
-	    setId(user.getId());
-	    setLogin(user.getLogin());
-	    setName(user.getName());
-	    setSurname(user.getSurname());
-	    setEmail(user.getEmail());
-	 
 	  }
 	
 	    public void iniciaUser(ActionEvent event) {
@@ -53,13 +44,12 @@ public class BeanUser extends User implements Serializable {
 		}  
 		
 		public void validarContraseñas(){	
-			/*if(!getPassword().equals(getConfPassword())){
+			if(!getPassword().equals(getConfPassword())){
+
 				FacesMessage message =
 						new FacesMessage("#{msgs.formAlta_confContraseña_validatorMessage}");
 				throw new ValidatorException(message);
-			}*/
-			
-			
+			}
 		}
 		
 }

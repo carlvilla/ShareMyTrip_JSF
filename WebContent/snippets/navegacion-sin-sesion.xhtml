@@ -8,10 +8,11 @@
 			<p:menuitem value="#{msgs.iniciarSesion}" action="/login.xhtml">
 				<f:param name="i" value="0" />
 			</p:menuitem>
-			<p:menuitem value="#{msgs.registrarse}" action="/registrarse.xhtml">
+			<p:menuitem value="#{msgs.registrarse}" action="/registrarse.xhtml" >
 				<f:param name="i" value="1" />
 			</p:menuitem>
-			<p:menuitem value="#{msgs.listado} ">
+			<p:menuitem value="#{msgs.listado}" action="listado"
+			listener="#{trips.obtenerViajes}">
 				<f:param name="i" value="2" />
 			</p:menuitem>
 			<p:menuitem value="#{msgs.nosotros}">

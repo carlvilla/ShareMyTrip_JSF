@@ -14,7 +14,7 @@ import com.sdi.persistence.TripDao;
 import com.sdi.persistence.util.JdbcTemplate;
 import com.sdi.persistence.util.RowMapper;
 
-public class TripDaoJdbcImpl implements TripDao {
+public class TripJdbcDAO implements TripDao {
 
 	public class TripMapper implements RowMapper<Trip> {
 

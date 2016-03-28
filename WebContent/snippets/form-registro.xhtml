@@ -58,7 +58,7 @@
 				requiredMessage="#{msgs.formAlta_contraseña_requiredMessage}"
 				validatorMessage="#{msgs.formAlta_contraseña_validatorMessage}"
 				id="contraseña">
-				<f:validateLength maximum="40" minimun="5" />
+				<f:validateLength maximum="40" minimum="5"/>
 			</p:password>
 			<p:message for="contraseña" />
 		</h:panelGroup>
@@ -67,19 +67,18 @@
   <h:panelGroup>
 			<p:password placeholder="#{msgs.confirmarContraseña}" value="#{user.confPassword}" required="true"
 				requiredMessage="#{msgs.formAlta_confContraseña_requiredMessage}"
-				id="confContraseña" validator="#{user.validarContraseñas}">
+				id="confContraseña" validator="#{user.validarContraseñas()}">
 			</p:password>
-			<p:message for="confContraseña"/>
+			<p:message for="confContraseña" styleClass="error"/>
 		</h:panelGroup>
 
-<p:commandButton id="boton" value="#{msgs.botonRegistro}"
-	action="#{controller.registrar}" update="Grid" process="@form">
-	</p:commandButton> 
 	
 	</p:panelGrid>
+	
+	<p:commandButton id="boton" value="#{msgs.botonRegistro}"
+	action="#{controller.registrar}" update="Grid" process="@form">
+	</p:commandButton> 
 
 	
-
-
 </ui:composition>
 
