@@ -15,14 +15,13 @@ public class SimpleServicesFactory implements ServicesFactory {
 		return new SimpleUserService();
 	}
 
-	@Override
-<<<<<<< HEAD
 	public TripsService createTripService() {
 		return new SimpleTripService();
-=======
+	}
+
 	public LoginService createLoginService() {
 		return new SimpleLoginService();
->>>>>>> origin/master
+
 	}
 
 }
