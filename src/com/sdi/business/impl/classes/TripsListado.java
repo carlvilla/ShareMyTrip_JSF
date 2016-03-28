@@ -9,7 +9,7 @@ import com.sdi.persistence.TripDao;
 
 public class TripsListado {
 
-	public List<Trip> getUsers() {
+	public List<Trip> getTrips() {
 		
 		TripDao dao = Factories.persistence.createTripDao();
 		return dao.findAll();

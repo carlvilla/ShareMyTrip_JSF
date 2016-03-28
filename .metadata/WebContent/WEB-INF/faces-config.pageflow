@@ -1,2 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pageflow:Pageflow xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14591745415370" configfile="/sdi2-13/WebContent/WEB-INF/faces-config.xml"/>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14591745415370" configfile="/sdi2-13/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="*" x="122" y="370" id="pf14591781701580" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf14591781701581 pf14591781701582" path="*"/>
+  <nodes xsi:type="pageflow:PFPage" name="error.xhtml" x="338" y="178" id="pf14591781701583" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf14591781701581" path="/error.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="listaViajes.xhtml" x="338" y="562" id="pf14591781701584" referenceLink="//@navigationRule.0/@navigationCase.1/@toViewId|" inlinks="pf14591781701582" path="/listaViajes.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="registrarse.xhtml" x="122" y="754" id="pf14591781701585" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf14591781701586" path="/registrarse.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="principal.xhtml" x="338" y="946" id="pf14591781701587" referenceLink="//@navigationRule.2/@navigationCase.0/@toViewId|" inlinks="pf14591781701586 pf14591781701588" path="/principal.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="login.xhtml" x="122" y="1138" id="pf14591781701589" referenceLink="//@navigationRule.2/@fromViewId|" outlinks="pf14591781701588" path="/login.xhtml"/>
+  <links id="pf14591781701581" target="pf14591781701583" source="pf14591781701580" outcome="error"/>
+  <links id="pf14591781701582" target="pf14591781701584" source="pf14591781701580" outcome="listado"/>
+  <links id="pf14591781701586" target="pf14591781701587" source="pf14591781701585" outcome="exito"/>
+  <links id="pf14591781701588" target="pf14591781701587" source="pf14591781701589" outcome="exito"/>
+</pageflow:Pageflow>

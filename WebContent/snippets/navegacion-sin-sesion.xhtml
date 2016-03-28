@@ -11,8 +11,8 @@
 			<p:menuitem value="#{msgs.registrarse}" action="/registrarse.xhtml" >
 				<f:param name="i" value="1" />
 			</p:menuitem>
-			<p:menuitem value="#{msgs.listado}" action="listado"
-			listener="#{trips.obtenerViajes}">
+			<p:menuitem value="#{msgs.listado}"
+			action="#{trips.obtenerViajes}">
 				<f:param name="i" value="2" />
 			</p:menuitem>
 			<p:menuitem value="#{msgs.nosotros}">

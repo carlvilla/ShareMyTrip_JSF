@@ -1,6 +1,5 @@
 package com.sdi.presentation;
 
-import java.awt.event.ActionEvent;
 import java.io.Serializable;
 import java.util.List;
 
@@ -26,8 +25,9 @@ public class BeanTrips implements Serializable {
 		this.viajes = viajes;
 	}
 
-	public void obtenerViajes(ActionEvent event) {
+	public String obtenerViajes() {
 		TripsService service = Factories.services.createTripService();
 		viajes = service.findAll();
+		return "listado";
 	}
 }

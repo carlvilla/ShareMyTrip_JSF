@@ -1,6 +1,4 @@
 package com.sdi.persistence.util;
-
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
@@ -12,7 +10,6 @@ import java.sql.SQLTimeoutException;
 import java.util.Properties;
 
 import com.sdi.persistence.exception.PersistenceException;
-
 
 public class Jdbc {
 	private static final String DATABASE_PROPERTIES_FILE = "database.properties";
