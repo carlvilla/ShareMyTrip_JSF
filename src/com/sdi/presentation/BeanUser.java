@@ -20,9 +20,9 @@ public class BeanUser extends User implements Serializable {
 	  private String confPassword;
 	 
 	  public BeanUser() {
-	    iniciaUser(null);
+	   // iniciaUser(null);
 	  }
-	
+/*	
 	    public void iniciaUser(ActionEvent event) {
 	      FacesContext facesContext = FacesContext.getCurrentInstance();
 	          ResourceBundle bundle = 
@@ -35,6 +35,7 @@ public class BeanUser extends User implements Serializable {
 	          setPassword(bundle.getString("valorDefectoContraseña"));
 	          setConfPassword(bundle.getString("valorDefectoConfContraseña"));
 	    }
+*/
 	    
 		public String getConfPassword() {
 			return confPassword;

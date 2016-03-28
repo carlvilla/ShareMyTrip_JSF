@@ -62,8 +62,8 @@ public class BeanSettings implements Serializable {
 		locale = SPANISH;
 		try {
 			FacesContext.getCurrentInstance().getViewRoot().setLocale(locale);
-			if (user != null)
-				user.iniciaUser(null);
+//			if (user != null)
+//				user.iniciaUser(null);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
@@ -73,8 +73,8 @@ public class BeanSettings implements Serializable {
 		locale = ENGLISH;
 		try {
 			FacesContext.getCurrentInstance().getViewRoot().setLocale(locale);
-			if (user != null)
-				user.iniciaUser(null);
+//			if (user != null)
+//				user.iniciaUser(null);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}

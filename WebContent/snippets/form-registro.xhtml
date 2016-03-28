@@ -8,7 +8,7 @@
 
 #{msgs.identificador}
   <h:panelGroup>
-			<p:inputText value="#{user.login}" required="true"
+			<p:inputText placeholder="#{msgs.identificador}" value="#{user.login}" required="true"
 				requiredMessage="#{msgs.formAlta_login_requiredMessage}"
 				validatorMessage="#{msgs.formAlta_login_validatorMessage}"
 				id="iduser">
@@ -20,7 +20,7 @@
 
   #{msgs.nombre} 
   <h:panelGroup>
-			<p:inputText value="#{user.name}" required="true"
+			<p:inputText placeholder="#{msgs.nombre}" value="#{user.name}" required="true"
 				requiredMessage="#{msgs.formAlta_nombre_requiredMessage}"
 				validatorMessage="#{msgs.formAlta_nombre_validatorMessage}"
 				id="nombre">
@@ -31,7 +31,7 @@
   
   #{msgs.apellidos} 
   <h:panelGroup>
-			<p:inputText value="#{user.surname}" required="true"
+			<p:inputText placeholder="#{msgs.apellidos}" value="#{user.surname}" required="true"
 				requiredMessage="#{msgs.formAlta_apellidos_requiredMessage}"
 				validatorMessage="#{msgs.formAlta_apellidos_validatorMessage}"
 				id="apellidos">
@@ -42,7 +42,7 @@
   
   #{msgs.email}
   <h:panelGroup>
-			<p:inputText value="#{user.email}" required="true"
+			<p:inputText placeholder="#{msgs.email}" value="#{user.email}" required="true"
 				requiredMessage="#{msgs.formAlta_correo_requiredMessage}"
 				validatorMessage="#{msgs.formAlta_correo_validatorMessage}"
 				id="correo">
@@ -65,9 +65,9 @@
 		
 		 #{msgs.confirmarContraseña} 
   <h:panelGroup>
-			<p:password placeholder="#{msgs.confirmarContraseña}" value="#{user.confPassword}" required="true"
+			<p:password value="#{user.confPassword}" placeholder="#{msgs.confirmarContraseña}" required="true"
 				requiredMessage="#{msgs.formAlta_confContraseña_requiredMessage}"
-				id="confContraseña" validator="#{user.validarContraseñas()}">
+				id="confContraseña">
 			</p:password>
 			<p:message for="confContraseña" styleClass="error"/>
 		</h:panelGroup>

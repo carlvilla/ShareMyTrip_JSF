@@ -26,9 +26,7 @@ public class BeanUsers implements Serializable {
     @PostConstruct
     public void init() {        
       System.out.println("BeanAlumnos - PostConstruct"); 
-      //Buscamos el alumno en la sesión. Esto es un patrón factoría claramente.
-      user = (BeanUser) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get(new String("alumno"));
-      //si no existe lo creamos e inicializamos
+      user = (BeanUser) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get(new String("user"));
       if (user == null) { 
         System.out.println("BeanAlumnos - No existia");
         user = new BeanUser();
@@ -44,12 +42,6 @@ public class BeanUsers implements Serializable {
 		UsersService service;
 		try {
 
-			System.out.println(user.getLogin());
-			System.out.println(user.getName());
-			System.out.println(user.getEmail());
-			System.out.println(user.getPassword());
-			
-			
 			service = Factories.services.createUserService();
 			service.saveUser(user);
 
