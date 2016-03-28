@@ -173,4 +173,11 @@ public class TripJdbcDAO implements TripDao {
 				id);
 	}
 
+	@Override
+	public List<Trip> findAllDisponible() {
+		return jdbcTemplate.queryForList(
+				"TRIP_FIND_DISPONIBLES", 
+				new TripMapper());
+	}
+
 }

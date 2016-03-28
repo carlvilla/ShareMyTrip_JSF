@@ -14,5 +14,10 @@ public class SimpleTripService implements TripsService {
 		return new TripsListado().getTrips();
 	}
 
+	@Override
+	public List<Trip> findAllDisponible() {
+		return new TripsListado().getTripsDisponibles();
+	}
+
 
 }

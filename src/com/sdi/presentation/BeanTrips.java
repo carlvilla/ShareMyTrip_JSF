@@ -25,9 +25,9 @@ public class BeanTrips implements Serializable {
 		this.viajes = viajes;
 	}
 
-	public String obtenerViajes() {
+	public String obtenerViajesDisponibles() {
 		TripsService service = Factories.services.createTripService();
-		viajes = service.findAll();
+		viajes = service.findAllDisponible();
 		return "listado";
 	}
 }

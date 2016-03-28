@@ -10,59 +10,71 @@
 	<ui:define name="navegacion">
 		<ui:include src="/snippets/navegacion-sin-sesion.xhtml" />
 	</ui:define>
-	
+
 	<ui:define name="cuerpo">
+
+		<h:form>
+			<p:dataTable var="viaje" value="#{trips.viajes}" border="1"
+				sortMode="multiple">
+
+				<p:column headerText="#{msgs.ciudadOrigen}"
+					sortBy="#{viaje.departure.city}">
 	
-	<h:dataTable var="viaje" value="#{trips.viajes}" border="1">
+				#{viaje.departure.city}
 	
-	<h:column>
-		<f:facet name="header">#{msgs.ciudadOrigen}</f:facet>
-		#{viaje.departure.city}
-	
-	</h:column>
-	
-	<h:column>
-		<f:facet name="header">#{msgs.ciudadDestino}</f:facet>
-		#{viaje.destination.city}
+				</p:column>
+
+
+				<p:column headerText="#{msgs.ciudadDestino}"
+					sortBy="#{viaje.destination.city}">
+					
+				#{viaje.destination.city}
 		
-	</h:column>
-	
-	<h:column>
-		<f:facet name="header">#{msgs.FechaSalida}</f:facet>
+				</p:column>
+
+				<p:column headerText="#{msgs.FechaSalida}"
+					sortBy="#{viaje.departureDate}">
+				
 		#{viaje.departureDate}
 	
-	</h:column>
-	
-	<h:column>
-		<f:facet name="header">#{msgs.FechaLlegada}</f:facet>
+	</p:column>
+
+				<p:column headerText="#{msgs.FechaLlegada}"
+					sortBy="#{viaje.arrivalDate}">
+				
+					
 		#{viaje.arrivalDate}
 	
-	</h:column>
-	
-	<h:column>
-		<f:facet name="header">#{msgs.PlazasDisponibles}</f:facet>
+	</p:column>
+
+				<p:column headerText="#{msgs.PlazasDisponibles}"
+					sortBy="#{viaje.availablePax}">
+				
+					
 		#{viaje.availablePax}
 		
-	</h:column>
-	
-	<h:column>
-		<f:facet name="header">#{msgs.Precio}</f:facet>
+	</p:column>
+
+				<p:column headerText="#{msgs.Precio}"
+					sortBy="#{viaje.estimatedCost}">
+				
+				
 		#{viaje.estimatedCost}
 	
-	</h:column>
-	
-	<h:column>
-		<h:commandLink>
-		Rerservar plaza
-		</h:commandLink>
-	
-	</h:column>
-	
-	
-	
-	</h:dataTable>
-	
+	</p:column>
+
+				<p:column>
+					<h:commandLink>
+							#{msgs.masDatosViaje}
+					</h:commandLink>
+
+				</p:column>
+
+
+
+			</p:dataTable>
+		</h:form>
 	</ui:define>
-		
+
 
 </ui:composition>
