@@ -3,10 +3,12 @@ package com.sdi.presentation;
 import java.io.Serializable;
 import java.util.ResourceBundle;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
+import javax.faces.validator.ValidatorException;
 
 import com.sdi.model.User;
 
@@ -27,6 +29,7 @@ public class BeanUser extends User implements Serializable {
 	    setName(user.getName());
 	    setSurname(user.getSurname());
 	    setEmail(user.getEmail());
+	 
 	  }
 	
 	    public void iniciaUser(ActionEvent event) {
@@ -41,6 +44,7 @@ public class BeanUser extends User implements Serializable {
 	          setPassword(bundle.getString("valorDefectoContraseña"));
 	          setConfPassword(bundle.getString("valorDefectoConfContraseña"));
 	    }
+	    
 		public String getConfPassword() {
 			return confPassword;
 		}

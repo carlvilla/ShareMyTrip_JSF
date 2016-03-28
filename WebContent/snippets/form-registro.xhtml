@@ -4,7 +4,6 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
-
 	<p:panelGrid id="Grid" columns="2" cellpadding="5">
 
 #{msgs.identificador}
@@ -55,7 +54,7 @@
 	
 	 #{msgs.contraseña} 
   <h:panelGroup>
-			<p:password placeholder="#{user.password}" value="#{user.password}" required="true"
+			<p:password placeholder="#{msgs.contraseña}" value="#{user.password}" required="true"
 				requiredMessage="#{msgs.formAlta_contraseña_requiredMessage}"
 				validatorMessage="#{msgs.formAlta_contraseña_validatorMessage}"
 				id="contraseña">
@@ -66,18 +65,19 @@
 		
 		 #{msgs.confirmarContraseña} 
   <h:panelGroup>
-			<p:password placeholder="#{user.confPassword}" value="#{user.confPassword}" required="true"
+			<p:password placeholder="#{msgs.confirmarContraseña}" value="#{user.confPassword}" required="true"
 				requiredMessage="#{msgs.formAlta_confContraseña_requiredMessage}"
-				id="confContraseña" validator="#{user.validarContraseñas()}">
+				id="confContraseña" validator="#{user.validarContraseñas}">
 			</p:password>
-			<p:message for="confContraseña" styleClass="error"/>
+			<p:message for="confContraseña"/>
 		</h:panelGroup>
 
+<p:commandButton id="boton" value="#{msgs.botonRegistro}"
+	action="#{controller.registrar}" update="Grid" process="@form">
+	</p:commandButton> 
+	
 	</p:panelGrid>
 
-	<p:commandButton id="boton" value="#{msgs.botonRegistro}"
-	action="#{controller.registrar}">
-	</p:commandButton> 
 	
 
 

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14579446055790" configfile="/sdi2-13/WebContent/WEB-INF/faces-config.xml">
-  <nodes xsi:type="pageflow:PFPage" name="*" x="264" y="336" id="pf14588654964290" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf14588654964291" path="*"/>
-  <nodes xsi:type="pageflow:PFPage" name="error.xhtml" x="696" y="468" id="pf14588654964292" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf14588654964291" path="/error.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="registrarse.xhtml" id="pf14590263961220" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf14590263961221" path="/registrarse.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="principal.xhtml" id="pf14590263961222" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf14590263961221" path="/principal.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="*" x="312" y="468" id="pf14588654964290" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf14588654964291" path="*"/>
+  <nodes xsi:type="pageflow:PFPage" name="error.xhtml" x="576" y="468" id="pf14588654964292" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf14588654964291" path="/error.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="registrarse.xhtml" x="252" y="720" id="pf14590263961220" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf14590263961221" path="/registrarse.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="principal.xhtml" x="720" y="708" id="pf14590263961222" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf14590263961221" path="/principal.xhtml"/>
   <links id="pf14588654964291" target="pf14588654964292" source="pf14588654964290" outcome="error"/>
   <links id="pf14590263961221" target="pf14590263961222" source="pf14590263961220" outcome="exito"/>
 </pageflow:Pageflow>
