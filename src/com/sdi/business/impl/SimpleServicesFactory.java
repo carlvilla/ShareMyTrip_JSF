@@ -3,6 +3,7 @@ package com.sdi.business.impl;
 
 
 import com.sdi.business.LoginService;
+import com.sdi.business.SeatService;
 import com.sdi.business.ServicesFactory;
 import com.sdi.business.TripsService;
 import com.sdi.business.UsersService;
@@ -10,7 +11,6 @@ import com.sdi.business.UsersService;
 public class SimpleServicesFactory implements ServicesFactory {
 
 
-	@Override
 	public UsersService createUserService() {
 		return new SimpleUserService();
 	}
@@ -22,6 +22,10 @@ public class SimpleServicesFactory implements ServicesFactory {
 	public LoginService createLoginService() {
 		return new SimpleLoginService();
 
+	}
+
+	public SeatService createSeatService() {
+		return new SimpleSeatService();
 	}
 
 }

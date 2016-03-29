@@ -5,5 +5,6 @@ public interface ServicesFactory {
 	UsersService createUserService();
 	TripsService createTripService();
 	LoginService createLoginService();
+	SeatService createSeatService();
 
 }

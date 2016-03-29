@@ -11,11 +11,13 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
+import com.sdi.business.SeatService;
 import com.sdi.business.UsersService;
+import com.sdi.business.exception.EntityNotFoundException;
 import com.sdi.infrastructure.Factories;
+import com.sdi.model.Seat;
 import com.sdi.model.Trip;
 import com.sdi.model.User;
-import com.sdi.model.UserLogin;
 
 @ManagedBean(name="controller")
 @SessionScoped
@@ -94,9 +96,33 @@ public class BeanController implements Serializable {
 	      }
 	      
 	      this.viaje = viaje;
+	      cargarParticipantesViaje(viaje);
 	      return "exito";
 	      
 	}
+	
+	private void cargarParticipantesViaje(Trip viaje) {
+		SeatService serviceS;
+		UsersService serviceU;
+
+			serviceS = Factories.services.createSeatService();
+			serviceU = Factories.services.createUserService();
+			List<Seat> plazasAceptadas = serviceS.findPlazasAceptadas(viaje.getId());
+
+			for(Seat plaza:plazasAceptadas){
+				
+				try {
+					User usuario = serviceU.findById(plaza.getUserId());
+					participantes.add(usuario);
+					
+				} catch (EntityNotFoundException e) {
+					
+				}
+					
+			}
+	}
+	
+	
 	
 	private boolean userIsNotLoggedIn() {
 		User usuariologueado = (User) getObjectFromSession("LOGGEDIN_USER");

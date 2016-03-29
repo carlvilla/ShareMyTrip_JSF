@@ -6,11 +6,12 @@ import java.util.List;
 
 import com.sdi.model.Seat;
 import com.sdi.model.SeatStatus;
+import com.sdi.model.User;
 import com.sdi.persistence.SeatDao;
 import com.sdi.persistence.util.JdbcTemplate;
 import com.sdi.persistence.util.RowMapper;
 
-public class SeatDaoJdbcImpl implements SeatDao {
+public class SeatJdbcDao implements SeatDao {
 
 	public class SeatMapper implements RowMapper<Seat> {
 
@@ -92,6 +93,15 @@ public class SeatDaoJdbcImpl implements SeatDao {
 		return jdbcTemplate.queryForList("SEAT_FIND_BY_TRIP",
 				new SeatMapper(),
 				idViaje);
+	}
+
+	@Override
+	public List<Seat> findAllAceptadas(Long idViaje) {
+		return jdbcTemplate.queryForList("SEAT_FIND_BY_TRIP_ACCEPTED",
+				new SeatMapper(),
+				idViaje);
+	
+		
 	}
 
 }
