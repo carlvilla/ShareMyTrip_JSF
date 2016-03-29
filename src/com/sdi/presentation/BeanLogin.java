@@ -34,10 +34,15 @@ public class BeanLogin implements Serializable {
 		return "fallo";
 	}
 
+	public String closeSession(){
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		return "cerrarSesion";
+	}
+	
 	private void putUserInSession(UserLogin user) {
 		Map<String, Object> session = FacesContext.getCurrentInstance()
 				.getExternalContext().getSessionMap();
-		session.put("user", user);
+		session.put("LOGGEDIN_USER", user);
 	}
 
 	public String getName() {
