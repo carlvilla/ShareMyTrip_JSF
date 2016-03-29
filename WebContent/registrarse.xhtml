@@ -14,7 +14,26 @@
 	<ui:define name="cuerpo">
 		<h:form id="form-registro">
 		<p:panel id="panelalta" header="#{msgs.registrarse}">
-		<ui:include src="/snippets/form-registro.xhtml"/>
+		
+		
+		<p:panel style="float:right">
+        <h3>¡Registrate hoy y disfruta de todas las ventajas!</h3>
+        
+			<ul>
+				<li>Acceso a toda la información de los viajes</li>
+				<li>Alquilar plazas en viajes</li>
+				<li>Registrar tus propios viajes</li>
+				<li>...</li>
+
+			</ul>
+		
+		
+		
+		</p:panel>
+		
+        <ui:include src="/snippets/form-registro.xhtml"/>
+   					
+		
 		</p:panel>
 		</h:form>
 	</ui:define>

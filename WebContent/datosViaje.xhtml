@@ -1,0 +1,131 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/templates/template-general.xhtml">
+
+	<ui:define name="titulo">Principal</ui:define>
+
+	<ui:define name="navegacion">
+		<ui:include src="/snippets/navegacion-con-sesion.xhtml" />
+	</ui:define>
+	
+	<ui:define name="cuerpo">
+	<h2>Datos del Viaje</h2>
+		
+<p:panelGrid id="Grid" columns="2" cellpadding="5">
+
+<h:panelGroup>
+
+#{msgs.ciudadOrigen}
+</h:panelGroup>
+<h:panelGroup>
+#{controller.viaje.departure.city}
+</h:panelGroup>
+
+
+<h:panelGroup>
+#{msgs.ciudadDestino}
+</h:panelGroup>	
+<h:panelGroup>
+#{controller.viaje.destination.city}
+</h:panelGroup>	
+	
+<h:panelGroup>
+#{msgs.FechaSalida}
+</h:panelGroup>	
+<h:panelGroup>	
+#{controller.viaje.departureDate}
+</h:panelGroup>
+	
+<h:panelGroup>
+#{msgs.FechaLlegada}
+</h:panelGroup>	
+<h:panelGroup>	
+#{controller.viaje.arrivalDate}
+</h:panelGroup>
+
+<h:panelGroup>
+#{msgs.FechaCierre}
+</h:panelGroup>	
+<h:panelGroup>	
+#{controller.viaje.closingDate}
+</h:panelGroup>
+
+<h:panelGroup>
+#{msgs.PlazasDisponibles}
+</h:panelGroup>	
+<h:panelGroup>	
+#{controller.viaje.availablePax}
+</h:panelGroup>
+
+<h:panelGroup>
+#{msgs.PlazasMax}
+</h:panelGroup>	
+<h:panelGroup>	
+#{controller.viaje.maxPax}
+</h:panelGroup>
+
+</p:panelGrid>
+
+<h2>Datos del Promotor</h2>
+
+<p:panelGrid id="GridPromotor" columns="2" cellpadding="5">
+
+<h:panelGroup>
+
+#{msgs.nombre}
+</h:panelGroup>
+<h:panelGroup>
+
+</h:panelGroup>
+
+
+<h:panelGroup>
+#{msgs.apellidos}
+</h:panelGroup>	
+<h:panelGroup>
+
+</h:panelGroup>	
+	
+<h:panelGroup>
+#{msgs.email}
+</h:panelGroup>	
+<h:panelGroup>	
+
+</h:panelGroup>
+	
+
+</p:panelGrid>
+
+<p:carousel value="#{carouselView.cars}" headerText="Responsive" var="car" itemStyle="text-align:center" responsive="true">
+        <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
+
+            <h:outputText value="Id:" />
+            <h:outputText value="#{car.id}" />
+ 
+            <h:outputText value="Year" />
+            <h:outputText value="#{car.year}" />
+ 
+            <h:outputText value="Color:" />
+            <h:outputText value="#{car.color}" style="color:#{car.color}"/>
+ 
+            <h:outputText value="Price" />
+            <h:outputText value="$#{car.price}" />
+        </p:panelGrid>
+ 
+        <f:facet name="footer">
+                In total there are #{fn:length(carouselView.cars)} cars.
+        </f:facet>
+    </p:carousel>
+
+<p:panelGrid  id="GridParticipantes" columns="2" cellpadding="5">
+
+</p:panelGrid>
+
+	
+</ui:define>
+
+
+</ui:composition>

@@ -6,7 +6,8 @@
 	<h:form>
 		<p:menubar activeIndex="#{param.i}">
 			
-			<p:menuitem value="#{msgs.listado} ">
+			<p:menuitem value="#{msgs.listado}"
+			action="#{trips.obtenerViajesDisponibles}">
 				<f:param name="i" value="0" />
 			</p:menuitem>
 			

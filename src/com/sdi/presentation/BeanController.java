@@ -1,6 +1,8 @@
 package com.sdi.presentation;
 
 import java.io.Serializable;
+import java.util.List;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -13,6 +15,7 @@ import com.sdi.business.UsersService;
 import com.sdi.infrastructure.Factories;
 import com.sdi.model.Trip;
 import com.sdi.model.User;
+import com.sdi.model.UserLogin;
 
 @ManagedBean(name="controller")
 @SessionScoped
@@ -27,8 +30,19 @@ public class BeanController implements Serializable {
     //Usado para los viaje seleccionados 
     private Trip viaje;
     
+    private List<User> participantes;
+    
+    public List<User> getParticipantes(){
+    	return participantes;
+    }
+    
+    public void setParticipantes(List<User> participantes){
+    	this.participantes=participantes;
+    }
+    
     public void setViaje(Trip viaje){
     	this.viaje = viaje;
+    	
     }
     
     public Trip getViaje(){
@@ -57,6 +71,7 @@ public class BeanController implements Serializable {
 
 			service = Factories.services.createUserService();
 			service.saveUser(user);
+			putUserInSession(user);
 
 			return "principal";
 		}
@@ -67,11 +82,18 @@ public class BeanController implements Serializable {
 
 	}
 	
+	private void putUserInSession(User user) {
+		Map<String, Object> session = FacesContext.getCurrentInstance()
+				.getExternalContext().getSessionMap();
+		session.put("LOGGEDIN_USER", user);
+	}
+	
 	public String mostrarDatosViaje(Trip viaje){
 	      if (userIsNotLoggedIn()) { 
-	    	  return "fallo";
+	    	  return "fracaso";
 	      }
 	      
+	      this.viaje = viaje;
 	      return "exito";
 	      
 	}

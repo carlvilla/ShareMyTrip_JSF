@@ -12,7 +12,7 @@
 				requiredMessage="#{msgs.formAlta_login_requiredMessage}"
 				validatorMessage="#{msgs.formAlta_login_validatorMessage}"
 				id="iduser">
-				<f:validateLength minimum="5" maximum="8" />
+				<f:validateLength minimum="5" maximum="12" />
 			</p:inputText>
 			<p:message for="iduser" />
 		</h:panelGroup>
@@ -79,7 +79,6 @@
 	<p:commandButton id="boton" value="#{msgs.botonRegistro}"
 	action="#{controller.registrar}" update="Grid" process="@form">
 	</p:commandButton> 
-
 	
 </ui:composition>
 
