@@ -1,6 +1,7 @@
 package com.sdi.presentation;
 
 import java.io.Serializable;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -112,10 +113,13 @@ public class BeanController implements Serializable {
 			serviceU = Factories.services.createUserService();
 			List<Seat> plazasAceptadas = serviceS.findPlazasAceptadas(viaje.getId());
 
+			participantes = new LinkedList<User>();
+			
 			for(Seat plaza:plazasAceptadas){
 				
 				try {
 					User usuario = serviceU.findById(plaza.getUserId());
+					
 					participantes.add(usuario);
 					
 				} catch (EntityNotFoundException e) {
@@ -128,7 +132,7 @@ public class BeanController implements Serializable {
 	
 	
 	private boolean userIsNotLoggedIn() {
-		User usuariologueado = (User) getObjectFromSession("LOGGEDIN_USER");
+		UserLogin usuariologueado = (UserLogin) getObjectFromSession("LOGGEDIN_USER");
 		if (usuariologueado != null) {
 
 			System.out.println("usuario activo: " + usuariologueado.getName());
