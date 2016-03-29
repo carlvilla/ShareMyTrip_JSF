@@ -46,6 +46,10 @@
 			<from-outcome>listado</from-outcome>
 			<to-view-id>/listaViajes.xhtml</to-view-id>
 		</navigation-case>
+		<navigation-case>
+			<from-outcome>cerrarSesion</from-outcome>
+			<to-view-id>/login.xhtml</to-view-id>
+		</navigation-case>
 	</navigation-rule>
 	
 	<navigation-rule>

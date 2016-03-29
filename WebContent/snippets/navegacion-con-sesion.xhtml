@@ -29,7 +29,8 @@
 						actionListener="#{settings.setEnglish}" update="@all" />
 				</p:submenu>
 				
-				<p:menuitem value="#{msgs.cerrarSesion}" style="float:right">
+				<p:menuitem value="#{msgs.cerrarSesion}" style="float:right"
+				 action="#{login.closeSession}">
 				<f:param name="i" value="2" />
 				</p:menuitem>
 
