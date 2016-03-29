@@ -1,6 +1,7 @@
 package com.sdi.business.impl;
 
 import com.sdi.business.LoginService;
+import com.sdi.business.impl.classes.LoginVerify;
 import com.sdi.model.UserLogin;
 
 public class SimpleLoginService implements LoginService {
@@ -8,10 +9,14 @@ public class SimpleLoginService implements LoginService {
 	public UserLogin verify(String login, String password) {
 		if (!validLogin(login, password))
 			return null;
-		return new UserLogin(login, "Sr Antúnez");
+		return getUserLogin(login);
 	}
-
+	
+	private UserLogin getUserLogin(String login){
+		return LoginVerify.getUserLogin(login);
+	}
+	
 	private boolean validLogin(String login, String password) {
-		return "admin".equals(login) && "password".equals(password);
+		return new LoginVerify().verifyPassword(login, password);
 	}
 }

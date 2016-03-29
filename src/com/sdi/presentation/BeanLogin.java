@@ -37,7 +37,7 @@ public class BeanLogin implements Serializable {
 	private void putUserInSession(UserLogin user) {
 		Map<String, Object> session = FacesContext.getCurrentInstance()
 				.getExternalContext().getSessionMap();
-		session.put("LOGGEDIN_USER", user);
+		session.put("user", user);
 	}
 
 	public String getName() {
