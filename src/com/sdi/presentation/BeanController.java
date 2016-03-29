@@ -18,6 +18,7 @@ import com.sdi.infrastructure.Factories;
 import com.sdi.model.Seat;
 import com.sdi.model.Trip;
 import com.sdi.model.User;
+import com.sdi.model.UserLogin;
 
 @ManagedBean(name="controller")
 @SessionScoped
@@ -55,13 +56,13 @@ public class BeanController implements Serializable {
     @PostConstruct
     public void init() {        
       System.out.println("BeanAlumnos - PostConstruct"); 
-      user = (BeanUser) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get(new String("user"));
-      if (user == null) { 
-        System.out.println("BeanAlumnos - No existia");
+
         user = new BeanUser();
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put( "user", user);
-      }
+        
+      
     }
+    
     @PreDestroy
     public void end()  {
         System.out.println("BeanAlumnos - PreDestroy");
@@ -72,8 +73,10 @@ public class BeanController implements Serializable {
 		try {
 
 			service = Factories.services.createUserService();
-			service.saveUser(user);
-			putUserInSession(user);
+			service.saveUser(user);		
+			
+			UserLogin userLogin = new UserLogin(user.getLogin(),user.getName());
+			putUserInSession(userLogin);
 
 			return "principal";
 		}
@@ -84,7 +87,7 @@ public class BeanController implements Serializable {
 
 	}
 	
-	private void putUserInSession(User user) {
+	private void putUserInSession(UserLogin user) {
 		Map<String, Object> session = FacesContext.getCurrentInstance()
 				.getExternalContext().getSessionMap();
 		session.put("LOGGEDIN_USER", user);
