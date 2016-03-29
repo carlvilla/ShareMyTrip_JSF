@@ -99,24 +99,22 @@
 
 </p:panelGrid>
 
-<p:carousel value="#{carouselView.cars}" headerText="Responsive" var="car" itemStyle="text-align:center" responsive="true">
+<p:carousel value="#{controller.participantes}" headerText="Responsive" var="participante" itemStyle="text-align:center" responsive="true">
         <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
 
-            <h:outputText value="Id:" />
-            <h:outputText value="#{car.id}" />
+            <h:outputText value="#{msgs.nombre}:" />
+            <h:outputText value="#{participante.name}" />
  
-            <h:outputText value="Year" />
-            <h:outputText value="#{car.year}" />
+            <h:outputText value="#{msgs.surname}:" />
+            <h:outputText value="#{participante.surname}" />
  
-            <h:outputText value="Color:" />
-            <h:outputText value="#{car.color}" style="color:#{car.color}"/>
+            <h:outputText value="#{msgs.email}" />
+            <h:outputText value="#{participante.email}"/>
  
-            <h:outputText value="Price" />
-            <h:outputText value="$#{car.price}" />
         </p:panelGrid>
  
         <f:facet name="footer">
-                In total there are #{fn:length(carouselView.cars)} cars.
+               #{msgs.numParticipantes} #{fn:length(controller.participantes)}
         </f:facet>
     </p:carousel>
 
