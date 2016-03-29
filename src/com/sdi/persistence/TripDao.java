@@ -14,4 +14,6 @@ public interface TripDao extends GenericDao<Trip, Long> {
 
 	List<Trip> findAllDisponible();
 
+	List<Trip> findAllDisponibleUser(String login);
+
 }

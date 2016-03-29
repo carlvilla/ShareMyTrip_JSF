@@ -18,4 +18,9 @@ public class TripsListado {
 		TripDao dao = Factories.persistence.createTripDao();
 		return dao.findAllDisponible();
 	}
+
+	public List<Trip> getTripsDisponiblesUser(String login) {
+		TripDao dao = Factories.persistence.createTripDao();
+		return dao.findAllDisponibleUser(login);
+	}
 }

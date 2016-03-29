@@ -180,4 +180,12 @@ public class TripJdbcDAO implements TripDao {
 				new TripMapper());
 	}
 
+	@Override
+	public List<Trip> findAllDisponibleUser(String login) {
+		return jdbcTemplate.queryForList(
+				"TRIP_FIND_DISP_USER", 
+				new TripMapper(),
+				login,login,login);
+	}
+
 }
