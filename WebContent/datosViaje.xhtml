@@ -78,7 +78,7 @@
 #{msgs.nombre}
 </h:panelGroup>
 <h:panelGroup>
-
+#{controller.promotorViaje.name}
 </h:panelGroup>
 
 
@@ -86,20 +86,20 @@
 #{msgs.apellidos}
 </h:panelGroup>	
 <h:panelGroup>
-
+#{controller.promotorViaje.surname}
 </h:panelGroup>	
 	
 <h:panelGroup>
 #{msgs.email}
 </h:panelGroup>	
 <h:panelGroup>	
-
+#{controller.promotorViaje.email}
 </h:panelGroup>
 	
 
 </p:panelGrid>
 
-<p:carousel value="#{controller.participantes}" headerText="Responsive" var="participante" itemStyle="text-align:center" responsive="true">
+<p:carousel value="#{controller.participantes}" headerText="Datos participantes" var="participante" itemStyle="text-align:center" responsive="true">
         <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
 
             <h:outputText value="#{msgs.nombre}:" />
@@ -118,6 +118,11 @@
 <p:panelGrid  id="GridParticipantes" columns="2" cellpadding="5">
 
 </p:panelGrid>
+
+<p:commandButton value="#{msgs.reservarPlaza}">
+
+</p:commandButton>
+
 
 	
 </ui:define>

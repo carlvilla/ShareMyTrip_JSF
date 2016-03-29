@@ -3,7 +3,6 @@ package com.sdi.business;
 import java.util.List;
 
 import com.sdi.business.exception.EntityAlreadyExistsException;
-import com.sdi.business.exception.EntityNotFoundException;
 import com.sdi.model.User;
 
 /**
@@ -21,7 +20,7 @@ import com.sdi.model.User;
  */
 public interface UsersService {
 
-	User findById(Long id) throws EntityNotFoundException;
+	User findById(Long id) ;
 	void saveUser(User alumno) throws EntityAlreadyExistsException;
 	List<User> getUsers() throws Exception;
 

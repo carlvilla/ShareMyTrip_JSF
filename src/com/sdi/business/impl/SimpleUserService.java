@@ -1,14 +1,12 @@
 package com.sdi.business.impl;
 
-import com.sdi.business.UsersService;
-import com.sdi.business.impl.classes.*;
-
 import java.util.List;
 
-
-
+import com.sdi.business.UsersService;
 import com.sdi.business.exception.EntityAlreadyExistsException;
-import com.sdi.business.exception.EntityNotFoundException;
+import com.sdi.business.impl.classes.UsersAlta;
+import com.sdi.business.impl.classes.UsersBuscar;
+import com.sdi.business.impl.classes.UsersListado;
 import com.sdi.model.User;
 
 /**
@@ -31,7 +29,7 @@ public class SimpleUserService implements UsersService {
 	}
 
 	@Override
-	public User findById(Long id) throws EntityNotFoundException {
+	public User findById(Long id) {
 		return new UsersBuscar().find(id);
 	}
 }
