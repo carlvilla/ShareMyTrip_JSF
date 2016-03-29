@@ -1,19 +1,10 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui"
-	template="/templates/template-general.xhtml">
+	xmlns:p="http://primefaces.org/ui">
 
-	<ui:define name="titulo">Principal</ui:define>
-
-	<ui:define name="navegacion">
-		<ui:include src="/snippets/navegacion-sin-sesion.xhtml" />
-	</ui:define>
-
-	<ui:define name="cuerpo">
-
-		<h:form>
+	<h:form>
 			<p:dataTable var="viaje" value="#{trips.viajes}" border="1"
 				sortMode="multiple">
 
@@ -73,7 +64,6 @@
 
 			</p:dataTable>
 		</h:form>
-	</ui:define>
-
-
+		
 </ui:composition>
+
