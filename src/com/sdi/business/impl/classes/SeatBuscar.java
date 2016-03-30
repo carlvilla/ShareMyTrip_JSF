@@ -10,7 +10,8 @@ public class SeatBuscar {
 
 	public List<Seat> getPlazasAceptadas(Long long1) {
 		SeatDao dao = Factories.persistence.createSeatDao();
-		return dao.findAllAceptadas(long1);
+		List<Seat> seats = dao.findAllAceptadas(long1);
+		return seats;
 		
 	}
 

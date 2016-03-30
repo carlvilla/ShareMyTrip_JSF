@@ -12,34 +12,72 @@
 	</ui:define>
 	
 	<ui:define name="cuerpo">
-	<h2>#{msgs.datosViaje}</h2>
+	<h2>#{msgs.ViajesImplicado}</h2>
 		
 <p:panelGrid id="Grid" columns="2" cellpadding="5">
+<h:form>
+			<p:dataTable var="viaje" value="#{user.viajesImplicado}" border="1"
+				sortMode="multiple">
 
-<p:carousel value="#{controller.participantes}" headerText="#{msgs.datosParticipantes}" var="participante" itemStyle="text-align:center" responsive="true">
-        <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
+				<p:column headerText="#{msgs.ciudadOrigen}"
+					sortBy="#{viaje.departure.city}">
+	
+				#{viaje.departure.city}
+	
+				</p:column>
 
-            <h:outputText value="#{msgs.nombre}:" />
-            <h:outputText value="#{participante.name}" />
- 
-            <h:outputText value="#{msgs.apellidos}:" />
-            <h:outputText value="#{participante.surname}" />
- 
-            <h:outputText value="#{msgs.email}" />
-            <h:outputText value="#{participante.email}"/>
- 
-        </p:panelGrid>
- 
-    </p:carousel>
+				<p:column headerText="#{msgs.ciudadDestino}"
+					sortBy="#{viaje.destination.city}">
+					
+				#{viaje.destination.city}
+		
+				</p:column>
 
-<p:panelGrid  id="GridParticipantes" columns="2" cellpadding="5">
+				<p:column headerText="#{msgs.FechaSalida}"
+					sortBy="#{viaje.departureDate}">
+				
+		#{viaje.departureDate}
+	
+	</p:column>
+
+				<p:column headerText="#{msgs.FechaLlegada}"
+					sortBy="#{viaje.arrivalDate}">
+				
+					
+		#{viaje.arrivalDate}
+	
+	</p:column>
+
+				<p:column headerText="#{msgs.PlazasDisponibles}"
+					sortBy="#{viaje.availablePax}">
+				
+					
+		#{viaje.availablePax}
+		
+	</p:column>
+
+				<p:column headerText="#{msgs.Precio}"
+					sortBy="#{viaje.estimatedCost}">
+				
+				
+		#{viaje.estimatedCost}
+	
+	</p:column>
+
+			<!--  	<p:column>
+					<h:commandLink action="#{trips.mostrarDatosViaje(viaje)}">
+							#{msgs.masDatosViaje}
+					</h:commandLink>
+
+				</p:column>
+-->
+
+
+			</p:dataTable>
+		</h:form>
+		
 
 </p:panelGrid>
-
-<p:commandButton value="#{msgs.reservarPlaza}">
-
-</p:commandButton>
-
 
 	
 </ui:define>
