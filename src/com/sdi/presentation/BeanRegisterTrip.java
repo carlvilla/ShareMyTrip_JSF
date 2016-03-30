@@ -242,13 +242,13 @@ public class BeanRegisterTrip implements Serializable {
 	}
 
 	public String register(){
-		System.out.println("");
-		
+
 		TripsService trip = Factories.services.createTripService();
 		
-		trip.registrar(this);
+		if(trip.registrar(this))
+			return "exito";
 		
-		return "";
+		return "fallo";
 	}
-	
+
 }

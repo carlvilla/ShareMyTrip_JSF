@@ -3,6 +3,7 @@ package com.sdi.business.impl;
 import java.util.List;
 
 import com.sdi.business.TripsService;
+import com.sdi.business.impl.classes.TripRegistrar;
 import com.sdi.business.impl.classes.TripsBuscar;
 import com.sdi.business.impl.classes.TripsListado;
 import com.sdi.model.Trip;
@@ -28,7 +29,7 @@ public class SimpleTripService implements TripsService {
 
 	@Override
 	public boolean registrar(BeanRegisterTrip trip) {
-		return new TripsListado().registerTrip(trip);
+		return new TripRegistrar().registerTrip(trip);
 	}
 
 	public Trip findById(Long tripId) {

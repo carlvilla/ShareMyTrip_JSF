@@ -92,7 +92,18 @@
 			<to-view-id>/login.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-
-
+	
+	
+	<navigation-rule>
+		<from-view-id>/registrarViaje.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>exito</from-outcome>
+			<to-view-id>/principal.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>fallo</from-outcome>
+			<to-view-id>/registrarViaje.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 
 </faces-config>
