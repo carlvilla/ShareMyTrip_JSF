@@ -9,7 +9,7 @@ import com.sdi.persistence.ApplicationDao;
 import com.sdi.persistence.util.JdbcTemplate;
 import com.sdi.persistence.util.RowMapper;
 
-public class ApplicationDaoJdbcImpl implements ApplicationDao {
+public class ApplicationJdbcDAO implements ApplicationDao {
 	
 	public class ApplicationMapper implements RowMapper<Application> {
 
@@ -79,6 +79,16 @@ public class ApplicationDaoJdbcImpl implements ApplicationDao {
 				new ApplicationMapper(), 
 				tripId
 			);
+	}
+
+	@Override
+	public Long[] save(String loginUsuario, Long idViaje) {
+		jdbcTemplate.execute("APPLICATION_INSERT_LOGIN_IDVIAJE", 
+				loginUsuario, 
+				idViaje
+			);
+		return null;
+		
 	}
 
 }
