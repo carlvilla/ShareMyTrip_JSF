@@ -12,6 +12,9 @@ import javax.faces.context.FacesContext;
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.SelectEvent;
 
+import com.sdi.business.TripsService;
+import com.sdi.infrastructure.Factories;
+
 @ManagedBean(name = "registerTrip")
 @SessionScoped
 public class BeanRegisterTrip implements Serializable {
@@ -74,6 +77,11 @@ public class BeanRegisterTrip implements Serializable {
 	private String commentTrip = "";
 	private String maxSeats = "";
 	private String availableSeats = "";
+	
+	private String latZipCodeFrom = "";
+	private String longZipCodeFrom= "";
+	private String latZipCodeTo = "";
+	private String longZipCodeTo= "";
 	
 	private String result = "registerTrip_form_result_valid";
 	
@@ -201,5 +209,46 @@ public class BeanRegisterTrip implements Serializable {
 		this.result = result;
 	}
 
+	public String getLatZipCodeFrom() {
+		return latZipCodeFrom;
+	}
+
+	public void setLatZipCodeFrom(String latZipCodeFrom) {
+		this.latZipCodeFrom = latZipCodeFrom;
+	}
+
+	public String getLongZipCodeFrom() {
+		return longZipCodeFrom;
+	}
+
+	public void setLongZipCodeFrom(String longZipCodeFrom) {
+		this.longZipCodeFrom = longZipCodeFrom;
+	}
+
+	public String getLatZipCodeTo() {
+		return latZipCodeTo;
+	}
+
+	public void setLatZipCodeTo(String latZipCodeTo) {
+		this.latZipCodeTo = latZipCodeTo;
+	}
+
+	public String getLongZipCodeTo() {
+		return longZipCodeTo;
+	}
+
+	public void setLongZipCodeTo(String longZipCodeTo) {
+		this.longZipCodeTo = longZipCodeTo;
+	}
+
+	public String register(){
+		System.out.println("");
+		
+		TripsService trip = Factories.services.createTripService();
+		
+		trip.registrar(this);
+		
+		return "";
+	}
 	
 }

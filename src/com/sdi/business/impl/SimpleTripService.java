@@ -5,6 +5,7 @@ import java.util.List;
 import com.sdi.business.TripsService;
 import com.sdi.business.impl.classes.TripsListado;
 import com.sdi.model.Trip;
+import com.sdi.presentation.BeanRegisterTrip;
 
 
 public class SimpleTripService implements TripsService {
@@ -22,6 +23,11 @@ public class SimpleTripService implements TripsService {
 	@Override
 	public List<Trip> findAllDisponibleUser(String login) {
 		return new TripsListado().getTripsDisponiblesUser(login);
+	}
+
+	@Override
+	public boolean registrar(BeanRegisterTrip trip) {
+		return new TripsListado().registerTrip(trip);
 	}
 
 
