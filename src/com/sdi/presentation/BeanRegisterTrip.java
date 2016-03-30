@@ -1,9 +1,16 @@
 package com.sdi.presentation;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+
+import org.primefaces.context.RequestContext;
+import org.primefaces.event.SelectEvent;
 
 @ManagedBean(name = "registerTrip")
 @SessionScoped
@@ -21,9 +28,48 @@ public class BeanRegisterTrip implements Serializable {
 	private String countryTo = "";
 	private String postalCodeTo = "";
 	
-	private String dateFrom = "";
-	private String dateTo = "";
-	private String dateLimit = "";
+	private Date dateFrom;
+	private Date dateTo;
+	private Date dateLimit;
+		
+	    public void onDateSelect(SelectEvent event) {
+	        FacesContext facesContext = FacesContext.getCurrentInstance();
+	        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+	        facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Date Selected", format.format(event.getObject())));
+	    }
+	     
+	    public void click() {
+	        RequestContext requestContext = RequestContext.getCurrentInstance();
+	         
+	        requestContext.update("form:display");
+	        requestContext.execute("PF('dlg').show()");
+	    }
+	 
+	    public Date getDateFrom() {
+			return dateFrom;
+		}
+
+		public void setDateFrom(Date dateFrom) {
+			this.dateFrom = dateFrom;
+		}
+		public Date getDateTo() {
+			return dateTo;
+		}
+
+		public void setDateTo(Date dateTo) {
+			this.dateTo = dateTo;
+		}
+
+		public Date getDateLimit() {
+			return dateLimit;
+		}
+
+		public void setDateLimit(Date dateLimit) {
+			this.dateLimit = dateLimit;
+		}
+
+	
+	
 	private String priceTrip = "";
 	private String commentTrip = "";
 	private String maxSeats = "";
@@ -115,30 +161,6 @@ public class BeanRegisterTrip implements Serializable {
 		this.postalCodeTo = postalCodeTo;
 	}
 
-	public String getDateFrom() {
-		return dateFrom;
-	}
-
-	public void setDateFrom(String dateFrom) {
-		this.dateFrom = dateFrom;
-	}
-
-	public String getDateTo() {
-		return dateTo;
-	}
-
-	public void setDateTo(String dateTo) {
-		this.dateTo = dateTo;
-	}
-
-	public String getDateLimit() {
-		return dateLimit;
-	}
-
-	public void setDateLimit(String dateLimit) {
-		this.dateLimit = dateLimit;
-	}
-
 	public String getPriceTrip() {
 		return priceTrip;
 	}
@@ -169,6 +191,14 @@ public class BeanRegisterTrip implements Serializable {
 
 	public void setAvailableSeats(String availableSeats) {
 		this.availableSeats = availableSeats;
+	}
+
+	public String getResult() {
+		return result;
+	}
+
+	public void setResult(String result) {
+		this.result = result;
 	}
 
 	
