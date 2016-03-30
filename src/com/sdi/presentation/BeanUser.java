@@ -2,9 +2,11 @@ package com.sdi.presentation;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.ResourceBundle;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import com.sdi.business.ApplicationService;
 import com.sdi.infrastructure.Factories;
@@ -22,8 +24,8 @@ public class BeanUser extends User implements Serializable {
 	public BeanUser() {
 	   // iniciaUser(null);
 	  }
-/*	
-	    public void iniciaUser(ActionEvent event) {
+	
+	    public void iniciaUser() {
 	      FacesContext facesContext = FacesContext.getCurrentInstance();
 	          ResourceBundle bundle = 
 	           facesContext.getApplication().getResourceBundle(facesContext, "msgs");
@@ -35,7 +37,7 @@ public class BeanUser extends User implements Serializable {
 	          setPassword(bundle.getString("valorDefectoContraseña"));
 	          setConfPassword(bundle.getString("valorDefectoConfContraseña"));
 	    }
-*/
+
 	    
 		public String getConfPassword() {
 			return confPassword;

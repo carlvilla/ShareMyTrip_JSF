@@ -42,9 +42,9 @@ public class BeanController implements Serializable {
 	public void init() {
 		System.out.println("BeanController - PostConstruct");
 
-		user = new BeanUser();
-		FacesContext.getCurrentInstance().getExternalContext().getSessionMap()
-				.put("user", user);
+		user = (BeanUser) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
+	/*	FacesContext.getCurrentInstance().getExternalContext().getSessionMap()
+				.put("user", user);*/
 
 	}
 
