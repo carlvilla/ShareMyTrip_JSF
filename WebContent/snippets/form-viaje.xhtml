@@ -9,6 +9,13 @@
         #{msgs.trip_label}
     </f:facet>
 	<p:panelGrid id="Grid" columns="2" style="float:left">
+	
+		<f:facet name="header">
+        <p:row>
+            <p:column colspan="2">#{msgs.trip_Departure}</p:column>
+        </p:row>
+    	</f:facet>
+    	
 		#{msgs.trip_form_adressFrom_label}: 
 		<h:panelGroup>
 			<p:inputText id="adressFrom" value="#{registerTrip.adressFrom}" required="true"
@@ -47,6 +54,13 @@
 	</p:panelGrid>
 	
 	<p:panelGrid id="Grid2" columns="2" style="float:left">
+		
+		<f:facet name="header">
+        <p:row>
+            <p:column colspan="2">#{msgs.trip_Destination}</p:column>
+        </p:row>
+    	</f:facet>
+ 
 		#{msgs.trip_form_adressTo_label}: 
 		<h:panelGroup>
 			<p:inputText id="adressTo" value="#{registerTrip.adressTo}" required="true"
@@ -87,22 +101,22 @@
 	<p:panelGrid id="Grid3" columns="2">
 		#{msgs.trip_form_dateFrom_label}: 
 		<h:panelGroup>
-			<p:inputText id="dateFrom" value="#{registerTrip.dateFrom}" required="true"
-				requiredMessage="#{msgs.trip_form_dateFrom_required}" />
+			<p:calendar id="dateFrom" value="#{registerTrip.dateFrom}" pattern="MM/dd/yyyy HH:mm:ss" required="true"
+				requiredMessage="#{msgs.trip_form_dateFrom_required}"/>
 			<p:message for="dateFrom" />
 		</h:panelGroup>
   
 		#{msgs.trip_form_dateTo_label}: 
 		<h:panelGroup>
-			<p:inputText id="dateTo" value="#{registerTrip.dateTo}" required="true"
-				requiredMessage="#{msgs.trip_form_dateTo_required}" />
+			<p:calendar id="dateTo" value="#{registerTrip.dateTo}" pattern="MM/dd/yyyy HH:mm:ss" required="true"
+				requiredMessage="#{msgs.trip_form_dateTo_required}"/>
 			<p:message for="dateTo" />
 		</h:panelGroup>
 		
 		#{msgs.trip_form_dateLimit_label}: 
 		<h:panelGroup>
-			<p:inputText id="dateLimit" value="#{registerTrip.dateLimit}" required="true"
-				requiredMessage="#{msgs.trip_form_dateLimit_required}" />
+			<p:calendar id="dateLimit" value="#{registerTrip.dateLimit}" pattern="MM/dd/yyyy HH:mm:ss" required="true"
+				requiredMessage="#{msgs.trip_form_dateLimit_required}"/>
 			<p:message for="dateLimit" />
 		</h:panelGroup>
 		  
@@ -134,6 +148,10 @@
 			<p:message for="availableSeats" />
 		</h:panelGroup>
 
+		<h:outputText id="msgRegister" value="#{msgs[registerTrip.result]}" />
+		<p:commandButton value="#{msgs.login_form_button_trip}"
+			action="#" update="Grid,Grid2,Grid3" process="@form">
+		</p:commandButton>
 	</p:panelGrid>
 	</h:form>
 </ui:composition>
