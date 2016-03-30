@@ -8,7 +8,7 @@
 	 <f:facet name="caption">
         #{msgs.trip_label}
     </f:facet>
-	<p:panelGrid id="Grid" columns="2" style="float:left">
+	<p:panelGrid id="Grid" columns="2" style="float:left;margin:10px 0px 10px 15%;clear:left;width:430px">
 	
 		<f:facet name="header">
         <p:row>
@@ -50,10 +50,22 @@
 				requiredMessage="#{msgs.trip_form_postalCodeFrom_required}" />
 			<p:message for="postalCodeFrom" />
 		</h:panelGroup>
+		
+		#{msgs.trip_form_LatzipCodeFrom_label}: 
+		<h:panelGroup>
+			<p:inputText id="latZipCodeFrom" value="#{registerTrip.latZipCodeFrom}"/>
+			<p:message for="latZipCodeFrom" />
+		</h:panelGroup>
+		 
+		#{msgs.trip_form_LongzipCodeFrom_label}: 
+		<h:panelGroup>
+			<p:inputText id="longZipCodeFrom" value="#{registerTrip.longZipCodeFrom}" />
+			<p:message for="longZipCodeFrom" />
+		</h:panelGroup>
 
 	</p:panelGrid>
 	
-	<p:panelGrid id="Grid2" columns="2" style="float:left">
+	<p:panelGrid id="Grid2" columns="2" style="float:right;margin:10px 15% 10px 0px;width:430px;clear:right">
 		
 		<f:facet name="header">
         <p:row>
@@ -96,9 +108,28 @@
 			<p:message for="postalCodeTo" />
 		</h:panelGroup>
 
+		#{msgs.trip_form_LatzipCodeTo_label}: 
+		<h:panelGroup>
+			<p:inputText id="latZipCodeTo" value="#{registerTrip.latZipCodeTo}"/>
+			<p:message for="latZipCodeTo" />
+		</h:panelGroup>
+		 
+		#{msgs.trip_form_LongzipCodeTo_label}: 
+		<h:panelGroup>
+			<p:inputText id="longZipCodeTo" value="#{registerTrip.longZipCodeTo}"/>
+			<p:message for="longZipCodeTo" />
+		</h:panelGroup>
+		
 	</p:panelGrid>
 	
-	<p:panelGrid id="Grid3" columns="2">
+	<p:panelGrid id="Grid3" columns="2" style="float:left;margin-left:15%;width:430px">
+		
+		<f:facet name="header">
+        <p:row>
+            <p:column colspan="2">#{msgs.trip_Other}</p:column>
+        </p:row>
+    	</f:facet>
+	
 		#{msgs.trip_form_dateFrom_label}: 
 		<h:panelGroup>
 			<p:calendar id="dateFrom" value="#{registerTrip.dateFrom}" pattern="MM/dd/yyyy HH:mm:ss" required="true"
@@ -150,7 +181,7 @@
 
 		<h:outputText id="msgRegister" value="#{msgs[registerTrip.result]}" />
 		<p:commandButton value="#{msgs.login_form_button_trip}"
-			action="#" update="Grid,Grid2,Grid3" process="@form">
+			action="#{registerTrip.register}" update="Grid,Grid2,Grid3" process="@form">
 		</p:commandButton>
 	</p:panelGrid>
 	</h:form>

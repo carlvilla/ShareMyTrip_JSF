@@ -6,6 +6,7 @@ import com.sdi.business.TripsService;
 import com.sdi.business.impl.classes.TripsBuscar;
 import com.sdi.business.impl.classes.TripsListado;
 import com.sdi.model.Trip;
+import com.sdi.presentation.BeanRegisterTrip;
 
 
 public class SimpleTripService implements TripsService {
@@ -26,6 +27,10 @@ public class SimpleTripService implements TripsService {
 	}
 
 	@Override
+	public boolean registrar(BeanRegisterTrip trip) {
+		return new TripsListado().registerTrip(trip);
+	}
+
 	public Trip findById(Long tripId) {
 		return new TripsBuscar().getTrip(tripId);
 	}

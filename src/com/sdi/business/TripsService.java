@@ -3,6 +3,7 @@ package com.sdi.business;
 import java.util.List;
 
 import com.sdi.model.Trip;
+import com.sdi.presentation.BeanRegisterTrip;
 
 
 public interface TripsService {
@@ -19,8 +20,9 @@ public interface TripsService {
 	 * @return
 	 */
 	List<Trip> findAllDisponibleUser(String login);
-	
+	boolean registrar(BeanRegisterTrip trip);
 	Trip findById(Long tripId);
 	List<Trip> findByPromoter(Long id);
+
 
 }
