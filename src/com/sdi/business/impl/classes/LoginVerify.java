@@ -22,7 +22,7 @@ public class LoginVerify {
 		UserDao dao = Factories.persistence.createUserDao();
 		User user = dao.findByLogin(login);
 		
-		UserLogin userLogin = new UserLogin(login, user.getName());
+		UserLogin userLogin = new UserLogin(login, user.getName(),user.getId());
 		
 		return userLogin;
 	}

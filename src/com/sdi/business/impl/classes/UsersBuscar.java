@@ -11,5 +11,11 @@ public class UsersBuscar {
 		User u = dao.findById(id);
 		return u;
 	}
+	
+	public User findByLogin(String login) {
+		UserDao dao = Factories.persistence.createUserDao();
+		User u = dao.findByLogin(login);
+		return u;
+	}
 
 }

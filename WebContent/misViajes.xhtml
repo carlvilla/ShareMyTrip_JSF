@@ -16,7 +16,7 @@
 		
 <p:panelGrid id="Grid" columns="2" cellpadding="5">
 <h:form>
-			<p:dataTable var="viaje" value="#{user.viajesImplicado}" border="1"
+			<p:dataTable var="viaje" value="#{trips.viajesImplicado}" border="1"
 				sortMode="multiple">
 
 				<p:column headerText="#{msgs.ciudadOrigen}"
@@ -61,6 +61,15 @@
 				
 				
 		#{viaje.estimatedCost}
+	
+	</p:column>
+
+
+				<p:column headerText="#{msgs.Implicacion}"
+					sortBy="#{viaje.implicacion}">
+				
+				
+		#{viaje.implicacion}
 	
 	</p:column>
 

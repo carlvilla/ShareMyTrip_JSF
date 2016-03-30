@@ -59,8 +59,11 @@ public class BeanController implements Serializable {
 
 			service = Factories.services.createUserService();
 			service.saveUser(user);
-
-			UserLogin userLogin = new UserLogin(user.getLogin(), user.getName());
+			
+			User usuario = service.finByLogin(user.getLogin());
+			UserLogin userLogin = new UserLogin(usuario.getLogin(), usuario.getName(), usuario.getId());
+			
+			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("user");
 			putUserInSession(userLogin);
 
 			return "principal";

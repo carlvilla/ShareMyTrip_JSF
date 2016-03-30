@@ -19,5 +19,8 @@ public interface TripsService {
 	 * @return
 	 */
 	List<Trip> findAllDisponibleUser(String login);
+	
+	Trip findById(Long tripId);
+	List<Trip> findByPromoter(Long id);
 
 }

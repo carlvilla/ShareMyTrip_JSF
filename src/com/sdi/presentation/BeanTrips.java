@@ -15,8 +15,11 @@ import com.sdi.business.SeatService;
 import com.sdi.business.TripsService;
 import com.sdi.business.UsersService;
 import com.sdi.infrastructure.Factories;
+import com.sdi.model.Application;
+import com.sdi.model.ImplicacionStatus;
 import com.sdi.model.Seat;
 import com.sdi.model.Trip;
+import com.sdi.model.TripImplicacion;
 import com.sdi.model.User;
 import com.sdi.model.UserLogin;
 
@@ -30,8 +33,13 @@ public class BeanTrips implements Serializable {
 	// Usado para los viaje seleccionados
 	private Trip viaje;
 	private User promotorViaje;
-
 	private List<User> participantes;
+	
+	
+	//Viajes en los que tiene implicación el usuario
+	private List<TripImplicacion> viajesImplicado;
+	
+	
 
 	public List<User> getParticipantes() {
 		return participantes;
@@ -151,5 +159,65 @@ public class BeanTrips implements Serializable {
 				.getSessionMap().get(key);
 
 	}
+	
+	
+	 
+	  
+		public List<TripImplicacion> getViajesImplicado() {
+			return viajesImplicado;
+		}
+
+		public void setViajesImplicado(List<TripImplicacion> viajesImplicado) {
+			this.viajesImplicado = viajesImplicado;
+		}
+		
+		public void obtenerViajesImplicado(){
+			
+		  	UserLogin usuario = (UserLogin) getObjectFromSession("LOGGEDIN_USER");
+		  	
+		  	viajesImplicado = new LinkedList<TripImplicacion>();
+		  	
+			obtenerViajesPromotor(usuario);
+			obtenerViajesAceptado(usuario);
+			obtenerViajesPendiente(usuario);
+			
+			
+		}
+	 
+	  private void obtenerViajesPendiente(UserLogin usuario) {
+		  	ApplicationService serviceA = Factories.services.createApplicationService();
+		  	TripsService serviceT = Factories.services.createTripService();
+
+		  	List<Application> solicitudes = serviceA.getSolicitudes(usuario.getLogin());
+		  	
+		  	for(Application app:solicitudes){	  		
+		  		TripImplicacion viaje = new TripImplicacion(serviceT.findById(app.getTripId()));
+		  		viaje.setImplicacion(ImplicacionStatus.PENDIENTE);
+		  		viajesImplicado.add(viaje);  		
+		  	}
+		}
+
+	private void obtenerViajesAceptado(UserLogin usuario) {
+			SeatService serviceS = Factories.services.createSeatService();
+			TripsService serviceT = Factories.services.createTripService();
+			List<Seat> seats = serviceS.findAceptadasByUser(usuario.getId());
+			
+			for(Seat seat:seats){
+				TripImplicacion viaje = new TripImplicacion(serviceT.findById(seat.getTripId()));
+		  		viaje.setImplicacion(ImplicacionStatus.ACEPTADO);
+		  		viajesImplicado.add(viaje);  
+			}
+		}
+
+	private void obtenerViajesPromotor(UserLogin usuario) {
+			TripsService service = Factories.services.createTripService();
+			List<Trip> viajes = service.findByPromoter(usuario.getId());
+			
+			for(Trip viaje:viajes){
+				TripImplicacion viajeIm = new TripImplicacion(viaje);
+				viajeIm.setImplicacion(ImplicacionStatus.PROMOTOR);
+				viajesImplicado.add(viajeIm);
+			}
+		}
 	
 }

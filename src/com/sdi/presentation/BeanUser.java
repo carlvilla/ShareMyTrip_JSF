@@ -6,7 +6,10 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import com.sdi.business.ApplicationService;
+import com.sdi.infrastructure.Factories;
 import com.sdi.model.Trip;
+import com.sdi.model.TripImplicacion;
 import com.sdi.model.User;
 
 @ManagedBean
@@ -15,29 +18,8 @@ public class BeanUser extends User implements Serializable {
 	  private static final long serialVersionUID = 55556L;
 	  
 	  private String confPassword;
-	  
-	  //Viajes a los que se mando solicitud
-	  private List<Trip> viajesImplicado;
-	  
-		public List<Trip> getViajesImplicado() {
-			return viajesImplicado;
-		}
-
-		public void setViajesImplicado(List<Trip> viajesImplicado) {
-			this.viajesImplicado = viajesImplicado;
-		}
-		
-		public String obtenerViajesImplicado(){
-			
-		//	obtenerViajesPromotor();
-		//	obtenerViajesAceptado();
-		//	obtenerViajesPendiente();
-			
-			return "exito";
-			
-		}
 	 
-	  public BeanUser() {
+	public BeanUser() {
 	   // iniciaUser(null);
 	  }
 /*	
