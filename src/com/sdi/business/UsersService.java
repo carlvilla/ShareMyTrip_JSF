@@ -23,5 +23,6 @@ public interface UsersService {
 	User findById(Long id) ;
 	void saveUser(User alumno) throws EntityAlreadyExistsException;
 	List<User> getUsers() throws Exception;
+	User finByLogin(String login);
 
 }

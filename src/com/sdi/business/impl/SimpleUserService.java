@@ -32,4 +32,9 @@ public class SimpleUserService implements UsersService {
 	public User findById(Long id) {
 		return new UsersBuscar().find(id);
 	}
+
+	@Override
+	public User finByLogin(String login) {
+		return new UsersBuscar().findByLogin(login);
+	}
 }

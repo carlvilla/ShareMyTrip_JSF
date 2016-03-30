@@ -91,4 +91,13 @@ public class ApplicationJdbcDAO implements ApplicationDao {
 		
 	}
 
+	@Override
+	public List<Application> findByUserLogin(String login) {
+		return jdbcTemplate.queryForList(
+				"APPLICATION_FIND_BY_USER_LOGIN", 
+				new ApplicationMapper(), 
+				login
+			);
+	}
+
 }

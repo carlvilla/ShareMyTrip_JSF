@@ -21,6 +21,8 @@ public interface TripsService {
 	 */
 	List<Trip> findAllDisponibleUser(String login);
 	boolean registrar(BeanRegisterTrip trip);
+	Trip findById(Long tripId);
+	List<Trip> findByPromoter(Long id);
 
 
 }

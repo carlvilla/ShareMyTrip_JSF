@@ -11,7 +11,9 @@
 				<f:param name="i" value="0" />
 			</p:menuitem>
 			
-			<p:menuitem value="#{msgs.misViajes} ">
+			<p:menuitem value="#{msgs.misViajes}" 
+			actionListener="#{trips.obtenerViajesImplicado}"
+			action="misViajes.xhtml">
 				<f:param name="i" value="0" />
 			</p:menuitem>
 			

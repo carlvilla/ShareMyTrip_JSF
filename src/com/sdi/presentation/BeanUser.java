@@ -1,10 +1,15 @@
 package com.sdi.presentation;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import com.sdi.business.ApplicationService;
+import com.sdi.infrastructure.Factories;
+import com.sdi.model.Trip;
+import com.sdi.model.TripImplicacion;
 import com.sdi.model.User;
 
 @ManagedBean
@@ -14,7 +19,7 @@ public class BeanUser extends User implements Serializable {
 	  
 	  private String confPassword;
 	 
-	  public BeanUser() {
+	public BeanUser() {
 	   // iniciaUser(null);
 	  }
 /*	
@@ -50,5 +55,7 @@ public class BeanUser extends User implements Serializable {
 		}*/
 		
 		}
+
+	
 		
 }

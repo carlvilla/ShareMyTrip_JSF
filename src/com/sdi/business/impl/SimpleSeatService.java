@@ -14,6 +14,11 @@ public class SimpleSeatService implements SeatService {
 		
 	}
 
+	@Override
+	public List<Seat> findAceptadasByUser(Long id) {
+		return new SeatBuscar().getPlazasAcepByUser(id);	
+	}
+
 
 	
 }
