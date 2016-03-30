@@ -5,6 +5,7 @@ import java.util.EventListener;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -128,6 +129,9 @@ public class BeanTrips implements Serializable {
 		app = Factories.services.createApplicationService();
 		UserLogin usuario = (UserLogin) getObjectFromSession("LOGGEDIN_USER");
 		app.save(usuario.getLogin(), viaje.getId());
+		
+		FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage("#{msgs.Apuntado}","#{msgs.ApuntadoTexto}"));
 
 	}
 
