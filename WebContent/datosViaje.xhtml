@@ -5,7 +5,7 @@
 	xmlns:p="http://primefaces.org/ui"
 	template="/templates/template-general.xhtml">
 
-	<ui:define name="titulo">Principal</ui:define>
+	<ui:define name="titulo">#{msgs.DatosViaje}</ui:define>
 
 	<ui:define name="navegacion">
 		<ui:include src="/snippets/navegacion-con-sesion.xhtml" />
@@ -21,7 +21,7 @@
 #{msgs.ciudadOrigen}
 </h:panelGroup>
 <h:panelGroup>
-#{controller.viaje.departure.city}
+#{trips.viaje.departure.city}
 </h:panelGroup>
 
 
@@ -29,42 +29,42 @@
 #{msgs.ciudadDestino}
 </h:panelGroup>	
 <h:panelGroup>
-#{controller.viaje.destination.city}
+#{trips.viaje.destination.city}
 </h:panelGroup>	
 	
 <h:panelGroup>
 #{msgs.FechaSalida}
 </h:panelGroup>	
 <h:panelGroup>	
-#{controller.viaje.departureDate}
+#{trips.viaje.departureDate}
 </h:panelGroup>
 	
 <h:panelGroup>
 #{msgs.FechaLlegada}
 </h:panelGroup>	
 <h:panelGroup>	
-#{controller.viaje.arrivalDate}
+#{trips.viaje.arrivalDate}
 </h:panelGroup>
 
 <h:panelGroup>
 #{msgs.FechaCierre}
 </h:panelGroup>	
 <h:panelGroup>	
-#{controller.viaje.closingDate}
+#{trips.viaje.closingDate}
 </h:panelGroup>
 
 <h:panelGroup>
 #{msgs.PlazasDisponibles}
 </h:panelGroup>	
 <h:panelGroup>	
-#{controller.viaje.availablePax}
+#{trips.viaje.availablePax}
 </h:panelGroup>
 
 <h:panelGroup>
 #{msgs.PlazasMax}
 </h:panelGroup>	
 <h:panelGroup>	
-#{controller.viaje.maxPax}
+#{trips.viaje.maxPax}
 </h:panelGroup>
 
 </p:panelGrid>
@@ -78,7 +78,7 @@
 #{msgs.nombre}
 </h:panelGroup>
 <h:panelGroup>
-#{controller.promotorViaje.name}
+#{trips.promotorViaje.name}
 </h:panelGroup>
 
 
@@ -86,20 +86,20 @@
 #{msgs.apellidos}
 </h:panelGroup>	
 <h:panelGroup>
-#{controller.promotorViaje.surname}
+#{trips.promotorViaje.surname}
 </h:panelGroup>	
 	
 <h:panelGroup>
 #{msgs.email}
 </h:panelGroup>	
 <h:panelGroup>	
-#{controller.promotorViaje.email}
+#{trips.promotorViaje.email}
 </h:panelGroup>
 	
 
 </p:panelGrid>
 
-<p:carousel value="#{controller.participantes}" headerText="#{msgs.datosParticipantes}" var="participante" itemStyle="text-align:center" responsive="true">
+<p:carousel value="#{trips.participantes}" headerText="#{msgs.datosParticipantes}" var="participante" itemStyle="text-align:center" responsive="true">
         <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
 
             <h:outputText value="#{msgs.nombre}:" />
@@ -119,12 +119,14 @@
 
 </p:panelGrid>
 
-<p:commandButton value="#{msgs.reservarPlaza}">
+<h:form>
 
-</p:commandButton>
+<p:commandButton value="#{msgs.reservarPlaza}" actionListener="#{trips.apuntarse}"
+action="principal.xhtml"/>
+ 
 
+</h:form>
 
-	
 </ui:define>
 
 

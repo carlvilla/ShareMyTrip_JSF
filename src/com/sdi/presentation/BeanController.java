@@ -37,32 +37,10 @@ public class BeanController implements Serializable {
 		this.user = user;
 	}
 
-	// Usado para los viaje seleccionados
-	private Trip viaje;
-	private User promotorViaje;
-
-	private List<User> participantes;
-
-	public List<User> getParticipantes() {
-		return participantes;
-	}
-
-	public void setParticipantes(List<User> participantes) {
-		this.participantes = participantes;
-	}
-
-	public void setViaje(Trip viaje) {
-		this.viaje = viaje;
-
-	}
-
-	public Trip getViaje() {
-		return viaje;
-	}
-
+	
 	@PostConstruct
 	public void init() {
-		System.out.println("BeanAlumnos - PostConstruct");
+		System.out.println("BeanController - PostConstruct");
 
 		user = new BeanUser();
 		FacesContext.getCurrentInstance().getExternalContext().getSessionMap()
@@ -72,7 +50,7 @@ public class BeanController implements Serializable {
 
 	@PreDestroy
 	public void end() {
-		System.out.println("BeanAlumnos - PreDestroy");
+		System.out.println("BeanController - PreDestroy");
 	}
 
 	public String registrar() {
@@ -100,69 +78,8 @@ public class BeanController implements Serializable {
 		session.put("LOGGEDIN_USER", user);
 	}
 
-	public String mostrarDatosViaje(Trip viaje) {
-		if (userIsNotLoggedIn()) {
-			return "fracaso";
-		}
 
-		this.viaje = viaje;
-		cargarParticipantesViaje(viaje);
-		cargarPromotor(viaje.getPromoterId());
-		return "exito";
 
-	}
 
-	private void cargarPromotor(Long promoterId) {
-		UsersService service;
-
-		service = Factories.services.createUserService();
-			promotorViaje = service.findById(promoterId);
-	
-
-	}
-
-	private void cargarParticipantesViaje(Trip viaje) {
-		SeatService serviceS;
-		UsersService serviceU;
-
-		serviceS = Factories.services.createSeatService();
-		serviceU = Factories.services.createUserService();
-		List<Seat> plazasAceptadas = serviceS
-				.findPlazasAceptadas(viaje.getId());
-
-		participantes = new LinkedList<User>();
-
-		for (Seat plaza : plazasAceptadas) {
-
-			User usuario = serviceU.findById(plaza.getUserId());
-			participantes.add(usuario);
-
-		}
-	}
-
-	private boolean userIsNotLoggedIn() {
-		UserLogin usuariologueado = (UserLogin) getObjectFromSession("LOGGEDIN_USER");
-		if (usuariologueado != null) {
-
-			System.out.println("usuario activo: " + usuariologueado.getName());
-			return false;
-		}
-
-		return true;
-	}
-
-	private Object getObjectFromSession(String key) {
-		return FacesContext.getCurrentInstance().getExternalContext()
-				.getSessionMap().get(key);
-
-	}
-
-	public User getPromotorViaje() {
-		return promotorViaje;
-	}
-
-	public void setPromotorViaje(User promotorViaje) {
-		this.promotorViaje = promotorViaje;
-	}
 
 }
