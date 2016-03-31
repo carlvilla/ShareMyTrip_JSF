@@ -25,6 +25,21 @@ public interface TripsService {
 	Trip findById(Long tripId);
 	List<Trip> findByPromoter(Long id);
 	boolean modificar(BeanModificarViaje beanModificarViaje);
+	
+	/**
+	 * Disminuye en uno las plazas disponibles para el viaje
+	 * 
+	 * @param idViaje
+	 */
+	void ocuparPlaza(Long idViaje);
+	
+	/**
+	 * Aumenta en uno las plazas disponibles para el viaje
+	 * 
+	 * @param idViaje
+	 */
+	void liberarPlaza(Long idViaje);
+
 
 
 }

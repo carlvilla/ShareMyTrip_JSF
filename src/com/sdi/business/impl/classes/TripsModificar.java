@@ -1,6 +1,7 @@
 package com.sdi.business.impl.classes;
 
 import java.util.Date;
+
 import com.sdi.infrastructure.Factories;
 import com.sdi.model.AddressPoint;
 import com.sdi.model.Trip;
@@ -117,5 +118,15 @@ public class TripsModificar {
 
 		return true;
 	
+	}
+
+	public void disminuirPlazas(Long idViaje) {
+		TripDao dao = Factories.persistence.createTripDao();
+		dao.disminuirPlazas(idViaje);	
+	}
+	
+	public void aumentarPlazas(Long idViaje) {
+		TripDao dao = Factories.persistence.createTripDao();
+		dao.aumentarPlazas(idViaje);	
 	}
 }

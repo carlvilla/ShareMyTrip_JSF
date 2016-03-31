@@ -9,6 +9,7 @@ import javax.faces.bean.SessionScoped;
 
 import com.sdi.business.ApplicationService;
 import com.sdi.business.SeatService;
+import com.sdi.business.TripsService;
 import com.sdi.business.UsersService;
 import com.sdi.infrastructure.Factories;
 import com.sdi.model.Application;
@@ -86,14 +87,25 @@ public class BeanTrip implements Serializable {
 			}
 	}
 	
+	public void aceptarSolicitud(User persona){
+		SeatService serviceS = Factories.services.createSeatService();
+		TripsService serviceT = Factories.services.createTripService();
+	
+		serviceS.insert(persona.getId(),viaje.getId());	
+		serviceT.ocuparPlaza(viaje.getId());
+		
+		eliminarSolicitud(persona);
+		
+		aceptados.add(persona);
+	}
+	
 	
 	public void eliminarSolicitud(User persona){
 		ApplicationService service = Factories.services.createApplicationService();
 		service.deleteByUser(persona.getId(),viaje.getId());
 		solicitantes.remove(persona);
-		
-		
 	}
+	
 	public TripImplicacion getViaje() {
 		return viaje;
 	}

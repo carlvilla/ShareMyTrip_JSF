@@ -48,6 +48,14 @@
 		#{viaje.arrivalDate}
 	
 	</p:column>
+	
+	<p:column headerText="#{msgs.PlazasMax}"
+					sortBy="#{viaje.maxPax}">
+				
+					
+		#{viaje.maxPax}
+		
+	</p:column>
 
 				<p:column headerText="#{msgs.PlazasDisponibles}"
 					sortBy="#{viaje.availablePax}">

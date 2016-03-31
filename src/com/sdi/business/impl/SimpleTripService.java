@@ -48,5 +48,16 @@ public class SimpleTripService implements TripsService {
 		return new TripsModificar().modificarTrip(trip);
 	}
 
+	@Override
+	public void ocuparPlaza(Long idViaje) {
+		new TripsModificar().disminuirPlazas(idViaje);	
+	}
+	
+	@Override
+	public void liberarPlaza(Long idViaje) {
+		new TripsModificar().aumentarPlazas(idViaje);
+		
+	}
+
 
 }

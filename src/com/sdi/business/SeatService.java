@@ -22,4 +22,6 @@ public interface SeatService {
 	 * @return 
 	 */
 	public List<Seat> findAceptadasByUser(Long id);
+
+	public void insert(Long idUsuario, Long idViaje);
 }

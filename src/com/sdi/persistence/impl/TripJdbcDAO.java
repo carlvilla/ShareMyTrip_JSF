@@ -188,5 +188,16 @@ public class TripJdbcDAO implements TripDao {
 				login,login,login);
 	}
 
+	@Override
+	public int disminuirPlazas(Long idViaje) {
+		return jdbcTemplate.execute("TRIP_DISMINUIR_PLAZAS", idViaje);
+	}
+	
+	@Override
+	public int aumentarPlazas(Long idViaje) {
+		return jdbcTemplate.execute("TRIP_AUMENTAR_PLAZAS", idViaje);
+		
+	}
+
 
 }
