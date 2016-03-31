@@ -15,7 +15,7 @@ public class PasswordValidator implements Validator {
 		String attribute = (String) component.getAttributes().get("password");
 		if (!value.equals(attribute)) {
 			FacesMessage message = new FacesMessage();
-			message.setSummary("La contraseña no coincide");
+			message.setSummary("#{msgs.passNoCoincide}");
 			message.setSeverity(FacesMessage.SEVERITY_ERROR);
 			throw new ValidatorException(message);
 		}
