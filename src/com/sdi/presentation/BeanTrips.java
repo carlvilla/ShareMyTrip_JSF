@@ -207,10 +207,23 @@ public class BeanTrips implements Serializable {
 			TripsService serviceT = Factories.services.createTripService();
 			List<Seat> seats = serviceS.findAceptadasByUser(usuario.getId());
 			
+			List<Long> idsViajesEsPromotor = new LinkedList<Long>();
+			
+			for(TripImplicacion viajeAux:viajesImplicado){
+				idsViajesEsPromotor.add(viajeAux.getId());
+			}
+					
 			for(Seat seat:seats){
 				TripImplicacion viaje = new TripImplicacion(serviceT.findById(seat.getTripId()));
-		  		viaje.setImplicacion(ImplicacionStatus.ACEPTADO);
-		  		viajesImplicado.add(viaje);  
+										
+				//Esta comprobación es debida a que los promotores están 'aceptados'
+				//en su propio viaje ya que ocupan una plaza. Por ello no nos 
+				//interesa mostrar al promotor que está aceptado en su propio viaje 		
+				if(!idsViajesEsPromotor.contains(viaje.getId())){
+					viaje.setImplicacion(ImplicacionStatus.ACEPTADO);
+					viajesImplicado.add(viaje); 
+				}
+				
 			}
 		}
 
