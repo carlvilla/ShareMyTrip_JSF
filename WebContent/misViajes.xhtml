@@ -75,11 +75,12 @@
 	</p:column>
 
 	<p:column headerText="#{msgs.OpcionesViaje}">
-	<c:if test="${ modifyTrip.comprobarPromotor(viaje)}">
-		<h:commandLink action="#{trips.mostrarDatosViaje(viaje)}">
+
+		<h:commandLink rendered="#{modifyTrip.comprobarPromotor(viaje)}" action="#{trips.mostrarDatosViaje(viaje)}">
 				#{viaje.implicacion}
 		</h:commandLink>
-	</c:if>
+	
+
 	</p:column>
 
 
