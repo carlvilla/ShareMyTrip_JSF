@@ -3,6 +3,7 @@ package com.sdi.presentation;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.ResourceBundle;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -248,6 +249,14 @@ public class BeanRegisterTrip implements Serializable {
 
 		if (trip.registrar(this)) {
 			reiniciarBean();
+			
+			FacesContext context = FacesContext.getCurrentInstance();
+			
+	        ResourceBundle bundle = context.getApplication().getResourceBundle(context, "msgs");
+			
+	        context.addMessage(null, new FacesMessage(bundle.getString("Exito")
+	        		,bundle.getString("viajeCreado")));
+			
 			return "exito";
 		}
 

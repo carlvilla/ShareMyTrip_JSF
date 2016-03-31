@@ -3,7 +3,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-	<h:form style="float:center;height: 18px; width: 20px">
+	<h:form id="form-login" style="float:center;height: 18px; width: 20px">
 	<p:panelGrid id="Grid" columns="2" cellpadding="5">
 		#{msgs.login_form_name_label}: 
 		<h:panelGroup>
@@ -21,7 +21,8 @@
 
 		<h:outputText id="msgAlta" value="#{msgs[login.result]}" />
 		<p:commandButton value="#{msgs.login_form_button_send}"
-			action="#{login.verify}" update="Grid" process="@form">
+			action="#{login.verify}" update="Grid" process="@form"
+			id="login">
 		</p:commandButton>
 	</p:panelGrid>
 	</h:form>

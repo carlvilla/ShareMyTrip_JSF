@@ -4,7 +4,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
-	<h:form style="float:center">
+	<h:form style="float:center" id="form-viaje">
 	 <f:facet name="caption">
         #{msgs.trip_label}
     </f:facet>
@@ -181,7 +181,8 @@
 
 		<h:outputText id="msgRegister" value="#{msgs[registerTrip.result]}" />
 		<p:commandButton value="#{msgs.login_form_button_trip}"
-			action="#{registerTrip.register}" update="Grid,Grid2,Grid3" process="@form">
+			action="#{registerTrip.register}" update="Grid,Grid2,Grid3" process="@form"
+			id="registrarViaje">
 		</p:commandButton>
 	</p:panelGrid>
 	
