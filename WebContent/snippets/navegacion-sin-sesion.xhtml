@@ -16,9 +16,7 @@
 			action="#{trips.obtenerViajesDisponibles}">
 				<f:param name="i" value="2" />
 			</p:menuitem>
-
-
-				<p:submenu style="float:right" label="#{msgs.textoIdioma}"
+				<p:submenu id="menu-idiomas" style="float:right" label="#{msgs.textoIdioma}"
 					icon="ui-icon-flag">
 					<p:menuitem id="linkespa" value="#{msgs.enlaceIdiomaES}"
 						actionListener="#{settings.setSpanish}" update="@all" />
