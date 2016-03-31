@@ -4,9 +4,11 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.validator.ValidatorException;
 
 import com.sdi.business.ApplicationService;
 import com.sdi.infrastructure.Factories;
@@ -46,17 +48,17 @@ public class BeanUser extends User implements Serializable {
 			this.confPassword = confPassword;
 		}  
 		
-		public void validarContraseñas(){	
-		/*	if(!getPassword().equals(getConfPassword())){
+		public void validarContraseñas(Object pass,Object confPass){	
+			if(!getPassword().equals(getConfPassword())){
 
 				FacesMessage message =
 						new FacesMessage("#{msgs.formAlta_confContraseña_validatorMessage}");
 				throw new ValidatorException(message);
 			
 			}
-		}*/
-		
 		}
+		
+		
 
 	
 		

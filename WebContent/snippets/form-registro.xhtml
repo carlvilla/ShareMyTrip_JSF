@@ -57,6 +57,7 @@
 			<p:password placeholder="#{msgs.contraseña}" value="#{user.password}" required="true"
 				requiredMessage="#{msgs.formAlta_contraseña_requiredMessage}"
 				validatorMessage="#{msgs.formAlta_contraseña_validatorMessage}"
+				binding="#{pass}"
 				id="pass">
 				<f:validateLength maximum="40" minimum="5"/>
 			</p:password>
@@ -67,15 +68,17 @@
   <h:panelGroup>
 			<p:password value="#{user.confPassword}" placeholder="#{msgs.confirmarContraseña}" required="true"
 				requiredMessage="#{msgs.formAlta_confContraseña_requiredMessage}"
-				validator="#{user.validarContraseñas()}"
+				validator="passwordValidator" 
 				id="confPass">
+				<f:attribute name="password" value="#{pass.value}"/>
 			</p:password>
 			<p:message for="confPass" styleClass="error"/>
 		</h:panelGroup>
 
 	
 	</p:panelGrid>
-	
+	  
+  
 	<p:commandButton id="botonRegistro" value="#{msgs.botonRegistro}"
 	action="#{controller.registrar}" update="Grid" process="@form">
 	</p:commandButton> 
