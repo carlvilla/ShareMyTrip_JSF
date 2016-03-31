@@ -25,6 +25,8 @@ public class BeanTrip implements Serializable {
 	private List<User> solicitantes;
 	private List<User> aceptados;
 	
+	private TripImplicacion viaje;
+	
 	public List<User> getSolicitantes() {
 		return solicitantes;
 	}
@@ -40,12 +42,13 @@ public class BeanTrip implements Serializable {
 	
 	public void obtenerImplicados(TripImplicacion viaje){
 		
-		obtenerSolicitantes(viaje);
-		obtenerAceptados(viaje);
+		setViaje(viaje);
+		obtenerSolicitantes();
+		obtenerAceptados();
 		
 	}
 	
-	public void obtenerAceptados(TripImplicacion viaje) {
+	public void obtenerAceptados() {
 		
 			SeatService serviceS;
 			UsersService serviceU;
@@ -67,7 +70,7 @@ public class BeanTrip implements Serializable {
 		
 	}
 	
-	private void obtenerSolicitantes(TripImplicacion viaje) {
+	private void obtenerSolicitantes() {
 			ApplicationService serviceA = Factories.services.createApplicationService();
 			UsersService serviceU = Factories.services.createUserService();
 			
@@ -81,6 +84,21 @@ public class BeanTrip implements Serializable {
 				solicitantes.add(usuario);
 			
 			}
+	}
+	
+	
+	public void eliminarSolicitud(User persona){
+		ApplicationService service = Factories.services.createApplicationService();
+		service.deleteByUser(persona.getId(),viaje.getId());
+		
+		
+		
+	}
+	public TripImplicacion getViaje() {
+		return viaje;
+	}
+	public void setViaje(TripImplicacion viaje) {
+		this.viaje = viaje;
 	}
 	
 
