@@ -262,6 +262,11 @@ public class BeanRegisterTrip implements Serializable {
 
 		return "fallo";
 	}
+	
+	public void modificarViaje(){
+		
+	}
+	
 
 	private void reiniciarBean() {
 		setAdressFrom("");

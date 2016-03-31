@@ -65,7 +65,7 @@
 
 	</p:panelGrid>
 	
-	<p:panelGrid id="Grid2" columns="2" style="float:right;margin:10px 15% 10px 0px;width:430px;clear:right">
+	<p:panelGrid id="Grid2" columns="2" style="float:right;margin:10px 15% 10px 0px;width:440px;clear:right">
 		
 		<f:facet name="header">
         <p:row>
@@ -187,7 +187,7 @@
 	</p:panelGrid>
 	
 	<h:panelGrid columns="2" style="margin-left:60%" cellpadding="5">
-        <h:outputText value="Cargar plantilla de valores: " /> 
+        <h:outputText value="#{msgs.trip_form_preCharge}" /> 
         <p:selectBooleanCheckbox id="checkDatos">
             <p:ajax update="@form"  listener="#{registerTrip.datosPorDefecto}" />
         </p:selectBooleanCheckbox>
