@@ -1,4 +1,6 @@
 package com.sdi.presentation.validators;
+import java.util.ResourceBundle;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -15,7 +17,13 @@ public class PasswordValidator implements Validator {
 		String attribute = (String) component.getAttributes().get("password");
 		if (!value.equals(attribute)) {
 			FacesMessage message = new FacesMessage();
-			message.setSummary("#{msgs.passNoCoincide}");
+			
+			FacesContext facesContext = FacesContext.getCurrentInstance();
+	          ResourceBundle bundle = 
+	           facesContext.getApplication().getResourceBundle(facesContext, "msgs");
+	          
+	    
+			message.setSummary(bundle.getString("passNoCoincide"));
 			message.setSeverity(FacesMessage.SEVERITY_ERROR);
 			throw new ValidatorException(message);
 		}
