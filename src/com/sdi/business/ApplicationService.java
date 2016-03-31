@@ -23,4 +23,12 @@ public interface ApplicationService {
 	 * @return
 	 */
 	public List<Application> getSolicitudesViaje(Long id);
+
+	/**
+	 * Elimina una petición del usuario a un viaje
+	 * 
+	 * @param idUsuario
+	 * @param idViaje
+	 */
+	public void deleteByUser(Long idUsuario,Long idViaje);
 }

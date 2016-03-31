@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.sdi.business.SeatService;
 import com.sdi.business.impl.classes.SeatBuscar;
+import com.sdi.business.impl.classes.SeatInsertar;
 import com.sdi.model.Seat;
 
 public class SimpleSeatService implements SeatService {
@@ -17,6 +18,12 @@ public class SimpleSeatService implements SeatService {
 	@Override
 	public List<Seat> findAceptadasByUser(Long id) {
 		return new SeatBuscar().getPlazasAcepByUser(id);	
+	}
+
+	@Override
+	public void insert(Long idUsuario, Long idViaje) {
+		new SeatInsertar().insert(idUsuario,idViaje);
+		
 	}
 
 

@@ -28,5 +28,20 @@ public interface TripsService {
 	boolean modificar(BeanModificarViaje beanModificarViaje);
 	void cancelarViajes(Map<Long, Trip> viajesCancelar);
 
+	/**
+	 * Disminuye en uno las plazas disponibles para el viaje
+	 * 
+	 * @param idViaje
+	 */
+	void ocuparPlaza(Long idViaje);
+	
+	/**
+	 * Aumenta en uno las plazas disponibles para el viaje
+	 * 
+	 * @param idViaje
+	 */
+	void liberarPlaza(Long idViaje);
+
+
 
 }

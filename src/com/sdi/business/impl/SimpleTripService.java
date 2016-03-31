@@ -54,6 +54,17 @@ public class SimpleTripService implements TripsService {
 	public void cancelarViajes(Map<Long, Trip> viajesCancelar) {
 		new TripsCancel().cancelarViajes(viajesCancelar);
 	}
+	
+	@Override
+	public void ocuparPlaza(Long idViaje) {
+		new TripsModificar().disminuirPlazas(idViaje);	
+	}
+	
+	@Override
+	public void liberarPlaza(Long idViaje) {
+		new TripsModificar().aumentarPlazas(idViaje);
+
+	}
 
 
 }

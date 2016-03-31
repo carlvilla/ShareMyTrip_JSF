@@ -9,6 +9,7 @@ import javax.faces.bean.SessionScoped;
 
 import com.sdi.business.ApplicationService;
 import com.sdi.business.SeatService;
+import com.sdi.business.TripsService;
 import com.sdi.business.UsersService;
 import com.sdi.infrastructure.Factories;
 import com.sdi.model.Application;
@@ -25,6 +26,8 @@ public class BeanTrip implements Serializable {
 	private List<User> solicitantes;
 	private List<User> aceptados;
 	
+	private TripImplicacion viaje;
+	
 	public List<User> getSolicitantes() {
 		return solicitantes;
 	}
@@ -40,12 +43,13 @@ public class BeanTrip implements Serializable {
 	
 	public void obtenerImplicados(TripImplicacion viaje){
 		
-		obtenerSolicitantes(viaje);
-		obtenerAceptados(viaje);
+		setViaje(viaje);
+		obtenerSolicitantes();
+		obtenerAceptados();
 		
 	}
 	
-	public void obtenerAceptados(TripImplicacion viaje) {
+	public void obtenerAceptados() {
 		
 			SeatService serviceS;
 			UsersService serviceU;
@@ -67,7 +71,7 @@ public class BeanTrip implements Serializable {
 		
 	}
 	
-	private void obtenerSolicitantes(TripImplicacion viaje) {
+	private void obtenerSolicitantes() {
 			ApplicationService serviceA = Factories.services.createApplicationService();
 			UsersService serviceU = Factories.services.createUserService();
 			
@@ -81,6 +85,32 @@ public class BeanTrip implements Serializable {
 				solicitantes.add(usuario);
 			
 			}
+	}
+	
+	public void aceptarSolicitud(User persona){
+		SeatService serviceS = Factories.services.createSeatService();
+		TripsService serviceT = Factories.services.createTripService();
+	
+		serviceS.insert(persona.getId(),viaje.getId());	
+		serviceT.ocuparPlaza(viaje.getId());
+		
+		eliminarSolicitud(persona);
+		
+		aceptados.add(persona);
+	}
+	
+	
+	public void eliminarSolicitud(User persona){
+		ApplicationService service = Factories.services.createApplicationService();
+		service.deleteByUser(persona.getId(),viaje.getId());
+		solicitantes.remove(persona);
+	}
+	
+	public TripImplicacion getViaje() {
+		return viaje;
+	}
+	public void setViaje(TripImplicacion viaje) {
+		this.viaje = viaje;
 	}
 	
 

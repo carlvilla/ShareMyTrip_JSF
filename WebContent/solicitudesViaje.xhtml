@@ -42,11 +42,21 @@
 				</p:column>
 			
 				<p:column headerText="#{msgs.OpcionesViaje}">
-				
-					<p:commandLink>
-					#{msgs.cancelarSolicitud}
+				<ul>
+					<p:commandLink actionListener="#{trip.aceptarSolicitud(persona)}"
+					update="GridSolicitantes GridAceptados" process="@form">
+					<li style="font-size: 13px">
+					#{msgs.aceptarSolicitud}
+					</li>
 					</p:commandLink>
-	
+				
+					<p:commandLink actionListener="#{trip.eliminarSolicitud(persona)}"
+					update="GridSolicitantes" process="@form">
+					<li style="font-size: 13px">
+					#{msgs.cancelarSolicitud}
+					</li>
+					</p:commandLink>
+				</ul>
 				</p:column>
 
 
