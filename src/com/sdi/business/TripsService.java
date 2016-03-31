@@ -1,6 +1,7 @@
 package com.sdi.business;
 
 import java.util.List;
+import java.util.Map;
 
 import com.sdi.model.Trip;
 import com.sdi.presentation.BeanModificarViaje;
@@ -25,6 +26,7 @@ public interface TripsService {
 	Trip findById(Long tripId);
 	List<Trip> findByPromoter(Long id);
 	boolean modificar(BeanModificarViaje beanModificarViaje);
+	void cancelarViajes(Map<Long, Trip> viajesCancelar);
 
 
 }

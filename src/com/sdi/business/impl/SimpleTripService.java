@@ -1,10 +1,12 @@
 package com.sdi.business.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import com.sdi.business.TripsService;
 import com.sdi.business.impl.classes.TripRegistrar;
 import com.sdi.business.impl.classes.TripsBuscar;
+import com.sdi.business.impl.classes.TripsCancel;
 import com.sdi.business.impl.classes.TripsListado;
 import com.sdi.business.impl.classes.TripsModificar;
 import com.sdi.model.Trip;
@@ -46,6 +48,11 @@ public class SimpleTripService implements TripsService {
 	@Override
 	public boolean modificar(BeanModificarViaje trip) {
 		return new TripsModificar().modificarTrip(trip);
+	}
+
+	@Override
+	public void cancelarViajes(Map<Long, Trip> viajesCancelar) {
+		new TripsCancel().cancelarViajes(viajesCancelar);
 	}
 
 
