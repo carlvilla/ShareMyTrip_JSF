@@ -75,11 +75,16 @@
 	</p:column>
 
 	<p:column headerText="#{msgs.OpcionesViaje}">
-
-		<h:commandLink rendered="#{modifyTrip.comprobarPromotor(viaje)}" action="#{trips.mostrarDatosViaje(viaje)}">
-				#{viaje.implicacion}
-		</h:commandLink>
-	
+		<ul>
+			
+			<h:commandLink rendered="#{modifyTrip.comprobarPromotor(viaje)}" action="#{modifyTrip.mostrarViaje(viaje)}">
+				<li>
+				<p style="font-size: 13px">#{msgs.ModificarViaje}</p>
+				</li>
+			</h:commandLink>
+			
+		
+		</ul>
 
 	</p:column>
 

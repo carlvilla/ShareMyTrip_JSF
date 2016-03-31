@@ -34,6 +34,8 @@ public class BeanModificarViaje implements Serializable {
 	private Date dateFrom;
 	private Date dateTo;
 	private Date dateLimit;
+	
+	private Long promoter;
 
 	public void onDateSelect(SelectEvent event) {
 		FacesContext facesContext = FacesContext.getCurrentInstance();
@@ -243,34 +245,47 @@ public class BeanModificarViaje implements Serializable {
 	}
 
 	
-	public void modificarViaje(){
+	public void mostrarViaje(TripImplicacion viaje){
+		setAdressFrom(viaje.getDeparture().getAddress());
+		setCityFrom(viaje.getDeparture().getCity());
+		setProvinceFrom(viaje.getDeparture().getState());
+		setCountryFrom(viaje.getDeparture().getCountry());
+		setPostalCodeFrom(viaje.getDeparture().getZipCode());
+		setLatZipCodeFrom(viaje.getDeparture().getWaypoint().getLat()+"");
+		setLongZipCodeFrom(viaje.getDeparture().getWaypoint().getLon()+"");
 		
-	}
-	
-	private void reiniciarBean() {
-		setAdressFrom("");
-		setCityFrom("");
-		setProvinceFrom("");
-		setCountryFrom("");
-		setPostalCodeFrom("");
-		setAdressTo("");
-		setCityTo("");
-		setProvinceTo("");
-		setCountryTo("");
-		setPostalCodeTo("");
-		setDateFrom(null);
-		setDateTo(null);
-		setDateLimit(null);
-		setPriceTrip("");
-		setCommentTrip("");
-		setMaxSeats("");
-		setAvailableSeats("");
+		setAdressTo(viaje.getDestination().getAddress());
+		setCityTo(viaje.getDestination().getCity());
+		setProvinceTo(viaje.getDestination().getState());
+		setCountryTo(viaje.getDestination().getCountry());
+		setPostalCodeTo(viaje.getDestination().getZipCode());
+		setLatZipCodeTo(viaje.getDestination().getWaypoint().getLat()+"");
+		setLongZipCodeTo(viaje.getDestination().getWaypoint().getLon()+"");
+		
+		setDateFrom(viaje.getDepartureDate());
+		setDateTo(viaje.getArrivalDate());
+		setDateLimit(viaje.getClosingDate());
+		
+		setPriceTrip(viaje.getEstimatedCost()+"");
+		setCommentTrip(viaje.getComments());
+		setMaxSeats(viaje.getMaxPax()+"");
+		setAvailableSeats(viaje.getAvailablePax()+"");
+		
+		setPromoter(viaje.getPromoterId());
 	}
 
 	public boolean comprobarPromotor(TripImplicacion trip){
 		if(trip.getImplicacion().equals(ImplicacionStatus.PROMOTOR))
 			return true;
 		return false;
+	}
+
+	public Long getPromoter() {
+		return promoter;
+	}
+
+	public void setPromoter(Long long1) {
+		this.promoter = long1;
 	}
 
 }
