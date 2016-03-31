@@ -43,7 +43,8 @@
 			
 				<p:column headerText="#{msgs.OpcionesViaje}">
 				
-					<p:commandLink action="#{trip.eliminarSolicitud(persona)}">
+					<p:commandLink actionListener="#{trip.eliminarSolicitud(persona)}"
+					update="GridSolicitantes" process="@form">
 					#{msgs.cancelarSolicitud}
 					</p:commandLink>
 	
