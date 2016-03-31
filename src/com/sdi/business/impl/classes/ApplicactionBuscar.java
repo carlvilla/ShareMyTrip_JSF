@@ -11,5 +11,10 @@ public class ApplicactionBuscar {
 	public List<Application> find(String login) {
 		ApplicationDao dao = Factories.persistence.createApplicationDao();
 		return dao.findByUserLogin(login);	
+	}
+
+	public List<Application> findByViaje(Long id) {
+		ApplicationDao dao = Factories.persistence.createApplicationDao();
+		return dao.findByTripId(id);
 	}	
 }
