@@ -14,7 +14,7 @@
 	<ui:define name="cuerpo">
 		<h2>#{msgs.solicitudesViaje}</h2>
 
-		<p:panelGrid id="Grid" columns="2" cellpadding="5">
+		<p:panelGrid id="GridSolicitantes" columns="2" cellpadding="5">
 			<h:form>
 
 			<p:dataTable var="persona" value="#{trip.solicitantes}" border="1"
@@ -23,21 +23,29 @@
 					<p:column headerText="#{msgs.nombre}"
 						sortBy="#{persona.name}">
 	
-				#{viaje.departure.city}
+				#{persona.name}
 	
 				</p:column>
 
 					<p:column headerText="#{msgs.apellidos}"
 						sortBy="#{persona.surname}">
 					
-				#{viaje.destination.city}
+				#{persona.surname}
 		
 				</p:column>
 
 					<p:column headerText="#{msgs.email}"
 						sortBy="#{persona.email}">
 				
-				#{viaje.departureDate}
+				#{persona.email}
+	
+				</p:column>
+			
+				<p:column headerText="#{msgs.OpcionesViaje}">
+				
+					<p:commandLink>
+					#{msgs.cancelarSolicitud}
+					</p:commandLink>
 	
 				</p:column>
 
@@ -53,7 +61,7 @@
 
 			<h2>#{msgs.AceptadosAlViaje}</h2>
 			
-			<p:panelGrid id="Grid" columns="2" cellpadding="5">
+			<p:panelGrid id="GridAceptados" columns="2" cellpadding="5">
 			<h:form>
 
 			<p:dataTable var="persona" value="#{trip.aceptados}" border="1"
@@ -62,21 +70,21 @@
 					<p:column headerText="#{msgs.nombre}"
 						sortBy="#{persona.name}">
 	
-				#{viaje.departure.city}
+				#{persona.name}
 	
 				</p:column>
 
 					<p:column headerText="#{msgs.apellidos}"
 						sortBy="#{persona.surname}">
 					
-				#{viaje.destination.city}
+				#{persona.surname}
 		
 				</p:column>
 
 					<p:column headerText="#{msgs.email}"
 						sortBy="#{persona.email}">
 				
-				#{viaje.departureDate}
+				#{persona.email}
 	
 				</p:column>
 

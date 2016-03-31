@@ -24,4 +24,9 @@ public class SimpleApplicationService implements ApplicationService {
 		
 	}
 
+	@Override
+	public List<Application> getSolicitudesViaje(Long id) {
+		return new ApplicactionBuscar().findByViaje(id);
+	}
+
 }
