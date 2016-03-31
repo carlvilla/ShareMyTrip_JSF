@@ -132,21 +132,21 @@
 	
 		#{msgs.trip_form_dateFrom_label}: 
 		<h:panelGroup>
-			<p:calendar id="dateFrom" value="#{registerTrip.dateFrom}" pattern="MM/dd/yyyy HH:mm:ss" required="true"
+			<p:calendar id="dateFrom" value="#{registerTrip.dateFrom}" pattern="dd/MM/yyyy HH:mm:ss" required="true"
 				requiredMessage="#{msgs.trip_form_dateFrom_required}"/>
 			<p:message for="dateFrom" />
 		</h:panelGroup>
   
 		#{msgs.trip_form_dateTo_label}: 
 		<h:panelGroup>
-			<p:calendar id="dateTo" value="#{registerTrip.dateTo}" pattern="MM/dd/yyyy HH:mm:ss" required="true"
+			<p:calendar id="dateTo" value="#{registerTrip.dateTo}" pattern="dd/MM/yyyy HH:mm:ss" required="true"
 				requiredMessage="#{msgs.trip_form_dateTo_required}"/>
 			<p:message for="dateTo" />
 		</h:panelGroup>
 		
 		#{msgs.trip_form_dateLimit_label}: 
 		<h:panelGroup>
-			<p:calendar id="dateLimit" value="#{registerTrip.dateLimit}" pattern="MM/dd/yyyy HH:mm:ss" required="true"
+			<p:calendar id="dateLimit" value="#{registerTrip.dateLimit}" pattern="dd/MM/yyyy HH:mm:ss" required="true"
 				requiredMessage="#{msgs.trip_form_dateLimit_required}"/>
 			<p:message for="dateLimit" />
 		</h:panelGroup>
@@ -184,5 +184,13 @@
 			action="#{registerTrip.register}" update="Grid,Grid2,Grid3" process="@form">
 		</p:commandButton>
 	</p:panelGrid>
+	
+	<h:panelGrid columns="2" style="margin-left:60%" cellpadding="5">
+        <h:outputText value="Cargar plantilla de valores: " /> 
+        <p:selectBooleanCheckbox id="checkDatos">
+            <p:ajax update="@form"  listener="#{registerTrip.datosPorDefecto}" />
+        </p:selectBooleanCheckbox>
+    </h:panelGrid>
+    
 	</h:form>
 </ui:composition>

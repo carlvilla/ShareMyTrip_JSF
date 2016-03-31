@@ -59,6 +59,7 @@ public class TripRegistrar {
 		if(viaje.getArrivalDate().before(fechaActual)
 				||viaje.getDepartureDate().before(fechaActual)
 				||viaje.getClosingDate().before(fechaActual)){
+			trip.setResult("registerTrip_form_result_errorDate");
 			return false;
 		}
 		
@@ -66,6 +67,7 @@ public class TripRegistrar {
 		if(trip.getDateFrom()
 				.after(trip.getDateTo())||
 				trip.getDateLimit().after(trip.getDateTo())){
+			trip.setResult("registerTrip_form_result_errorDate");
 			return false;
 		}
 		try{
@@ -75,6 +77,7 @@ public class TripRegistrar {
 		viaje.setAvailablePax(Integer.parseInt(trip.getAvailableSeats()));
 		viaje.setStatus(TripStatus.OPEN);
 		}catch(NumberFormatException e){
+			trip.setResult("registerTrip_form_result_errorFormat");
 			return false;
 		}
 		
@@ -94,6 +97,7 @@ public class TripRegistrar {
 				.findByPromoterIdAndArrivalDate(usuario.getId(), 
 						viaje.getArrivalDate());
 		if(tripMismaFecha!=null){
+			trip.setResult("registerTrip_form_result_errorSameDate");
 			return false;
 		}
 		
@@ -124,6 +128,5 @@ public class TripRegistrar {
 	private Object getObjectFromSession(String key) {
 		return FacesContext.getCurrentInstance().getExternalContext()
 				.getSessionMap().get(key);
-
 	}
 }
