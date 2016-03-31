@@ -3,6 +3,7 @@ package com.sdi.business;
 import java.util.List;
 
 import com.sdi.model.Trip;
+import com.sdi.presentation.BeanModificarViaje;
 import com.sdi.presentation.BeanRegisterTrip;
 
 
@@ -23,6 +24,7 @@ public interface TripsService {
 	boolean registrar(BeanRegisterTrip trip);
 	Trip findById(Long tripId);
 	List<Trip> findByPromoter(Long id);
+	boolean modificar(BeanModificarViaje beanModificarViaje);
 
 
 }

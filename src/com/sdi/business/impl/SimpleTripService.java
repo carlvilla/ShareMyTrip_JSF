@@ -6,7 +6,9 @@ import com.sdi.business.TripsService;
 import com.sdi.business.impl.classes.TripRegistrar;
 import com.sdi.business.impl.classes.TripsBuscar;
 import com.sdi.business.impl.classes.TripsListado;
+import com.sdi.business.impl.classes.TripsModificar;
 import com.sdi.model.Trip;
+import com.sdi.presentation.BeanModificarViaje;
 import com.sdi.presentation.BeanRegisterTrip;
 
 
@@ -39,6 +41,11 @@ public class SimpleTripService implements TripsService {
 	@Override
 	public List<Trip> findByPromoter(Long id) {
 		return new TripsBuscar().getByPromoter(id);
+	}
+
+	@Override
+	public boolean modificar(BeanModificarViaje trip) {
+		return new TripsModificar().modificarTrip(trip);
 	}
 
 

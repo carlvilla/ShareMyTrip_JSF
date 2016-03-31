@@ -112,5 +112,24 @@
 			<to-view-id>/registrarViaje.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/misViajes.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>modificar</from-outcome>
+			<to-view-id>/modificarViaje.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 
+	<navigation-rule>
+		<from-view-id>/modificarViaje.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>exito</from-outcome>
+			<to-view-id>/principal.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>fallo</from-outcome>
+			<to-view-id>/modificarViaje.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 </faces-config>

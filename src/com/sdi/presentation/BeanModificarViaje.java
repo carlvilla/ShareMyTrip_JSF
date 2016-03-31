@@ -3,6 +3,7 @@ package com.sdi.presentation;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.ResourceBundle;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -12,6 +13,8 @@ import javax.faces.context.FacesContext;
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.SelectEvent;
 
+import com.sdi.business.TripsService;
+import com.sdi.infrastructure.Factories;
 import com.sdi.model.ImplicacionStatus;
 import com.sdi.model.TripImplicacion;
 
@@ -35,6 +38,7 @@ public class BeanModificarViaje implements Serializable {
 	private Date dateTo;
 	private Date dateLimit;
 	
+	private Long idViaje;
 	private Long promoter;
 
 	public void onDateSelect(SelectEvent event) {
@@ -245,7 +249,7 @@ public class BeanModificarViaje implements Serializable {
 	}
 
 	
-	public void mostrarViaje(TripImplicacion viaje){
+	public String mostrarViaje(TripImplicacion viaje){
 		setAdressFrom(viaje.getDeparture().getAddress());
 		setCityFrom(viaje.getDeparture().getCity());
 		setProvinceFrom(viaje.getDeparture().getState());
@@ -272,7 +276,27 @@ public class BeanModificarViaje implements Serializable {
 		setAvailableSeats(viaje.getAvailablePax()+"");
 		
 		setPromoter(viaje.getPromoterId());
+		setIdViaje(viaje.getId());
+		return "modificar";
 	}
+	
+	public String modificarViaje(){
+		TripsService trip = Factories.services.createTripService();
+
+		if (trip.modificar(this)) {
+			FacesContext context = FacesContext.getCurrentInstance();
+			
+	        ResourceBundle bundle = context.getApplication().getResourceBundle(context, "msgs");
+			
+	        context.addMessage(null, new FacesMessage(bundle.getString("Exito")
+	        		,bundle.getString("viajeModificado")));
+			
+			return "exito";
+		}
+
+		return "fallo";
+	}
+	
 
 	public boolean comprobarPromotor(TripImplicacion trip){
 		if(trip.getImplicacion().equals(ImplicacionStatus.PROMOTOR))
@@ -286,6 +310,14 @@ public class BeanModificarViaje implements Serializable {
 
 	public void setPromoter(Long long1) {
 		this.promoter = long1;
+	}
+
+	public Long getIdViaje() {
+		return idViaje;
+	}
+
+	public void setIdViaje(Long idViaje) {
+		this.idViaje = idViaje;
 	}
 
 }
