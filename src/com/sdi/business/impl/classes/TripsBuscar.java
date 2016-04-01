@@ -19,4 +19,10 @@ public class TripsBuscar {
 		TripDao dao = Factories.persistence.createTripDao();
 		return dao.findByPromoterId(id);
 	}
+
+
+	public List<Trip> fechaCierrePasada() {
+		TripDao dao = Factories.persistence.createTripDao();
+		return dao.findFechaCierrePasada();
+	}
 }

@@ -199,5 +199,12 @@ public class TripJdbcDAO implements TripDao {
 		
 	}
 
+	@Override
+	public List<Trip> findFechaCierrePasada() {
+		return jdbcTemplate.queryForList(
+				"TRIP_FIND_FECHA_CIERRE_PASADA", 
+				new TripMapper());
+	}
+
 
 }

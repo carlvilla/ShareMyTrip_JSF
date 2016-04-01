@@ -20,5 +20,7 @@ public interface TripDao extends GenericDao<Trip, Long> {
 
 	int aumentarPlazas(Long idViaje);
 
+	List<Trip> findFechaCierrePasada();
+
 
 }

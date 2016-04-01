@@ -41,6 +41,13 @@ public interface TripsService {
 	 * @param idViaje
 	 */
 	void liberarPlaza(Long idViaje);
+	
+	/**
+	 * Se obtienen los viajes cuya fecha de cierre ya se ha pasado y que su
+	 * estado sea OPEN
+	 * @return
+	 */
+	List<Trip> viajesFechaCierrePasada();
 
 
 
