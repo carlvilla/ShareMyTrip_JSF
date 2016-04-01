@@ -17,6 +17,7 @@ import com.sdi.business.TripsService;
 import com.sdi.infrastructure.Factories;
 import com.sdi.model.ImplicacionStatus;
 import com.sdi.model.TripImplicacion;
+import com.sdi.model.TripStatus;
 
 @ManagedBean(name = "modifyTrip")
 @SessionScoped
@@ -301,7 +302,7 @@ public class BeanModifyTrip implements Serializable {
 
 	public boolean comprobarPromotor(TripImplicacion trip){
 		if(trip.getImplicacion().equals(ImplicacionStatus.PROMOTOR)
-				&& trip.getClosingDate().after(new Date()))
+				&& trip.getClosingDate().after(new Date()) && trip.getStatus().equals(TripStatus.OPEN))
 			return true;
 		return false;
 	}
@@ -309,7 +310,7 @@ public class BeanModifyTrip implements Serializable {
 	public boolean comprobarImplicacion(TripImplicacion trip){
 		if((trip.getImplicacion().equals(ImplicacionStatus.ACEPTADO)
 				|| trip.getImplicacion().equals(ImplicacionStatus.PENDIENTE))
-				&& trip.getClosingDate().after(new Date())){
+				&& trip.getClosingDate().after(new Date()) && trip.getStatus().equals(TripStatus.OPEN)){
 			return true;
 		}
 		

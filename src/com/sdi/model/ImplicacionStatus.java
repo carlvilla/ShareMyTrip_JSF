@@ -4,5 +4,6 @@ public enum ImplicacionStatus {
 	PROMOTOR,
 	PENDIENTE,
 	ACEPTADO,
-	EXCLUIDO
+	EXCLUIDO,
+	SIN_PLAZA
 }

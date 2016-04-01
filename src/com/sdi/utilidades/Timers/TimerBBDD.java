@@ -23,9 +23,7 @@ public class TimerBBDD {
         @Override
         public void run()
         {
-
-        	
-        	
+     	   
         	TripsService serviceT = Factories.services.createTripService();
         	ApplicationService serviceA = Factories.services.createApplicationService();
         	SeatService serviceS = Factories.services.createSeatService();
@@ -47,11 +45,7 @@ public class TimerBBDD {
         		System.out.println("Fin tarea de mantenimiento de BBDD");
         		
         	}
-        	
-        	
-        	
-        	
-        	
+        		
         }
         };
         //Empieza en 10ms y se lanza la tarea cada 5000ms

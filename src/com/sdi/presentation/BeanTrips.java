@@ -220,6 +220,11 @@ public class BeanTrips implements Serializable {
 					viaje.setImplicacion(ImplicacionStatus.EXCLUIDO);
 					viajesImplicado.add(viaje);
 				}
+				else if(seat.getStatus().equals(SeatStatus.SIN_PLAZA)){
+					viaje.setImplicacion(ImplicacionStatus.SIN_PLAZA);
+					viajesImplicado.add(viaje);
+				}
+				
 				else{
 					//Esta comprobación es debida a que los promotores están 'aceptados'
 					//en su propio viaje ya que ocupan una plaza. Por ello no nos 
@@ -240,11 +245,10 @@ public class BeanTrips implements Serializable {
 		List<Trip> viajes = service.findByPromoter(usuario.getId());
 
 		for (Trip viaje : viajes) {
-			if (viaje.getStatus() != TripStatus.CANCELLED) {
 				TripImplicacion viajeIm = new TripImplicacion(viaje);
 				viajeIm.setImplicacion(ImplicacionStatus.PROMOTOR);
 				viajesImplicado.add(viajeIm);
-			}
+		
 		}
 	}
 
