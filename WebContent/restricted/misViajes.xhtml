@@ -119,9 +119,9 @@
 	</p:dataTable>
 	
 	<p:commandButton style="float:right;margin-top:5px" value="#{msgs.trip_form_button_cancelTrip}"
-			action="#{cancelTrip.cancelarViajes}" >  
+			action="#{cancelTrip.cancelarViajes}" actionListener="#{trips.cancelarViajes(cancelTrip.viajesCancelar)}" update="Grid" process="@form">  
 	</p:commandButton>
-</h:form>
+</h:form> 
 		
 
 </p:panelGrid>

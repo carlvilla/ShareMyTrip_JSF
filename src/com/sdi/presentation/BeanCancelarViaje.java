@@ -40,10 +40,19 @@ public class BeanCancelarViaje implements Serializable {
 			
 	        context.addMessage(null, new FacesMessage(bundle.getString("Exito")
 	        		,bundle.getString("viajeCancelado")));
+	        
 	    	return "cancelTrip";
 		}
 		return "cancelFail";
 	}
-	
 
+	public Map<Long, Trip> getViajesCancelar() {
+		return viajesCancelar;
+	}
+
+	public void setViajesCancelar(Map<Long, Trip> viajesCancelar) {
+		this.viajesCancelar = viajesCancelar;
+	}
+	
+	
 }

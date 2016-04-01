@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.EventListener;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 import javax.faces.application.FacesMessage;
@@ -275,6 +276,15 @@ public class BeanTrips implements Serializable {
 		viajesImplicado.remove(viaje);
 	}
 	
+	
+	public void cancelarViajes(Map<Long,Trip> trips){
+		for(Long key:trips.keySet()){
+			Trip trip = trips.get(key);
+			if(viajesImplicado.contains(trip)){
+				viajesImplicado.remove(trip);
+			}
+		}
+	}
 	
 
 }

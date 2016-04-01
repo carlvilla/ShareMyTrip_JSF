@@ -55,7 +55,7 @@
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>listadoRegistrado</from-outcome>
-			<to-view-id>/listaViajesRegistrado.xhtml</to-view-id>
+			<to-view-id>/restricted/listaViajesRegistrado.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>cerrarSesion</from-outcome>
@@ -67,7 +67,7 @@
 		<from-view-id>/registrarse.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>exito</from-outcome>
-			<to-view-id>/principal.xhtml</to-view-id>
+			<to-view-id>/restricted/principal.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 	
@@ -80,10 +80,10 @@
 	</navigation-rule>
 	
 	<navigation-rule>
-		<from-view-id>/listaViajesRegistrado.xhtml</from-view-id>
+		<from-view-id>/restricted/listaViajesRegistrado.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>exito</from-outcome>
-			<to-view-id>/datosViaje.xhtml</to-view-id>
+			<to-view-id>/restricted/datosViaje.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 	
@@ -92,7 +92,7 @@
 		<from-view-id>/login.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>exito</from-outcome>
-			<to-view-id>/principal.xhtml</to-view-id>
+			<to-view-id>/restricted/principal.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>fallo</from-outcome>
@@ -102,42 +102,42 @@
 	
 	
 	<navigation-rule>
-		<from-view-id>/registrarViaje.xhtml</from-view-id>
+		<from-view-id>/restricted/registrarViaje.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>exito</from-outcome>
-			<to-view-id>/principal.xhtml</to-view-id>
+			<to-view-id>/restricted/principal.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>fallo</from-outcome>
-			<to-view-id>/registrarViaje.xhtml</to-view-id>
+			<to-view-id>/restricted/registrarViaje.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 	
 	<navigation-rule>
-		<from-view-id>/misViajes.xhtml</from-view-id>
+		<from-view-id>/restricted/misViajes.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>modificar</from-outcome>
-			<to-view-id>/modificarViaje.xhtml</to-view-id>
+			<to-view-id>/restricted/modificarViaje.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>cancelTrip</from-outcome>
-			<to-view-id>/principal.xhtml</to-view-id>
+			<to-view-id>/restricted/misViajes.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>cancelFail</from-outcome>
-			<to-view-id>/misViajes.xhtml</to-view-id>
+			<to-view-id>/restricted/misViajes.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 
 	<navigation-rule>
-		<from-view-id>/modificarViaje.xhtml</from-view-id>
+		<from-view-id>/restricted/modificarViaje.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>exito</from-outcome>
-			<to-view-id>/principal.xhtml</to-view-id>
+			<to-view-id>/restricted/principal.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>fallo</from-outcome>
-			<to-view-id>/modificarViaje.xhtml</to-view-id>
+			<to-view-id>/restricted/modificarViaje.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 	
