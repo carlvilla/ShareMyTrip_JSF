@@ -99,6 +99,13 @@
 				</li>
 			</h:commandLink>
 			
+			<h:commandLink rendered="#{modifyTrip.comprobarImplicacion(viaje)}" actionListener="#{trips.cancelarParticipacion(viaje)}"
+			update="Grid" process="@form">
+				<li>
+				<p style="font-size: 13px">#{msgs.CancelarParticipacion}</p>
+				</li>
+			</h:commandLink>
+			
 			
 		
 		</ul>

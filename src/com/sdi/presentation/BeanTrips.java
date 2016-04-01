@@ -238,4 +238,28 @@ public class BeanTrips implements Serializable {
 			}
 		}
 	
+	public void cancelarParticipacion(TripImplicacion viaje){
+		
+		UserLogin usuario = (UserLogin) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("LOGGEDIN_USER");
+		
+		if(viaje.getImplicacion().equals(ImplicacionStatus.ACEPTADO)){
+			SeatService serviceS = Factories.services.createSeatService();
+			TripsService serviceT = Factories.services.createTripService();
+			serviceS.delete(usuario.getId(),viaje.getId());	
+			serviceT.liberarPlaza(viaje.getId());
+		}
+		
+		else{
+			ApplicationService serviceA = Factories.services.createApplicationService();
+			serviceA.delete(usuario.getId(), viaje.getId());
+			
+			
+		}
+		
+		
+		
+		viajesImplicado.remove(viaje);
+	}
+	
+	
 }

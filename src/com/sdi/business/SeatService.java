@@ -24,4 +24,6 @@ public interface SeatService {
 	public List<Seat> findAceptadasByUser(Long id);
 
 	public void insert(Long idUsuario, Long idViaje);
+
+	public void delete(Long id, Long id2);
 }

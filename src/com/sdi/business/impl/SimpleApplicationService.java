@@ -28,7 +28,7 @@ public class SimpleApplicationService implements ApplicationService {
 	}
 
 	@Override
-	public void deleteByUser(Long idUsuario,Long idViaje) {
+	public void delete(Long idUsuario,Long idViaje) {
 		new ApplicationDelete().delete(idUsuario,idViaje);
 		
 	}

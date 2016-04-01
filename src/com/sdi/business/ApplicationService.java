@@ -30,5 +30,5 @@ public interface ApplicationService {
 	 * @param idUsuario
 	 * @param idViaje
 	 */
-	public void deleteByUser(Long idUsuario,Long idViaje);
+	public void delete(Long idUsuario,Long idViaje);
 }

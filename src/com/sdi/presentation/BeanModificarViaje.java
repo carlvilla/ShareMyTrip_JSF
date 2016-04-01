@@ -299,9 +299,21 @@ public class BeanModificarViaje implements Serializable {
 	
 
 	public boolean comprobarPromotor(TripImplicacion trip){
-		if(trip.getImplicacion().equals(ImplicacionStatus.PROMOTOR))
+		if(trip.getImplicacion().equals(ImplicacionStatus.PROMOTOR)
+				&& trip.getClosingDate().after(new Date()))
 			return true;
 		return false;
+	}
+	
+	public boolean comprobarImplicacion(TripImplicacion trip){
+		if((trip.getImplicacion().equals(ImplicacionStatus.ACEPTADO)
+				|| trip.getImplicacion().equals(ImplicacionStatus.PENDIENTE))
+				&& trip.getClosingDate().after(new Date())){
+			return true;
+		}
+		
+		return false;
+		
 	}
 
 	public Long getPromoter() {
