@@ -277,6 +277,7 @@ public class BeanModificarViaje implements Serializable {
 		
 		setPromoter(viaje.getPromoterId());
 		setIdViaje(viaje.getId());
+		
 		return "modificar";
 	}
 	
