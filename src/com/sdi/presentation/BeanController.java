@@ -20,6 +20,7 @@ import com.sdi.model.Seat;
 import com.sdi.model.Trip;
 import com.sdi.model.User;
 import com.sdi.model.UserLogin;
+import com.sdi.utilidades.Utilidades;
 
 @ManagedBean(name = "controller")
 @SessionScoped
@@ -58,6 +59,9 @@ public class BeanController implements Serializable {
 		try {
 
 			service = Factories.services.createUserService();
+			
+			user.setPassword(Utilidades.Encriptar(user.getPassword()));
+			
 			service.saveUser(user);
 			
 			User usuario = service.finByLogin(user.getLogin());
