@@ -20,7 +20,7 @@ import com.sdi.model.TripImplicacion;
 
 @ManagedBean(name = "modifyTrip")
 @SessionScoped
-public class BeanModificarViaje implements Serializable {
+public class BeanModifyTrip implements Serializable {
 	private static final long serialVersionUID = 6L;
 	private String adressFrom = "";
 	private String cityFrom = "";
@@ -92,7 +92,7 @@ public class BeanModificarViaje implements Serializable {
 
 	private String result = "registerTrip_form_result_valid";
 
-	public BeanModificarViaje() {
+	public BeanModifyTrip() {
 		System.out.println("BeanRegisterTrip - No existia");
 	}
 

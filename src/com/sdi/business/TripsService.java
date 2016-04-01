@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.sdi.model.Trip;
-import com.sdi.presentation.BeanModificarViaje;
+import com.sdi.presentation.BeanModifyTrip;
 import com.sdi.presentation.BeanRegisterTrip;
 
 
@@ -25,7 +25,7 @@ public interface TripsService {
 	boolean registrar(BeanRegisterTrip trip);
 	Trip findById(Long tripId);
 	List<Trip> findByPromoter(Long id);
-	boolean modificar(BeanModificarViaje beanModificarViaje);
+	boolean modificar(BeanModifyTrip beanModificarViaje);
 	void cancelarViajes(Map<Long, Trip> viajesCancelar);
 
 	/**
