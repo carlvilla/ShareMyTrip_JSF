@@ -214,9 +214,7 @@ public class BeanTrips implements Serializable {
 		}
 		
 		for (Seat seat : seats) {
-			int idUsuario= Integer.parseInt(usuario.getId()+"");
-			int idUsuarioSeat = Integer.parseInt(seat.getUserId()+"");
-			if (idUsuario != idUsuarioSeat ) {
+			
 				TripImplicacion viaje = new TripImplicacion(
 						serviceT.findById(seat.getTripId()));
 				
@@ -239,9 +237,7 @@ public class BeanTrips implements Serializable {
 				}
 					
 			}
-			
-			
-		}
+
 	}
 
 	private void obtenerViajesPromotor(UserLogin usuario) {
