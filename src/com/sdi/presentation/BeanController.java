@@ -60,7 +60,7 @@ public class BeanController implements Serializable {
 
 			service = Factories.services.createUserService();
 			
-			user.setPassword(Utilidades.Encriptar(user.getPassword()));
+		//	user.setPassword(Utilidades.Encriptar(user.getPassword()));
 			
 			service.saveUser(user);
 			
