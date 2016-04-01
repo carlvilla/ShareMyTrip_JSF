@@ -96,7 +96,10 @@ public class BeanTrip implements Serializable {
 		serviceS.insert(persona.getId(),viaje.getId());	
 		serviceT.ocuparPlaza(viaje.getId());
 		
-		eliminarSolicitud(persona);
+		ApplicationService service = Factories.services.createApplicationService();
+	
+		service.delete(persona.getId(),viaje.getId());
+		solicitantes.remove(persona);
 		
 		aceptados.add(persona);
 	}
