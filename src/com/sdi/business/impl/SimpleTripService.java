@@ -71,6 +71,11 @@ public class SimpleTripService implements TripsService {
 		return new TripsBuscar().fechaCierrePasada();
 	}
 
+	@Override
+	public void cancelarViajes(Trip viaje) {
+		new TripsCancel().cancelarViaje(viaje);
+	}
+
 
 
 }

@@ -35,4 +35,12 @@ public interface SeatService {
 	 * @param id2
 	 */
 	public void insertExcluido(Long idUsuario, Long idViaje);
+
+	/**
+	 * Indicar que el usuario no tiene plaza en un viaje
+	 * 
+	 * @param userId
+	 * @param tripId
+	 */
+	public void insertSinPlazas(Long userId, Long tripId);
 }

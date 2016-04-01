@@ -17,7 +17,7 @@ public class SeatInsertar {
 		try {
 			dao.save(seat);
 		} catch (AlreadyPersistedException e) {
-			System.out.println("Ya se aceptó esta solicitud");
+			System.out.println("Ya se aceptó la solicitud");
 		}
 	}
 
@@ -30,7 +30,21 @@ public class SeatInsertar {
 		try {
 			dao.save(seat);
 		} catch (AlreadyPersistedException e) {
-			System.out.println("Ya se canceló esta solicitud");
+			System.out.println("Ya se canceló la solicitud");
+		}
+		
+	}
+
+	public void insertarSinPlaza(Long idUsuario, Long idViaje) {
+		SeatDao dao = Factories.persistence.createSeatDao();
+		Seat seat = new Seat();
+		seat.setUserId(idUsuario);
+		seat.setTripId(idViaje);
+		seat.setStatus(SeatStatus.SIN_PLAZA);
+		try {
+			dao.save(seat);
+		} catch (AlreadyPersistedException e) {
+			System.out.println("Ya se inserto la solicitud sin plaza");
 		}
 		
 	}

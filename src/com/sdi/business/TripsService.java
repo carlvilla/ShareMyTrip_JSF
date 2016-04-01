@@ -48,6 +48,13 @@ public interface TripsService {
 	 * @return
 	 */
 	List<Trip> viajesFechaCierrePasada();
+	
+	/**
+	 * Método para cancelar un viaje
+	 * 
+	 * @param viaje
+	 */
+	void cancelarViajes(Trip viaje);
 
 
 

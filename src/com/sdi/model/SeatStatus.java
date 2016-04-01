@@ -2,5 +2,6 @@ package com.sdi.model;
 
 public enum SeatStatus {
 	ACCEPTED,
-	EXCLUDED
+	EXCLUDED,
+	SIN_PLAZA
 }

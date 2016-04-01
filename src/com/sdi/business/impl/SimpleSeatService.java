@@ -39,6 +39,11 @@ public class SimpleSeatService implements SeatService {
 		
 	}
 
+	@Override
+	public void insertSinPlazas(Long userId, Long tripId) {
+		new SeatInsertar().insertarSinPlaza(userId,tripId);
+	}
+
 
 	
 }

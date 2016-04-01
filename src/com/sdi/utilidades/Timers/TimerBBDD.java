@@ -18,11 +18,14 @@ public class TimerBBDD {
     timer = new Timer();
 
     TimerTask task = new TimerTask() {
-        int tic=0;
+        
 
         @Override
         public void run()
         {
+
+        	System.out.println("Inicio tarea de mantenimiento de BBDD");
+        	
         	TripsService serviceT = Factories.services.createTripService();
         	ApplicationService serviceA = Factories.services.createApplicationService();
         	SeatService serviceS = Factories.services.createSeatService();
@@ -31,25 +34,24 @@ public class TimerBBDD {
         	
         	for(Trip viaje:viajes){
         		List<Application> solicitudes = serviceA.getSolicitudesViaje(viaje.getId());
+        		serviceT.cancelarViajes(viaje);
+        		
+        		System.out.println("Se pasarán a 'SIN PLAZA' "+solicitudes.size()+" solicitudes");
         		
         		for(Application app:solicitudes){
         			serviceA.delete(app.getUserId(), app.getTripId());
-       // 			serviceS.insertSinPlazas(app.getUserId(),app.getTripId());
-        			
+        			serviceS.insertSinPlazas(app.getUserId(),app.getTripId());  			
         		}
         		
         	}
         	
-        /*	
-            if (tic%2==0)
-            System.out.println("TIC");
-            else
-            System.out.println("TOC");
-            tic++;
-        */
+        	
+        	
+        	System.out.println("Fin tarea de mantenimiento de BBDD");
+        	
         }
         };
-        // Empezamos dentro de 10ms y luego lanzamos la tarea cada 5000ms
+        //Empieza en 10ms y se lanza la tarea cada 5000ms
         timer.schedule(task, 10, 5000);
     }
 }
