@@ -34,7 +34,7 @@ public class TimerBBDD {
         		
         		for(Application app:solicitudes){
         			serviceA.delete(app.getUserId(), app.getTripId());
-        			serviceS.insertSinPlazas(app.getUserId(),app.getTripId());
+       // 			serviceS.insertSinPlazas(app.getUserId(),app.getTripId());
         			
         		}
         		
