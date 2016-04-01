@@ -3,7 +3,9 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-	<h:form id="form-login" style="float:center;height: 18px; width: 20px">
+	
+<p:panel id="panelLogin" header="#{msgs.iniciarSesion}">
+	<h:form id="form-login">
 	<p:panelGrid id="Grid" columns="2" cellpadding="5">
 		#{msgs.login_form_name_label}: 
 		<h:panelGroup>
@@ -26,4 +28,6 @@
 		</p:commandButton>
 	</p:panelGrid>
 	</h:form>
+	
+		</p:panel>
 </ui:composition>

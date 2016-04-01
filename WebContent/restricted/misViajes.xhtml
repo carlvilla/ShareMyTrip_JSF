@@ -16,11 +16,11 @@
 	<h2>#{msgs.ViajesImplicado}</h2>
 		
 <p:panelGrid id="Grid" columns="2" cellpadding="5">
-<h:form>
+<h:form id="form-misViajes">
 			
 			<p:dataTable var="viaje" value="#{trips.viajesImplicado}" border="1"
-				sortMode="multiple" id="tabla">
-
+				sortMode="multiple" id="tabla" >
+				
 				<p:column headerText="#{msgs.ciudadOrigen}"
 					sortBy="#{viaje.departure.city}">
 	
@@ -109,7 +109,7 @@
 			</h:commandLink>
 			
 				<h:outputText style="font-size: 12px" value="#{msgs.CancelarViaje}: " rendered="#{modifyTrip.comprobarPromotor(viaje)}"/>
-				<p:selectBooleanCheckbox id="checkDatos" rendered="#{modifyTrip.comprobarPromotor(viaje)}">
+				<p:selectBooleanCheckbox id="checkDatos" class="check" rendered="#{modifyTrip.comprobarPromotor(viaje)}">
             		<p:ajax update="checkDatos" listener="#{cancelTrip.addTrip(viaje)}" /> 
        		 	</p:selectBooleanCheckbox>
 		
@@ -119,13 +119,16 @@
 	</p:dataTable>
 	
 	<p:commandButton style="float:right;margin-top:5px" value="#{msgs.trip_form_button_cancelTrip}"
-			action="#{cancelTrip.cancelarViajes}" actionListener="#{trips.cancelarViajes(cancelTrip.viajesCancelar)}" update="Grid" process="@form">  
+			action="#{cancelTrip.cancelarViajes}" actionListener="#{trips.cancelarViajes(cancelTrip.viajesCancelar)}" update="Grid notificaciones" process="@form"
+			id="cancelarViajes">  
+	
 	</p:commandButton>
 </h:form> 
 		
 
 </p:panelGrid>
 
+ <p:growl id="notificaciones" showDetail="true" sticky="true" /> 
 	
 </ui:define>
 
