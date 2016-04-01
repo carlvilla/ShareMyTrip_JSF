@@ -19,8 +19,10 @@ import com.sdi.infrastructure.Factories;
 import com.sdi.model.Application;
 import com.sdi.model.ImplicacionStatus;
 import com.sdi.model.Seat;
+import com.sdi.model.SeatStatus;
 import com.sdi.model.Trip;
 import com.sdi.model.TripImplicacion;
+import com.sdi.model.TripStatus;
 import com.sdi.model.User;
 import com.sdi.model.UserLogin;
 
@@ -35,12 +37,9 @@ public class BeanTrips implements Serializable {
 	private Trip viaje;
 	private User promotorViaje;
 	private List<User> participantes;
-	
-	
-	//Viajes en los que tiene implicación el usuario
+
+	// Viajes en los que tiene implicación el usuario
 	private List<TripImplicacion> viajesImplicado;
-	
-	
 
 	public List<User> getParticipantes() {
 		return participantes;
@@ -115,8 +114,8 @@ public class BeanTrips implements Serializable {
 	}
 
 	/**
-	 * Se buscan los viajes en los que el usuario puede participar.
-	 * Esto depende de si es un usuario público o registrado.
+	 * Se buscan los viajes en los que el usuario puede participar. Esto depende
+	 * de si es un usuario público o registrado.
 	 * 
 	 * @return
 	 */
@@ -132,19 +131,20 @@ public class BeanTrips implements Serializable {
 		viajes = service.findAllDisponibleUser(usuario.getLogin());
 		return "listadoRegistrado";
 	}
-	
-	public void apuntarse(){
+
+	public void apuntarse() {
 		ApplicationService app;
 		app = Factories.services.createApplicationService();
 		UserLogin usuario = (UserLogin) getObjectFromSession("LOGGEDIN_USER");
 		app.save(usuario.getLogin(), viaje.getId());
-		
+
 		FacesContext context = FacesContext.getCurrentInstance();
-		
-        ResourceBundle bundle = context.getApplication().getResourceBundle(context, "msgs");
-		
-        context.addMessage(null, new FacesMessage(bundle.getString("Exito")
-        		,bundle.getString("ApuntadoTexto")));
+
+		ResourceBundle bundle = context.getApplication().getResourceBundle(
+				context, "msgs");
+
+		context.addMessage(null, new FacesMessage(bundle.getString("Exito"),
+				bundle.getString("ApuntadoTexto")));
 
 	}
 
@@ -164,79 +164,90 @@ public class BeanTrips implements Serializable {
 				.getSessionMap().get(key);
 
 	}
-	
-	
-	 
-	  
-		public List<TripImplicacion> getViajesImplicado() {
-			return viajesImplicado;
-		}
 
-		public void setViajesImplicado(List<TripImplicacion> viajesImplicado) {
-			this.viajesImplicado = viajesImplicado;
-		}
-		
-		public void obtenerViajesImplicado(){
-			
-		  	UserLogin usuario = (UserLogin) getObjectFromSession("LOGGEDIN_USER");
-		  	
-		  	viajesImplicado = new LinkedList<TripImplicacion>();
-		  	
-			obtenerViajesPromotor(usuario);
-			obtenerViajesAceptado(usuario);
-			obtenerViajesPendiente(usuario);
-			
-			
-		}
-	 
-	  private void obtenerViajesPendiente(UserLogin usuario) {
-		  	ApplicationService serviceA = Factories.services.createApplicationService();
-		  	TripsService serviceT = Factories.services.createTripService();
+	public List<TripImplicacion> getViajesImplicado() {
+		return viajesImplicado;
+	}
 
-		  	List<Application> solicitudes = serviceA.getSolicitudes(usuario.getLogin());
-		  	
-		  	for(Application app:solicitudes){	  		
-		  		TripImplicacion viaje = new TripImplicacion(serviceT.findById(app.getTripId()));
-		  		viaje.setImplicacion(ImplicacionStatus.PENDIENTE);
-		  		viajesImplicado.add(viaje);  		
-		  	}
+	public void setViajesImplicado(List<TripImplicacion> viajesImplicado) {
+		this.viajesImplicado = viajesImplicado;
+	}
+
+	public void obtenerViajesImplicado() {
+
+		UserLogin usuario = (UserLogin) getObjectFromSession("LOGGEDIN_USER");
+
+		viajesImplicado = new LinkedList<TripImplicacion>();
+
+		obtenerViajesPromotor(usuario);
+		obtenerViajesAceptado(usuario);
+		obtenerViajesPendiente(usuario);
+
+	}
+
+	private void obtenerViajesPendiente(UserLogin usuario) {
+		ApplicationService serviceA = Factories.services
+				.createApplicationService();
+		TripsService serviceT = Factories.services.createTripService();
+
+		List<Application> solicitudes = serviceA.getSolicitudes(usuario
+				.getLogin());
+
+		for (Application app : solicitudes) {
+			TripImplicacion viaje = new TripImplicacion(serviceT.findById(app
+					.getTripId()));
+			viaje.setImplicacion(ImplicacionStatus.PENDIENTE);
+			viajesImplicado.add(viaje);
 		}
+	}
 
 	private void obtenerViajesAceptado(UserLogin usuario) {
-			SeatService serviceS = Factories.services.createSeatService();
-			TripsService serviceT = Factories.services.createTripService();
-			List<Seat> seats = serviceS.findAceptadasByUser(usuario.getId());
-			
-			List<Long> idsViajesEsPromotor = new LinkedList<Long>();
-			
-			for(TripImplicacion viajeAux:viajesImplicado){
-				idsViajesEsPromotor.add(viajeAux.getId());
-			}
-					
-			for(Seat seat:seats){
-				TripImplicacion viaje = new TripImplicacion(serviceT.findById(seat.getTripId()));
-										
-				//Esta comprobación es debida a que los promotores están 'aceptados'
-				//en su propio viaje ya que ocupan una plaza. Por ello no nos 
-				//interesa mostrar al promotor que está aceptado en su propio viaje 		
+
+		SeatService serviceS = Factories.services.createSeatService();
+		TripsService serviceT = Factories.services.createTripService();
+		List<Seat> seats = serviceS.findAceptadasByUser(usuario.getId());
+
+		List<Long> idsViajesEsPromotor = new LinkedList<Long>();
+		
+		for(TripImplicacion viajeAux:viajesImplicado){
+			idsViajesEsPromotor.add(viajeAux.getId());
+		}
+		
+		for (Seat seat : seats) {
+			int idUsuario= Integer.parseInt(usuario.getId()+"");
+			int idUsuarioSeat = Integer.parseInt(seat.getUserId()+"");
+			if (seat.getStatus() != SeatStatus.EXCLUDED &&	idUsuario != idUsuarioSeat ) {
+				TripImplicacion viaje = new TripImplicacion(
+						serviceT.findById(seat.getTripId()));
+				viaje.setImplicacion(ImplicacionStatus.ACEPTADO);
+				viajesImplicado.add(viaje);
+				
+				
+		//Esta comprobación es debida a que los promotores están 'aceptados'
+		//en su propio viaje ya que ocupan una plaza. Por ello no nos 
+		//interesa mostrar al promotor que está aceptado en su propio viaje 	
 				if(!idsViajesEsPromotor.contains(viaje.getId())){
 					viaje.setImplicacion(ImplicacionStatus.ACEPTADO);
 					viajesImplicado.add(viaje); 
 				}
-				
+					
 			}
 		}
+	}
 
 	private void obtenerViajesPromotor(UserLogin usuario) {
-			TripsService service = Factories.services.createTripService();
-			List<Trip> viajes = service.findByPromoter(usuario.getId());
-			
-			for(Trip viaje:viajes){
+		TripsService service = Factories.services.createTripService();
+		List<Trip> viajes = service.findByPromoter(usuario.getId());
+
+		for (Trip viaje : viajes) {
+			if (viaje.getStatus() != TripStatus.CANCELLED) {
 				TripImplicacion viajeIm = new TripImplicacion(viaje);
 				viajeIm.setImplicacion(ImplicacionStatus.PROMOTOR);
 				viajesImplicado.add(viajeIm);
 			}
 		}
+	}
+
 	
 	public void cancelarParticipacion(TripImplicacion viaje){
 		
@@ -262,4 +273,5 @@ public class BeanTrips implements Serializable {
 	}
 	
 	
+
 }

@@ -17,6 +17,7 @@
 		
 <p:panelGrid id="Grid" columns="2" cellpadding="5">
 <h:form>
+			
 			<p:dataTable var="viaje" value="#{trips.viajesImplicado}" border="1"
 				sortMode="multiple">
 
@@ -36,7 +37,8 @@
 
 				<p:column headerText="#{msgs.FechaSalida}"
 					sortBy="#{viaje.departureDate}">
-				
+		
+		
 		#{viaje.departureDate}
 	
 	</p:column>
@@ -107,14 +109,19 @@
 			</h:commandLink>
 			
 			
+				<h:outputText style="font-size: 13px" value="#{msgs.CancelarViaje}" rendered="#{modifyTrip.comprobarPromotor(viaje)}"/>
+				<p:selectBooleanCheckbox id="checkDatos" rendered="#{modifyTrip.comprobarPromotor(viaje)}">
+            		<p:ajax update="checkDatos" listener="#{cancelTrip.addTrip(viaje)}" /> 
+       		 	</p:selectBooleanCheckbox>
 		
 		</ul>
 
 	</p:column>
-
-
-
 	</p:dataTable>
+	
+	<p:commandButton style="float:right" value="#{msgs.trip_form_button_cancelTrip}"
+			action="#{cancelTrip.cancelarViajes}">  
+	</p:commandButton>
 </h:form>
 		
 
