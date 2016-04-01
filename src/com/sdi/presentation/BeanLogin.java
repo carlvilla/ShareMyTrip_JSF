@@ -10,6 +10,7 @@ import javax.faces.context.FacesContext;
 import com.sdi.business.LoginService;
 import com.sdi.infrastructure.Factories;
 import com.sdi.model.UserLogin;
+import com.sdi.utilidades.Timers.*;
 
 @ManagedBean(name = "login")
 @SessionScoped
@@ -21,6 +22,8 @@ public class BeanLogin implements Serializable {
 
 	public BeanLogin() {
 		System.out.println("BeanLogin - No existia");
+		
+		TimerBBDD.mantenimientoBBDD();
 	}
 
 	public String verify() {

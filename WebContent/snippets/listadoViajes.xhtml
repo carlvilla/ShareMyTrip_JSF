@@ -4,9 +4,9 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
-	<h:form>
+	<h:form id="form-listado">
 			<p:dataTable var="viaje" value="#{trips.viajes}" border="1"
-				sortMode="multiple">
+				sortMode="multiple" id="tablaViajes">
 
 				<p:column headerText="#{msgs.ciudadOrigen}"
 					sortBy="#{viaje.departure.city}">
@@ -54,7 +54,9 @@
 	</p:column>
 
 				<p:column>
-					<h:commandLink action="#{trips.mostrarDatosViaje(viaje)}">
+					<h:commandLink action="#{trips.mostrarDatosViaje(viaje)}"
+					id="masDatos"
+					>
 							#{msgs.masDatosViaje}
 					</h:commandLink>
 
