@@ -21,4 +21,18 @@ public class SeatInsertar {
 		}
 	}
 
+	public void insertExcluido(Long idUsuario, Long idViaje) {
+		SeatDao dao = Factories.persistence.createSeatDao();
+		Seat seat = new Seat();
+		seat.setUserId(idUsuario);
+		seat.setTripId(idViaje);
+		seat.setStatus(SeatStatus.EXCLUDED);
+		try {
+			dao.save(seat);
+		} catch (AlreadyPersistedException e) {
+			System.out.println("Ya se canceló esta solicitud");
+		}
+		
+	}
+
 }

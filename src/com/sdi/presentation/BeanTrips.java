@@ -216,10 +216,17 @@ public class BeanTrips implements Serializable {
 		for (Seat seat : seats) {
 			int idUsuario= Integer.parseInt(usuario.getId()+"");
 			int idUsuarioSeat = Integer.parseInt(seat.getUserId()+"");
-			if (seat.getStatus() != SeatStatus.EXCLUDED &&	idUsuario != idUsuarioSeat ) {
+			if (idUsuario != idUsuarioSeat ) {
 				TripImplicacion viaje = new TripImplicacion(
 						serviceT.findById(seat.getTripId()));
-				viaje.setImplicacion(ImplicacionStatus.ACEPTADO);
+				
+				if(seat.getStatus().equals(SeatStatus.EXCLUDED)){
+					viaje.setImplicacion(ImplicacionStatus.EXCLUIDO);
+				}
+				else{
+					viaje.setImplicacion(ImplicacionStatus.ACEPTADO);
+				}
+				
 				viajesImplicado.add(viaje);
 				
 				
@@ -232,6 +239,8 @@ public class BeanTrips implements Serializable {
 				}
 					
 			}
+			
+			
 		}
 	}
 
@@ -266,8 +275,6 @@ public class BeanTrips implements Serializable {
 			
 			
 		}
-		
-		
 		
 		viajesImplicado.remove(viaje);
 	}

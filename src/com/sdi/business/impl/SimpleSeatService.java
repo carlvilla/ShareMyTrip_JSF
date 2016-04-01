@@ -33,6 +33,12 @@ public class SimpleSeatService implements SeatService {
 		
 	}
 
+	@Override
+	public void insertExcluido(Long idUsuario, Long idViaje) {
+		new SeatInsertar().insertExcluido(idUsuario,idViaje);
+		
+	}
+
 
 	
 }

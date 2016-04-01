@@ -26,4 +26,13 @@ public interface SeatService {
 	public void insert(Long idUsuario, Long idViaje);
 
 	public void delete(Long id, Long id2);
+
+	
+	/**
+	 * Inserta en TSeat un usuario como excluido en el viaje
+	 * 
+	 * @param id
+	 * @param id2
+	 */
+	public void insertExcluido(Long idUsuario, Long idViaje);
 }
