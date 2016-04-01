@@ -70,7 +70,7 @@ public class BeanController implements Serializable {
 			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("user");
 			putUserInSession(userLogin);
 
-			return "principal";
+			return "exito";
 		}
 
 		catch (Exception e) {
