@@ -3,11 +3,8 @@ package com.sdi.presentation;
 import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
-
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
-
 import com.sdi.business.ApplicationService;
 import com.sdi.business.SeatService;
 import com.sdi.business.TripsService;
@@ -17,7 +14,6 @@ import com.sdi.model.Application;
 import com.sdi.model.Seat;
 import com.sdi.model.TripImplicacion;
 import com.sdi.model.User;
-import com.sdi.model.UserLogin;
 
 @ManagedBean(name = "trip")
 @SessionScoped

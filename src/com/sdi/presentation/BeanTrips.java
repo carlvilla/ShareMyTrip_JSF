@@ -1,17 +1,14 @@
 package com.sdi.presentation;
 
 import java.io.Serializable;
-import java.util.EventListener;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
-
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-
 import com.sdi.business.ApplicationService;
 import com.sdi.business.SeatService;
 import com.sdi.business.TripsService;

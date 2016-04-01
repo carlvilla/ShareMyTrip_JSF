@@ -9,12 +9,12 @@ import com.sdi.model.TripStatus;
 import com.sdi.model.Waypoint;
 import com.sdi.persistence.SeatDao;
 import com.sdi.persistence.TripDao;
-import com.sdi.presentation.BeanModificarViaje;
+import com.sdi.presentation.BeanModifyTrip;
 
 
 public class TripsModificar {
 
-	public boolean modificarTrip(BeanModificarViaje viaje) {
+	public boolean modificarTrip(BeanModifyTrip viaje) {
 			
 			try {
 			
