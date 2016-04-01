@@ -19,7 +19,7 @@
 <h:form>
 			
 			<p:dataTable var="viaje" value="#{trips.viajesImplicado}" border="1"
-				sortMode="multiple">
+				sortMode="multiple" id="tabla">
 
 				<p:column headerText="#{msgs.ciudadOrigen}"
 					sortBy="#{viaje.departure.city}">
@@ -85,31 +85,30 @@
 	</p:column>
 
 	<p:column headerText="#{msgs.OpcionesViaje}">
-		<ul>
+		<ul style="padding:0">
 			
 			<h:commandLink rendered="#{modifyTrip.comprobarPromotor(viaje)}" actionListener="#{trip.obtenerImplicados(viaje)}"
 			action="solicitudesViaje.xhtml">
-				<li>
+				
 				<p style="font-size: 13px">#{msgs.VerSolicitudes}</p>
-				</li>
+				
 			</h:commandLink>
 			
 			
 			<h:commandLink rendered="#{modifyTrip.comprobarPromotor(viaje)}" action="#{modifyTrip.mostrarViaje(viaje)}">
-				<li>
+				
 				<p style="font-size: 13px">#{msgs.ModificarViaje}</p>
-				</li>
+				
 			</h:commandLink>
 			
 			<h:commandLink rendered="#{modifyTrip.comprobarImplicacion(viaje)}" actionListener="#{trips.cancelarParticipacion(viaje)}"
 			update="Grid" process="@form">
-				<li>
+				
 				<p style="font-size: 13px">#{msgs.CancelarParticipacion}</p>
-				</li>
+				
 			</h:commandLink>
 			
-			
-				<h:outputText style="font-size: 13px" value="#{msgs.CancelarViaje}" rendered="#{modifyTrip.comprobarPromotor(viaje)}"/>
+				<h:outputText style="font-size: 12px" value="#{msgs.CancelarViaje}: " rendered="#{modifyTrip.comprobarPromotor(viaje)}"/>
 				<p:selectBooleanCheckbox id="checkDatos" rendered="#{modifyTrip.comprobarPromotor(viaje)}">
             		<p:ajax update="checkDatos" listener="#{cancelTrip.addTrip(viaje)}" /> 
        		 	</p:selectBooleanCheckbox>
@@ -119,8 +118,8 @@
 	</p:column>
 	</p:dataTable>
 	
-	<p:commandButton style="float:right" value="#{msgs.trip_form_button_cancelTrip}"
-			action="#{cancelTrip.cancelarViajes}">  
+	<p:commandButton style="float:right;margin-top:5px" value="#{msgs.trip_form_button_cancelTrip}"
+			action="#{cancelTrip.cancelarViajes}" >  
 	</p:commandButton>
 </h:form>
 		
