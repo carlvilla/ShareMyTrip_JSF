@@ -24,7 +24,7 @@ public class TimerBBDD {
         public void run()
         {
 
-        	System.out.println("Inicio tarea de mantenimiento de BBDD");
+        	
         	
         	TripsService serviceT = Factories.services.createTripService();
         	ApplicationService serviceA = Factories.services.createApplicationService();
@@ -33,6 +33,7 @@ public class TimerBBDD {
         	List<Trip> viajes = serviceT.viajesFechaCierrePasada();
         	
         	for(Trip viaje:viajes){
+        		System.out.println("Inicio tarea de mantenimiento de BBDD");
         		List<Application> solicitudes = serviceA.getSolicitudesViaje(viaje.getId());
         		serviceT.cancelarViajes(viaje);
         		
@@ -43,11 +44,13 @@ public class TimerBBDD {
         			serviceS.insertSinPlazas(app.getUserId(),app.getTripId());  			
         		}
         		
+        		System.out.println("Fin tarea de mantenimiento de BBDD");
+        		
         	}
         	
         	
         	
-        	System.out.println("Fin tarea de mantenimiento de BBDD");
+        	
         	
         }
         };
