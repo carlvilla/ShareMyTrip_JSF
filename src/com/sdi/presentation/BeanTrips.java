@@ -177,7 +177,7 @@ public class BeanTrips implements Serializable {
 		viajesImplicado = new LinkedList<TripImplicacion>();
 
 		obtenerViajesPromotor(usuario);
-		obtenerViajesAceptado(usuario);
+		obtenerViajesAceptadoExcluidoSinPlaza(usuario);
 		obtenerViajesPendiente(usuario);
 
 	}
@@ -198,11 +198,11 @@ public class BeanTrips implements Serializable {
 		}
 	}
 
-	private void obtenerViajesAceptado(UserLogin usuario) {
+	private void obtenerViajesAceptadoExcluidoSinPlaza(UserLogin usuario) {
 
 		SeatService serviceS = Factories.services.createSeatService();
 		TripsService serviceT = Factories.services.createTripService();
-		List<Seat> seats = serviceS.findAceptadasByUser(usuario.getId());
+		List<Seat> seats = serviceS.findByUser(usuario.getId());
 
 		List<Long> idsViajesEsPromotor = new LinkedList<Long>();
 		

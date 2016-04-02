@@ -19,17 +19,22 @@
 <h:form id="form-misViajes">
 			
 			<p:dataTable var="viaje" value="#{trips.viajesImplicado}" border="1"
-				sortMode="multiple" id="tabla" >
+				sortMode="multiple" id="tabla" widgetVar="listado"
+                 emptyMessage="#{msgs.NoSeEncontraronViajes}">
 				
 				<p:column headerText="#{msgs.ciudadOrigen}"
-					sortBy="#{viaje.departure.city}">
+					sortBy="#{viaje.departure.city}"
+					filterBy="#{viaje.departure.city}" filterMatchMode="contains"
+					onkeyup="PF('listado').filter()">
 	
 				#{viaje.departure.city}
 	
 				</p:column>
 
 				<p:column headerText="#{msgs.ciudadDestino}"
-					sortBy="#{viaje.destination.city}">
+					sortBy="#{viaje.destination.city}" 
+					filterBy="#{viaje.destination.city}" filterMatchMode="contains"
+					onkeyup="PF('listado').filter()">
 					
 				#{viaje.destination.city}
 		

@@ -17,8 +17,8 @@ public class SimpleSeatService implements SeatService {
 	}
 
 	@Override
-	public List<Seat> findAceptadasByUser(Long id) {
-		return new SeatBuscar().getPlazasAcepByUser(id);	
+	public List<Seat> findByUser(Long id) {
+		return new SeatBuscar().getPlazasByUser(id);	
 	}
 
 	@Override
