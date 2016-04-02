@@ -48,8 +48,8 @@ public class TripsModificar {
 			newTrip.setDestination(addresDestino);
 			
 			//Añadimos las fechas al viaje
-			newTrip.setArrivalDate(viaje.getDateFrom());
-			newTrip.setDepartureDate(viaje.getDateTo());
+			newTrip.setArrivalDate(viaje.getDateTo() );
+			newTrip.setDepartureDate(viaje.getDateFrom());
 			newTrip.setClosingDate(viaje.getDateLimit());
 			
 			
@@ -96,13 +96,13 @@ public class TripsModificar {
 			
 			TripDao tdao = Factories.persistence.createTripDao();
 			Trip tripMismaFecha = tdao
-					.findByPromoterIdAndArrivalDate(viaje.getPromoter(), 
-							viaje.getDateFrom());
-			if(tripMismaFecha!=null && tripMismaFecha.getId()==viaje.getIdViaje()){
+					.findByPromoterIdAndArrivalDate(newTrip.getPromoterId(), 
+							newTrip.getArrivalDate());
+			if(tripMismaFecha!=null && tripMismaFecha.getId().longValue()!=newTrip.getId().longValue()){
 				tripMismaFecha=null;
 			}
 			
-			if(tripMismaFecha!=null){
+			if(tripMismaFecha==null){
 				viaje.setResult("registerTrip_form_result_errorSameDate");
 				return false;
 			}
