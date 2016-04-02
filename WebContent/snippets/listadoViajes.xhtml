@@ -6,15 +6,9 @@
 
 	<h:form id="form-listado">
 			
-			<p:inputText action="#{settings.rows}"
-			validatorMessage="Introduzca un número" >
-			<f:ajax update="tablaViajes" event="keyup"> </f:ajax>
-			Filas por página:
-			</p:inputText>
-			
 			<p:dataTable var="viaje" value="#{trips.viajes}" border="1"
 				sortMode="multiple" id="tablaViajes" widgetVar="listaviajes"
-                 emptyMessage="#{msgs.NoSeEncontraronViajes}" paginator="true" rows="#{settings.rows}">
+                 emptyMessage="#{msgs.NoSeEncontraronViajes}">
 
 				<p:column headerText="#{msgs.ciudadOrigen}"
 					sortBy="#{viaje.departure.city}"

@@ -20,21 +20,18 @@
 			
 			<p:dataTable var="viaje" value="#{trips.viajesImplicado}" border="1"
 				sortMode="multiple" id="tabla" widgetVar="listado"
-                 emptyMessage="#{msgs.NoSeEncontraronViajes}">
+                 emptyMessage="#{msgs.NoSeEncontraronViajes}"
+                 rowsPerPageTemplate="5,10,15" rows="5" paginator="true">
 				
 				<p:column headerText="#{msgs.ciudadOrigen}"
-					sortBy="#{viaje.departure.city}"
-					filterBy="#{viaje.departure.city}" filterMatchMode="contains"
-					onkeyup="PF('listado').filter()">
+					sortBy="#{viaje.departure.city}">
 	
 				#{viaje.departure.city}
 	
 				</p:column>
 
 				<p:column headerText="#{msgs.ciudadDestino}"
-					sortBy="#{viaje.destination.city}" 
-					filterBy="#{viaje.destination.city}" filterMatchMode="contains"
-					onkeyup="PF('listado').filter()">
+					sortBy="#{viaje.destination.city}" >
 					
 				#{viaje.destination.city}
 		
