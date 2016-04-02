@@ -1,16 +1,19 @@
 package com.sdi.presentation;
 import java.io.Serializable;
 import java.util.Map;
+
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+
 import com.sdi.business.UsersService;
 import com.sdi.infrastructure.Factories;
 import com.sdi.model.User;
 import com.sdi.model.UserLogin;
+import com.sdi.utilidades.Utilidades;
 
 @ManagedBean(name = "controller")
 @SessionScoped
@@ -50,7 +53,8 @@ public class BeanController implements Serializable {
 
 			service = Factories.services.createUserService();
 			
-		//	user.setPassword(Utilidades.Encriptar(user.getPassword()));
+			//TODO
+			user.setPassword(Utilidades.getStringMessageDigest(user.getPassword(), Utilidades.MD5));
 			
 			service.saveUser(user);
 			
