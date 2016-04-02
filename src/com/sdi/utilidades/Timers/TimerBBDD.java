@@ -33,7 +33,7 @@ public class TimerBBDD {
         	for(Trip viaje:viajes){
         		System.out.println("Inicio tarea de mantenimiento de BBDD");
         		List<Application> solicitudes = serviceA.getSolicitudesViaje(viaje.getId());
-        		serviceT.cancelarViajes(viaje);
+        		serviceT.cerrarViaje(viaje);
         		
         		System.out.println("Se pasarán a 'SIN PLAZA' "+solicitudes.size()+" solicitudes");
         		

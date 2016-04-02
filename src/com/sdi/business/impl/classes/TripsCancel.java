@@ -30,10 +30,6 @@ public class TripsCancel {
 		}
 	}
 
-	public void cancelarViaje(Trip viaje) {
-		TripDao dao = Factories.persistence.createTripDao();
-		viaje.setStatus(TripStatus.CANCELLED);
-		dao.update(viaje);		
-	}
+	
 
 }
