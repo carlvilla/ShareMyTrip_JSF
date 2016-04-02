@@ -16,12 +16,12 @@ public interface SeatService {
 	public List<Seat> findPlazasAceptadas(Long idViaje);
 
 	/**
-	 * Devuelve los Seat en los que el usuario ha sido aceptado
+	 * Devuelve los Seat en los que esta implicado el usuario
 	 * 
 	 * @param id
 	 * @return 
 	 */
-	public List<Seat> findAceptadasByUser(Long id);
+	public List<Seat> findByUser(Long id);
 
 	public void insert(Long idUsuario, Long idViaje);
 

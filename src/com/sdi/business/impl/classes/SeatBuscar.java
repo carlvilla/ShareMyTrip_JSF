@@ -17,6 +17,12 @@ public class SeatBuscar {
 
 	public List<Seat> getPlazasAcepByUser(Long id) {
 		SeatDao dao = Factories.persistence.createSeatDao();
+		List<Seat> seats = dao.findAcceptedByUser(id);
+		return seats;
+	}
+
+	public List<Seat> getPlazasByUser(Long id) {
+		SeatDao dao = Factories.persistence.createSeatDao();
 		List<Seat> seats = dao.findByUser(id);
 		return seats;
 	}

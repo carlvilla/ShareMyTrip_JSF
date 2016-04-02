@@ -48,7 +48,7 @@ public class TimerBBDD {
         		
         }
         };
-        //Empieza en 10ms y se lanza la tarea cada 5000ms
-        timer.schedule(task, 10, 5000);
+        //Empieza en 0ms y se lanza la tarea cada 2000ms
+        timer.schedule(task, 0, 2000);
     }
 }
