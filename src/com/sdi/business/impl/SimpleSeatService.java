@@ -44,6 +44,12 @@ public class SimpleSeatService implements SeatService {
 		new SeatInsertar().insertarSinPlaza(userId,tripId);
 	}
 
+	@Override
+	public void actualizarExcluido(Long idUsuario, Long idViaje) {
+		new SeatInsertar().actualizarExcluido(idUsuario, idViaje);
+		
+	}
+
 
 	
 }

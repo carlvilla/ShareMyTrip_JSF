@@ -98,6 +98,17 @@
 	
 				</p:column>
 
+				<p:column headerText="#{msgs.OpcionesViaje}">
+				<ul>	
+					<p:commandLink actionListener="#{trip.eliminarSolicitudAceptada(persona)}"
+					update="GridAceptados" process="@form" rendered="#{trip.comprobarPromotor(persona)}"
+					id="cancelarSolicitudAceptada">
+						<li style="font-size: 13px">
+							#{msgs.cancelarSolicitud}
+						</li>
+					</p:commandLink>
+				</ul>
+				</p:column>
 
 		</p:dataTable>
 		

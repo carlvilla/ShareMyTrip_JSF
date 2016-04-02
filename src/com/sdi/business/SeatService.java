@@ -43,4 +43,6 @@ public interface SeatService {
 	 * @param tripId
 	 */
 	public void insertSinPlazas(Long userId, Long tripId);
+
+	public void actualizarExcluido(Long idUsuario, Long idViaje);
 }
