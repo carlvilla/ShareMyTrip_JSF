@@ -44,7 +44,7 @@
 				<p:column headerText="#{msgs.OpcionesViaje}">
 				<ul>
 					<p:commandLink actionListener="#{trip.aceptarSolicitud(persona)}"
-					update="GridSolicitantes GridAceptados" process="@form">
+					update="GridSolicitantes GridAceptados" process="@form" id="aceptarSolicitud">
 					<li style="font-size: 13px">
 					#{msgs.aceptarSolicitud}
 					</li>

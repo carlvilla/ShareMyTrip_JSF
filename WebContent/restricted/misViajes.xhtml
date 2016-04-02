@@ -98,7 +98,7 @@
 		<ul style="padding:0">
 			
 			<h:commandLink rendered="#{modifyTrip.comprobarPromotor(viaje)}" actionListener="#{trip.obtenerImplicados(viaje)}"
-			action="solicitudesViaje.xhtml">
+			action="solicitudesViaje.xhtml" id="solicitudes">
 				
 				<p style="font-size: 13px">#{msgs.VerSolicitudes}</p>
 				
@@ -112,7 +112,7 @@
 			</h:commandLink>
 			
 			<h:commandLink rendered="#{modifyTrip.comprobarImplicacion(viaje)}" actionListener="#{trips.cancelarParticipacion(viaje)}"
-			update="Grid" process="@form">
+			update="Grid notificaciones" process="@form" id="cancelarParticipacion">
 				
 				<p style="font-size: 13px">#{msgs.CancelarParticipacion}</p>
 				

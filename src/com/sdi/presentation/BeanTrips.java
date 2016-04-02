@@ -272,6 +272,14 @@ public class BeanTrips implements Serializable {
 		}
 		
 		viajesImplicado.remove(viaje);
+		
+		FacesContext context = FacesContext.getCurrentInstance();
+
+		ResourceBundle bundle = context.getApplication().getResourceBundle(
+				context, "msgs");
+
+		context.addMessage(null, new FacesMessage(bundle.getString("Exito"),
+				bundle.getString("CancelarParticipacion")));
 	}
 	
 	

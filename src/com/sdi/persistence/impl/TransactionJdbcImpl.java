@@ -3,8 +3,8 @@ package com.sdi.persistence.impl;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import com.sdi.persistence.PersistenceException;
 import com.sdi.persistence.Transaction;
+import com.sdi.persistence.exception.PersistenceException;
 import com.sdi.persistence.util.Jdbc;
 
 public class TransactionJdbcImpl implements Transaction {
