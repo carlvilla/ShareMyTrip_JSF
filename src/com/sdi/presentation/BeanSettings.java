@@ -29,6 +29,8 @@ public class BeanSettings implements Serializable {
 	public void setUser(BeanUser user) {
 		this.user = user;
 	}
+	
+	private int rows;
 
 
 	@PostConstruct
@@ -45,6 +47,8 @@ public class BeanSettings implements Serializable {
 					.getSessionMap().put("user", user);
 
 		}
+		
+		setRows(10);
 
 	}
 
@@ -78,6 +82,14 @@ public class BeanSettings implements Serializable {
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
+	}
+
+	public int getRows() {
+		return rows;
+	}
+
+	public void setRows(int rows) {
+		this.rows = rows;
 	}
 
 }
