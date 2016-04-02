@@ -20,7 +20,6 @@ import com.sdi.model.Seat;
 import com.sdi.model.SeatStatus;
 import com.sdi.model.Trip;
 import com.sdi.model.TripImplicacion;
-import com.sdi.model.TripStatus;
 import com.sdi.model.User;
 import com.sdi.model.UserLogin;
 

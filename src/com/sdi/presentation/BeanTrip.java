@@ -3,8 +3,11 @@ package com.sdi.presentation;
 import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+
 import com.sdi.business.ApplicationService;
 import com.sdi.business.SeatService;
 import com.sdi.business.TripsService;
@@ -14,6 +17,7 @@ import com.sdi.model.Application;
 import com.sdi.model.Seat;
 import com.sdi.model.TripImplicacion;
 import com.sdi.model.User;
+import com.sdi.model.UserLogin;
 
 @ManagedBean(name = "trip")
 @SessionScoped
@@ -112,6 +116,18 @@ public class BeanTrip implements Serializable {
 		solicitantes.remove(persona);
 	}
 	
+	public void eliminarSolicitudAceptada(User persona){
+		ApplicationService service = Factories.services.createApplicationService();
+		SeatService serviceS = Factories.services.createSeatService();
+		TripsService serviceT = Factories.services.createTripService();
+		
+		service.delete(persona.getId(),viaje.getId());
+		serviceS.actualizarExcluido(persona.getId(),viaje.getId());	
+		serviceT.liberarPlaza(viaje.getId());
+		
+		aceptados.remove(persona);
+	}
+	
 
 	public TripImplicacion getViaje() {
 		return viaje;
@@ -120,5 +136,17 @@ public class BeanTrip implements Serializable {
 		this.viaje = viaje;
 	}
 	
+	public boolean comprobarPromotor(User persona){
+		UserLogin usuariologueado = (UserLogin) getObjectFromSession("LOGGEDIN_USER");
+		if(persona.getId().longValue()==usuariologueado.getId().longValue())
+			return false;
+		return true;
+	}
 
+	private Object getObjectFromSession(String key) {
+		return FacesContext.getCurrentInstance().getExternalContext()
+				.getSessionMap().get(key);
+
+	}
+	
 }

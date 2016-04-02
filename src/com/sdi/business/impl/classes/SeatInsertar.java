@@ -34,6 +34,18 @@ public class SeatInsertar {
 		}
 		
 	}
+	
+	public void actualizarExcluido(Long idUsuario, Long idViaje) {
+		SeatDao dao = Factories.persistence.createSeatDao();
+		Seat seat = new Seat();
+		seat.setUserId(idUsuario);
+		seat.setTripId(idViaje);
+		seat.setStatus(SeatStatus.EXCLUDED);
+		
+		dao.update(seat);
+		
+		
+	}
 
 	public void insertarSinPlaza(Long idUsuario, Long idViaje) {
 		SeatDao dao = Factories.persistence.createSeatDao();
