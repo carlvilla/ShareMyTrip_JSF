@@ -54,7 +54,7 @@ public interface TripsService {
 	 * 
 	 * @param viaje
 	 */
-	void cancelarViajes(Trip viaje);
+	void cerrarViaje(Trip viaje);
 
 
 

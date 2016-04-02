@@ -72,8 +72,8 @@ public class SimpleTripService implements TripsService {
 	}
 
 	@Override
-	public void cancelarViajes(Trip viaje) {
-		new TripsCancel().cancelarViaje(viaje);
+	public void cerrarViaje(Trip viaje) {
+		new TripsModificar().cerrarViaje(viaje);
 	}
 
 

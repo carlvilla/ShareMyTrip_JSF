@@ -129,4 +129,10 @@ public class TripsModificar {
 		TripDao dao = Factories.persistence.createTripDao();
 		dao.aumentarPlazas(idViaje);	
 	}
+	
+	public void cerrarViaje(Trip viaje) {
+		TripDao dao = Factories.persistence.createTripDao();
+		viaje.setStatus(TripStatus.CLOSED);
+		dao.update(viaje);		
+	}
 }
