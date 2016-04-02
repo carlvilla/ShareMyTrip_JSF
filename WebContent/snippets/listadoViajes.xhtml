@@ -7,7 +7,7 @@
 	<h:form id="form-listado">
 			<p:dataTable var="viaje" value="#{trips.viajes}" border="1"
 				sortMode="multiple" id="tablaViajes" widgetVar="listaviajes"
-                 emptyMessage="#{msgs.NoSeEncontraronViajes}">
+                 emptyMessage="#{msgs.NoSeEncontraronViajes}" paginator="true" rows="5">
 
 				<p:column headerText="#{msgs.ciudadOrigen}"
 					sortBy="#{viaje.departure.city}"
