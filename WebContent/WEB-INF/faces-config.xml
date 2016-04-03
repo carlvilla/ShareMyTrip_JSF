@@ -8,7 +8,7 @@
 		<managed-bean-name>registro</managed-bean-name>
 		<managed-bean-class>com.sdi.presentation.BeanRegistro</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
-	</managed-bean>
+	</managed-bean> 
 	
 	<managed-bean>
 		<managed-bean-name>user</managed-bean-name>
