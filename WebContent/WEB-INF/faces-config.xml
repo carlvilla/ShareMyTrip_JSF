@@ -5,8 +5,8 @@
 	version="2.2">
 
 	<managed-bean>
-		<managed-bean-name>controller</managed-bean-name>
-		<managed-bean-class>com.sdi.presentation.BeanController</managed-bean-class>
+		<managed-bean-name>registro</managed-bean-name>
+		<managed-bean-class>com.sdi.presentation.BeanRegistro</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
 	

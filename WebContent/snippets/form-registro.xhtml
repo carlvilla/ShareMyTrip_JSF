@@ -66,7 +66,7 @@
 		
 		 #{msgs.confirmarContraseña} 
   <h:panelGroup>
-			<p:password value="#{user.confPassword}" placeholder="#{msgs.confirmarContraseña}" required="true"
+			<p:password placeholder="#{msgs.confirmarContraseña}" required="true"
 				requiredMessage="#{msgs.formAlta_confContraseña_requiredMessage}"
 				validator="passwordValidator" 
 				id="confPass">
@@ -80,7 +80,7 @@
 	  
   
 	<p:commandButton id="botonRegistro" value="#{msgs.botonRegistro}"
-	action="#{controller.registrar}" update="Grid" process="@form">
+	action="#{registro.registrar}" update="Grid" process="@form">
 	</p:commandButton> 
 	
 </ui:composition>

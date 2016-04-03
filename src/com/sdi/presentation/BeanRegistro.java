@@ -15,9 +15,9 @@ import com.sdi.model.User;
 import com.sdi.model.UserLogin;
 import com.sdi.utilidades.Utilidades;
 
-@ManagedBean(name = "controller")
+@ManagedBean(name = "registro")
 @SessionScoped
-public class BeanController implements Serializable {
+public class BeanRegistro implements Serializable {
 	private static final long serialVersionUID = 55556L;
 
 	@ManagedProperty(value = "#{user}")
@@ -30,30 +30,25 @@ public class BeanController implements Serializable {
 	public void setUser(BeanUser user) {
 		this.user = user;
 	}
-
 	
 	@PostConstruct
 	public void init() {
-		System.out.println("BeanController - PostConstruct");
-
+		System.out.println("BeanRegistro - PostConstruct");
 		user = (BeanUser) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
-	/*	FacesContext.getCurrentInstance().getExternalContext().getSessionMap()
-				.put("user", user);*/
-
 	}
 
 	@PreDestroy
 	public void end() {
-		System.out.println("BeanController - PreDestroy");
+		System.out.println("BeanRegistro - PreDestroy");
 	}
 
+	
 	public String registrar() {
 		UsersService service;
 		try {
 
 			service = Factories.services.createUserService();
 			
-			//TODO
 			user.setPassword(Utilidades.getStringMessageDigest(user.getPassword(), Utilidades.MD5));
 			
 			service.saveUser(user);
@@ -78,9 +73,4 @@ public class BeanController implements Serializable {
 				.getExternalContext().getSessionMap();
 		session.put("LOGGEDIN_USER", user);
 	}
-
-
-
-
-
 }
