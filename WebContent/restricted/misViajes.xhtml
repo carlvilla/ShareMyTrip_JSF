@@ -21,7 +21,7 @@
 			<p:dataTable var="viaje" value="#{trips.viajesImplicado}" border="1"
 				sortMode="multiple" id="tabla" widgetVar="listado"
                  emptyMessage="#{msgs.NoSeEncontraronViajes}"
-                 rowsPerPageTemplate="5,10,15" rows="5" paginator="true">
+                 rowsPerPageTemplate="2,5,10,15" rows="5" paginator="true">
 				
 				<p:column headerText="#{msgs.ciudadOrigen}"
 					sortBy="#{viaje.departure.city}">
