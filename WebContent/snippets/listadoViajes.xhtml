@@ -61,11 +61,9 @@
 	</p:column>
 
 				<p:column>
-					<h:commandLink action="#{trips.mostrarDatosViaje(viaje)}"
-					id="masDatos"
-					>
-							#{msgs.masDatosViaje}
-					</h:commandLink>
+					<h:commandButton action="#{trips.mostrarDatosViaje(viaje)}" value="#{msgs.masDatosViaje}" 
+						id="masDatos">
+					</h:commandButton>
 
 				</p:column>
 
