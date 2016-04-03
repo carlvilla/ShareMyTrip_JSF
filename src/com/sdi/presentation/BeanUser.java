@@ -12,7 +12,6 @@ import com.sdi.model.User;
 public class BeanUser extends User implements Serializable {
 	  private static final long serialVersionUID = 55556L;
 	    
-	  
 		@PostConstruct
 		public void init() {
 			System.out.println("BeanRegistro - PostConstruct");
@@ -22,7 +21,6 @@ public class BeanUser extends User implements Serializable {
 		public void end() {
 			System.out.println("BeanRegistro - PreDestroy");
 		}
-
 		
 	
 }
