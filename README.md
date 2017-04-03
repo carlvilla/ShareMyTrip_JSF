@@ -1,4 +1,3 @@
-# ShareMyTrip2
-
+# ShareMyTrip JSF
 * Carlos Villa
 * Sergio Moradas
